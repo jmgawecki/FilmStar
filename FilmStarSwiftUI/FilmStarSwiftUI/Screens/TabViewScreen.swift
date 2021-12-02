@@ -3,7 +3,7 @@ import SwiftUI
 struct TabViewScreen: View {
     var body: some View {
         TabView {
-            Text("Search")
+            SearchScreen()
                 .tabItem {
                     Text("Search")
                     Image(systemName: SFSymbol.search)
@@ -16,6 +16,7 @@ struct TabViewScreen: View {
                 }
         }
         .accentColor(Color.purple)
+        
     }
 }
 

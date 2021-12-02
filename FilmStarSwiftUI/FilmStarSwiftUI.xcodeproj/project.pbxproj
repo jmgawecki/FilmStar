@@ -18,6 +18,7 @@
 		EF5EC8A7275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */; };
 		EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */; };
 		EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B7275958F400362FC0 /* SFSymbol.swift */; };
+		EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B927595D9000362FC0 /* SearchScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewScreen.swift; sourceTree = "<group>"; };
 		EF5EC8B7275958F400362FC0 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
+		EF5EC8B927595D9000362FC0 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */,
+				EF5EC8B927595D9000362FC0 /* SearchScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				EF5EC88E275954CE00362FC0 /* Persistence.swift in Sources */,
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */,
+				EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */,
 				EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */,
 				EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
