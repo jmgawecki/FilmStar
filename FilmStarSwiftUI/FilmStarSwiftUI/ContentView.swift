@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  FilmStarSwiftUI
-//
-//  Created by Jakub Gawecki on 02/12/2021.
-//
-
 import SwiftUI
 import CoreData
 

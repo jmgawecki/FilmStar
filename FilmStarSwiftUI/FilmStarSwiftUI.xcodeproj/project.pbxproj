@@ -16,6 +16,8 @@
 		EF5EC89B275954CE00362FC0 /* FilmStarSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC89A275954CE00362FC0 /* FilmStarSwiftUITests.swift */; };
 		EF5EC8A5275954CE00362FC0 /* FilmStarSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A4275954CE00362FC0 /* FilmStarSwiftUIUITests.swift */; };
 		EF5EC8A7275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */; };
+		EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */; };
+		EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B7275958F400362FC0 /* SFSymbol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		EF5EC8A0275954CE00362FC0 /* FilmStarSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC8A4275954CE00362FC0 /* FilmStarSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITests.swift; sourceTree = "<group>"; };
 		EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewScreen.swift; sourceTree = "<group>"; };
+		EF5EC8B7275958F400362FC0 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 		EF5EC883275954CD00362FC0 /* FilmStarSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				EF5EC8B6275958E300362FC0 /* UIHelper */,
+				EF5EC8B3275957B400362FC0 /* Screens */,
 				EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */,
 				EF5EC886275954CD00362FC0 /* ContentView.swift */,
 				EF5EC888275954CE00362FC0 /* Assets.xcassets */,
@@ -131,6 +137,22 @@
 				EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */,
 			);
 			path = FilmStarSwiftUIUITests;
+			sourceTree = "<group>";
+		};
+		EF5EC8B3275957B400362FC0 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		EF5EC8B6275958E300362FC0 /* UIHelper */ = {
+			isa = PBXGroup;
+			children = (
+				EF5EC8B7275958F400362FC0 /* SFSymbol.swift */,
+			);
+			path = UIHelper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +287,9 @@
 			files = (
 				EF5EC88E275954CE00362FC0 /* Persistence.swift in Sources */,
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
+				EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */,
 				EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */,
+				EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
