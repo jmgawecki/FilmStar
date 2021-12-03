@@ -144,6 +144,26 @@ class NetworkManagerTests: XCTestCase {
             XCTFail("Wrong fetch type")
         }
     }
+    
+    // MARK: - NetworkManager Real
+    
+    func testFetchingtt3896198WithfetchFilmMethodSucceeds() async throws {
+        do {
+            let film = try await NetworkManager.shared.fetchFilm(fetchBy: .id, with: "tt3896198")
+            XCTAssertEqual(film.imdbID, "tt3896198")
+        } catch let error as FSError {
+            XCTFail(error.rawValue)
+        }
+    }
+    
+    func testFetchingGuardiansWithTitleWithfetchFilmMethodSucceeds() async throws {
+        do {
+            let film = try await NetworkManager.shared.fetchFilm(fetchBy: .title, with: "Guardians+of+the+Galaxy+Vol.+2")
+            XCTAssertEqual(film.imdbID, "tt3896198")
+        } catch let error as FSError {
+            XCTFail(error.rawValue)
+        }
+    }
 }
 
 

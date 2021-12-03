@@ -10,6 +10,7 @@
 		EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */; };
 		EF0FC006275A770A0028D117 /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
 		EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */; };
+		EF0FC00B275A8DF80028D117 /* SearchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC00A275A8DF80028D117 /* SearchScreenViewModel.swift */; };
 		EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */; };
 		EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC886275954CD00362FC0 /* ContentView.swift */; };
 		EF5EC889275954CE00362FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5EC888275954CE00362FC0 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C427596A4100362FC0 /* FSError.swift */; };
 		EF5EC8C727596CC000362FC0 /* FilmRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmRating.swift */; };
 		EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */; };
+		EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenTests.swift; sourceTree = "<group>"; };
 		EF0FC005275A770A0028D117 /* FilmMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmMock.swift; sourceTree = "<group>"; };
 		EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsScreen.swift; sourceTree = "<group>"; };
+		EF0FC00A275A8DF80028D117 /* SearchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModel.swift; sourceTree = "<group>"; };
 		EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmStarSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIApp.swift; sourceTree = "<group>"; };
 		EF5EC886275954CD00362FC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		EF5EC8C427596A4100362FC0 /* FSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSError.swift; sourceTree = "<group>"; };
 		EF5EC8C627596CC000362FC0 /* FilmRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRating.swift; sourceTree = "<group>"; };
 		EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSBorderedButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +99,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF0FC009275A8DEC0028D117 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF0FC00A275A8DF80028D117 /* SearchScreenViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		EF0FC00E275AB6980028D117 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF0FC005275A770A0028D117 /* FilmMock.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF0FC00F275AB6A10028D117 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		EF0FC011275AB6AF0028D117 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		EF5EC878275954CD00362FC0 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +154,8 @@
 		EF5EC883275954CD00362FC0 /* FilmStarSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				EFE316F2275AD99200A635A9 /* CustomView */,
+				EF0FC009275A8DEC0028D117 /* ViewModel */,
 				EF5EC8C3275969C600362FC0 /* Utilities */,
 				EF5EC8C0275968CB00362FC0 /* Model */,
 				EF5EC8BD275967C900362FC0 /* Manager */,
@@ -144,9 +182,9 @@
 		EF5EC899275954CE00362FC0 /* FilmStarSwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
-				EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */,
-				EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */,
-				EF0FC005275A770A0028D117 /* FilmMock.swift */,
+				EF0FC011275AB6AF0028D117 /* Screens */,
+				EF0FC00F275AB6A10028D117 /* NetworkManager */,
+				EF0FC00E275AB6980028D117 /* Model */,
 			);
 			path = FilmStarSwiftUITests;
 			sourceTree = "<group>";
@@ -201,6 +239,22 @@
 				EF5EC8C427596A4100362FC0 /* FSError.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		EFE316F2275AD99200A635A9 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				EFE316F3275AD99800A635A9 /* Button */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		EFE316F3275AD99800A635A9 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */,
+			);
+			path = Button;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF5EC88E275954CE00362FC0 /* Persistence.swift in Sources */,
+				EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */,
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */,
 				EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */,
@@ -345,6 +400,7 @@
 				EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */,
 				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
+				EF0FC00B275A8DF80028D117 /* SearchScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

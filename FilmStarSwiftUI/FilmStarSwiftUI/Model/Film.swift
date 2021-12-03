@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 protocol FilmProtocol: Identifiable, Codable, Equatable {
     var title: String { get set }
@@ -14,7 +15,7 @@ protocol FilmProtocol: Identifiable, Codable, Equatable {
     var language: String { get set }
     var country: String { get set }
     var awards: String { get set }
-    var poster: String { get set }
+    var posterUrl: String { get set }
     var ratings: [FilmRating] { get set }
     var metaScore: String { get set }
     var imdbRating: String { get set }
@@ -25,13 +26,18 @@ protocol FilmProtocol: Identifiable, Codable, Equatable {
     var id: String { get }
 }
 
+protocol PosterDisplayable {
+    func fetchImage() async throws -> UIImage?
+    var posterImage: UIImage? { get set }
+}
+
 extension FilmProtocol {
     var id: String {
         return imdbID
     }
 }
 
-struct Film: FilmProtocol {
+struct Film: FilmProtocol, PosterDisplayable {
     var title: String
     var year: String
     var rated: String
@@ -45,7 +51,7 @@ struct Film: FilmProtocol {
     var language: String
     var country: String
     var awards: String
-    var poster: String
+    var posterUrl: String
     var ratings: [FilmRating]
     var metaScore: String
     var imdbRating: String
@@ -53,6 +59,13 @@ struct Film: FilmProtocol {
     var imdbID: String
     var type: String
     var boxOffice: String
+    
+    // MARK: - Displayable
+    func fetchImage() async throws -> UIImage? {
+        return try await NetworkManager.shared.fetchPoster(with: posterUrl)
+    }
+    
+    var posterImage: UIImage?
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -68,7 +81,7 @@ struct Film: FilmProtocol {
         case language = "Language"
         case country = "Country"
         case awards = "Awards"
-        case poster = "Poster"
+        case posterUrl = "Poster"
         case ratings = "Ratings"
         case metaScore = "Metascore"
         case imdbRating

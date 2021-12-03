@@ -15,7 +15,7 @@ struct FilmMock: FilmProtocol {
     var language: String
     var country: String
     var awards: String
-    var poster: String
+    var posterUrl: String
     var ratings: [FilmRating]
     var metaScore: String
     var imdbRating: String
@@ -38,7 +38,7 @@ struct FilmMock: FilmProtocol {
         case language = "Language"
         case country = "Country"
         case awards = "Awards"
-        case poster = "Poster"
+        case posterUrl = "Poster"
         case ratings = "Ratings"
         case metaScore = "Metascore"
         case imdbRating
@@ -62,7 +62,7 @@ struct FilmMock: FilmProtocol {
         language: "English",
         country: "United States",
         awards: "Nominated for 1 Oscar. 15 wins & 58 nominations total",
-        poster: "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
+        posterUrl: "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg",
         ratings: [
             FilmRating(
                 source: "Internet Movie Database",
