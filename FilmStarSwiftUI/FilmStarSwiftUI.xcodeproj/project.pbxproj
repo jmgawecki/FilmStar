@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */; };
 		EF0FC006275A770A0028D117 /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
+		EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */; };
 		EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */; };
 		EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC886275954CD00362FC0 /* ContentView.swift */; };
 		EF5EC889275954CE00362FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5EC888275954CE00362FC0 /* Assets.xcassets */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenTests.swift; sourceTree = "<group>"; };
 		EF0FC005275A770A0028D117 /* FilmMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmMock.swift; sourceTree = "<group>"; };
+		EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsScreen.swift; sourceTree = "<group>"; };
 		EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmStarSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIApp.swift; sourceTree = "<group>"; };
 		EF5EC886275954CD00362FC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 			children = (
 				EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */,
 				EF5EC8B927595D9000362FC0 /* SearchScreen.swift */,
+				EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */,
 				EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */,
+				EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */,
 				EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */,
 				EF5EC8C727596CC000362FC0 /* FilmRating.swift in Sources */,
 				EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */,
