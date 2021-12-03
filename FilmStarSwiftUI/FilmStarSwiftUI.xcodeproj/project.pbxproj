@@ -7,18 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */; };
+		EF0FC006275A770A0028D117 /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
 		EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */; };
 		EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC886275954CD00362FC0 /* ContentView.swift */; };
 		EF5EC889275954CE00362FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5EC888275954CE00362FC0 /* Assets.xcassets */; };
 		EF5EC88C275954CE00362FC0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5EC88B275954CE00362FC0 /* Preview Assets.xcassets */; };
 		EF5EC88E275954CE00362FC0 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC88D275954CE00362FC0 /* Persistence.swift */; };
 		EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC88F275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld */; };
-		EF5EC89B275954CE00362FC0 /* FilmStarSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC89A275954CE00362FC0 /* FilmStarSwiftUITests.swift */; };
 		EF5EC8A5275954CE00362FC0 /* FilmStarSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A4275954CE00362FC0 /* FilmStarSwiftUIUITests.swift */; };
 		EF5EC8A7275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */; };
 		EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */; };
 		EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B7275958F400362FC0 /* SFSymbol.swift */; };
 		EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B927595D9000362FC0 /* SearchScreen.swift */; };
+		EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8BE275967D200362FC0 /* NetworkManager.swift */; };
+		EF5EC8C2275968D100362FC0 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C1275968D100362FC0 /* Film.swift */; };
+		EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C427596A4100362FC0 /* FSError.swift */; };
+		EF5EC8C727596CC000362FC0 /* FilmRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmRating.swift */; };
+		EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenTests.swift; sourceTree = "<group>"; };
+		EF0FC005275A770A0028D117 /* FilmMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmMock.swift; sourceTree = "<group>"; };
 		EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmStarSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIApp.swift; sourceTree = "<group>"; };
 		EF5EC886275954CD00362FC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -47,13 +55,17 @@
 		EF5EC88D275954CE00362FC0 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		EF5EC890275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FilmStarSwiftUI.xcdatamodel; sourceTree = "<group>"; };
 		EF5EC896275954CE00362FC0 /* FilmStarSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF5EC89A275954CE00362FC0 /* FilmStarSwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUITests.swift; sourceTree = "<group>"; };
 		EF5EC8A0275954CE00362FC0 /* FilmStarSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC8A4275954CE00362FC0 /* FilmStarSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITests.swift; sourceTree = "<group>"; };
 		EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewScreen.swift; sourceTree = "<group>"; };
 		EF5EC8B7275958F400362FC0 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		EF5EC8B927595D9000362FC0 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
+		EF5EC8BE275967D200362FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		EF5EC8C1275968D100362FC0 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		EF5EC8C427596A4100362FC0 /* FSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSError.swift; sourceTree = "<group>"; };
+		EF5EC8C627596CC000362FC0 /* FilmRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRating.swift; sourceTree = "<group>"; };
+		EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +116,9 @@
 		EF5EC883275954CD00362FC0 /* FilmStarSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				EF5EC8C3275969C600362FC0 /* Utilities */,
+				EF5EC8C0275968CB00362FC0 /* Model */,
+				EF5EC8BD275967C900362FC0 /* Manager */,
 				EF5EC8B6275958E300362FC0 /* UIHelper */,
 				EF5EC8B3275957B400362FC0 /* Screens */,
 				EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */,
@@ -127,7 +142,9 @@
 		EF5EC899275954CE00362FC0 /* FilmStarSwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
-				EF5EC89A275954CE00362FC0 /* FilmStarSwiftUITests.swift */,
+				EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */,
+				EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */,
+				EF0FC005275A770A0028D117 /* FilmMock.swift */,
 			);
 			path = FilmStarSwiftUITests;
 			sourceTree = "<group>";
@@ -156,6 +173,31 @@
 				EF5EC8B7275958F400362FC0 /* SFSymbol.swift */,
 			);
 			path = UIHelper;
+			sourceTree = "<group>";
+		};
+		EF5EC8BD275967C900362FC0 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				EF5EC8BE275967D200362FC0 /* NetworkManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		EF5EC8C0275968CB00362FC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF5EC8C1275968D100362FC0 /* Film.swift */,
+				EF5EC8C627596CC000362FC0 /* FilmRating.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF5EC8C3275969C600362FC0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				EF5EC8C427596A4100362FC0 /* FSError.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,9 +333,13 @@
 				EF5EC88E275954CE00362FC0 /* Persistence.swift in Sources */,
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */,
+				EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */,
 				EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */,
+				EF5EC8C727596CC000362FC0 /* FilmRating.swift in Sources */,
+				EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */,
 				EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */,
 				EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */,
+				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,7 +348,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5EC89B275954CE00362FC0 /* FilmStarSwiftUITests.swift in Sources */,
+				EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */,
+				EF0FC006275A770A0028D117 /* FilmMock.swift in Sources */,
+				EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +516,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fss.FilmStarSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -497,6 +546,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fss.FilmStarSwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
