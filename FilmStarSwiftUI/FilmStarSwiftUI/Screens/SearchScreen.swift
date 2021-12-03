@@ -2,17 +2,17 @@ import SwiftUI
 
 struct SearchScreen: View {
     @State private var searchText = ""
+    @ObservedObject var viewModel = SearchScreenViewModel()
     var body: some View {
         ZStack {
             VStack(spacing: 20) {
                 Spacer()
                 
-                
                 ZStack {
                     Rectangle()
                         .frame(width: 250, height: 250)
                         .cornerRadius(20)
-                    .padding(.bottom)
+                        .padding(.bottom)
                     Text("LOGO")
                         .font(.title)
                         .foregroundColor(Color.purple)
@@ -24,16 +24,14 @@ struct SearchScreen: View {
                     .padding(.horizontal)
                     .overlay(Capsule(style: .continuous)
                                 .stroke(Color.purple, lineWidth: 1))
-                Button {
-                    print("Ive been tapped")
-                } label: {
-                    Image(systemName: SFSymbol.film)
-                    Text("Search")
-                }
                 
-                .buttonStyle(.bordered)
-                .tint(.purple)
-                .controlSize(.large)
+                FSBorederedButton(
+                    title: "Search",
+                    systemImage: SFSymbol.film,
+                    colour: .purple,
+                    size: .large) {
+                        viewModel.fetchFilm(with: searchText)
+                    }
                 
                 Rectangle()
                     .frame(
@@ -41,6 +39,20 @@ struct SearchScreen: View {
                         height: UIScreen.main.bounds.size.height * 0.40 )
                     .cornerRadius(20)
             }
+        }
+        //        .fullScreenCover(
+        //            item: $viewModel.film,
+        //            onDismiss: {
+        //                viewModel.posterImage = nil
+        //            },
+        //            content: { film in
+        //                FilmDetailsScreen(viewModel: viewModel)
+        //            }
+        //        )
+        .sheet(item: $viewModel.film, onDismiss: {
+            viewModel.posterImage = nil
+        }) { film in
+            FilmDetailsScreen(viewModel: viewModel)
         }
     }
 }

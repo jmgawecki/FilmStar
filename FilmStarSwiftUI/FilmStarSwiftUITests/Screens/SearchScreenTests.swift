@@ -1,6 +1,7 @@
 import XCTest
 
 class SearchScreenTests: XCTestCase {
+    // MARK: - IMDbID Recognition
     func testRecognisedIMDbID() {
         // Arrange
         let movieID = "tt3896198"
@@ -74,5 +75,55 @@ class SearchScreenTests: XCTestCase {
             // Assert
             XCTAssert(true)
         }
+    }
+    
+    // MARK: - Title mutation
+    
+    func testSpacesFromTitleReplacedWithPlusSigns() {
+        // Arrange
+        let sut = "Guardians of the Galaxy Vol. 2"
+        let result = "Guardians+of+the+Galaxy+Vol.+2"
+        
+        // Act
+        let mutatedTitle = sut.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+")
+        
+        // Assert
+        XCTAssertEqual(mutatedTitle, result)
+    }
+    
+    func testSpacesFromTitleReplacedWithPlusSignsAndExtraLinesRemoved() {
+        // Arrange
+        let sut = "\n\n\n\nGuardians of the Galaxy Vol. 2"
+        let result = "Guardians+of+the+Galaxy+Vol.+2"
+        
+        // Act
+        let mutatedTitle = sut.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+")
+        
+        // Assert
+        XCTAssertEqual(mutatedTitle, result)
+    }
+    
+    func testSpacesFromTitleReplacedWithAndExtraSpacesFromFronAndEndRemoved() {
+        // Arrange
+        let sut = "      Guardians of the Galaxy Vol. 2        "
+        let result = "Guardians+of+the+Galaxy+Vol.+2"
+        
+        // Act
+        let mutatedTitle = sut.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+")
+        
+        // Assert
+        XCTAssertEqual(mutatedTitle, result)
+    }
+    
+    func testMutatingTitleWithDoubleSpaceTypoWillFail() {
+        // Arrange
+        let sut = "Guardians of the  Galaxy Vol. 2"
+        let result = "Guardians+of+the+Galaxy+Vol.+2"
+        
+        // Act
+        let mutatedTitle = sut.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+")
+        
+        // Assert
+        XCTAssertNotEqual(mutatedTitle, result)
     }
 }
