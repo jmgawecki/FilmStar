@@ -30,14 +30,14 @@ class PosterARView: ARView {
     }()
     
     // MARK: - Properties
-    var viewModel: SearchScreenViewModel
+    var viewModel: FSViewModel
     let coachingOverlay = ARCoachingOverlayView()
     var arPoster: ARPoster?
     var isPlaced = false
     
     
     // MARK: - Init
-    required init(viewModel: SearchScreenViewModel) {
+    required init(viewModel: FSViewModel) {
         if let arResource = viewModel.film?.arResource {
             arPoster = ARPoster(with: arResource)
         }

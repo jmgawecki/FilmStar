@@ -1,22 +1,32 @@
 import SwiftUI
 
 struct TabViewScreen: View {
+    @ObservedObject var viewModel = FSViewModel()
     var body: some View {
         TabView {
-            SearchScreen()
+            SearchScreen(viewModel: viewModel)
                 .tabItem {
                     Text("Search")
                     Image(systemName: SFSymbol.search)
                 }
                 
-            Text("Favourites")
+            FavouritesFilmsView(viewModel: viewModel)
                 .tabItem {
                     Text("Favourites")
                     Image(systemName: SFSymbol.favourites)
                 }
         }
         .accentColor(Color.purple)
-        
+        .fullScreenCover(
+            item: $viewModel.film,
+            onDismiss: {
+                viewModel.film?.posterImage = nil
+            },
+            content: { film in
+                FilmDetailsScreen(viewModel: viewModel)
+                    
+            }
+        )
     }
 }
 
