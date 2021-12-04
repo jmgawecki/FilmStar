@@ -8,22 +8,20 @@ struct SearchScreen: View {
             VStack(spacing: 20) {
                 Spacer()
                 
-                ZStack {
-                    Rectangle()
+                
+                    Image("LogoSearchScreen")
+                        .resizable()
                         .frame(width: 250, height: 250)
                         .cornerRadius(20)
                         .padding(.bottom)
-                    Text("LOGO")
-                        .font(.title)
-                        .foregroundColor(Color.purple)
-                        .tint(Color.blue)
-                }
+
+                
                 
                 TextField("Search for film..", text: $searchText)
                     .frame(width: 300, height: 44)
                     .padding(.horizontal)
                     .overlay(Capsule(style: .continuous)
-                                .stroke(Color.purple, lineWidth: 1))
+                                .stroke(Color.black, lineWidth: 2))
                 
                 FSBorederedButton(
                     title: "Search",
@@ -33,7 +31,7 @@ struct SearchScreen: View {
                         viewModel.fetchFilm(with: searchText)
                     }
                 
-                Rectangle()
+                ContentView()
                     .frame(
                         width: UIScreen.main.bounds.size.width - 50,
                         height: UIScreen.main.bounds.size.height * 0.40 )
@@ -54,6 +52,10 @@ struct SearchScreen: View {
 
 struct SearchScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SearchScreen()
+        Group {
+            SearchScreen()
+            SearchScreen()
+                .preferredColorScheme(.dark)
+        }
     }
 }
