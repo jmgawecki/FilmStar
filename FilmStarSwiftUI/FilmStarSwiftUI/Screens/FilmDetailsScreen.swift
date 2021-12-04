@@ -21,8 +21,13 @@ struct FilmDetailsScreen: View {
                                 systemImage: "arkit",
                                 colour: .purple,
                                 size: .large) {
-                                    print("arkit")
+                                    viewModel.isARPresenting.toggle()
                                 }
+                                .fullScreenCover(
+                                    isPresented: $viewModel.isARPresenting,
+                                    onDismiss: nil) {
+                                        PosterARScreen(viewModel: viewModel)
+                                    }
                             
 //                            Spacer()
                             
@@ -40,7 +45,7 @@ struct FilmDetailsScreen: View {
                         .padding(.horizontal)
                         HStack(alignment:.top) {
                             ZStack(alignment: .center) {
-                                if let poster = viewModel.posterImage {
+                                if let poster = viewModel.film?.posterImage {
                                     Image(uiImage: poster)
                                         .resizable()
                                         .scaledToFit()
@@ -100,7 +105,6 @@ struct FilmDetailsScreen: View {
                                 }
                             }
                         }
-                        
                         Spacer()
                     }
                 }

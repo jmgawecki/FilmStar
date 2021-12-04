@@ -1,7 +1,8 @@
 import Foundation
 import UIKit
+import RealityKit
 
-protocol FilmProtocol: Identifiable, Codable, Equatable {
+protocol FilmProtocol: Identifiable, Codable {
     var title: String { get set }
     var year: String { get set }
     var rated: String { get set } // ??
@@ -27,8 +28,10 @@ protocol FilmProtocol: Identifiable, Codable, Equatable {
 }
 
 protocol PosterDisplayable {
-    func fetchImage() async throws -> UIImage?
+    func fetchImage() async throws -> Data?
     var posterImage: UIImage? { get set }
+    var arResource: TextureResource? { get set }
+    var posterData: Data? { get set }
 }
 
 extension FilmProtocol {
@@ -37,7 +40,9 @@ extension FilmProtocol {
     }
 }
 
-struct Film: FilmProtocol, PosterDisplayable {
+typealias Filmable = FilmProtocol & PosterDisplayable
+
+struct Film: Filmable {
     var title: String
     var year: String
     var rated: String
@@ -61,11 +66,16 @@ struct Film: FilmProtocol, PosterDisplayable {
     var boxOffice: String
     
     // MARK: - Displayable
-    func fetchImage() async throws -> UIImage? {
-        return try await NetworkManager.shared.fetchPoster(with: posterUrl)
+    func fetchImage() async throws -> Data? {
+        return try await NetworkManager.shared.fetchPosterData(with: posterUrl)
     }
+
+    
+    var posterData: Data?
     
     var posterImage: UIImage?
+    var arResource: TextureResource?
+    
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"
