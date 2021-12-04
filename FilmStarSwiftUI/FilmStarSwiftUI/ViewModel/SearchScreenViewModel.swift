@@ -3,6 +3,7 @@ import RealityKit
 
 class SearchScreenViewModel: ObservableObject {
     @Published var film: Film?
+    @Published var searchText = ""
 //    @Published var posterImage: UIImage?
     
     func fetchPosterData(for film: Film) {

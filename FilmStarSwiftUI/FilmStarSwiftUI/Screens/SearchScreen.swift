@@ -17,7 +17,7 @@ struct SearchScreen: View {
 
                 
                 
-                TextField("Search for film..", text: $searchText)
+                TextField("Search for film..", text: $viewModel.searchText)
                     .frame(width: 300, height: 44)
                     .padding(.horizontal)
                     .overlay(Capsule(style: .continuous)
@@ -28,10 +28,10 @@ struct SearchScreen: View {
                     systemImage: SFSymbol.film,
                     colour: .purple,
                     size: .large) {
-                        viewModel.fetchFilm(with: searchText)
+                        viewModel.fetchFilm(with: viewModel.searchText)
                     }
                 
-                ContentView()
+                RecentSearchView()
                     .frame(
                         width: UIScreen.main.bounds.size.width - 50,
                         height: UIScreen.main.bounds.size.height * 0.40 )
