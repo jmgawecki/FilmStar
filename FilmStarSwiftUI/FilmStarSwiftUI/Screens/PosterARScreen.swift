@@ -14,7 +14,8 @@ struct PosterARScreen: View {
                     title: "Back",
                     systemImage: "xmark",
                     colour: .purple,
-                    size: .large) {
+                    size: .large,
+                    accessibilityLabel: "Go back") {
                         viewModel.isARPresenting.toggle()
                     }
                     .padding()
