@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct FilmSumView: View {
+struct FilmSumCell: View {
     let film = FilmMock.gogv2
     var body: some View {
         ZStack {
@@ -17,16 +17,33 @@ struct FilmSumView: View {
                         .accessibilityAddTraits(.isHeader)
                     Text(film.genre)
                         .font(.callout)
-                    Text("By \(film.director)")
+                    Text("Directed by \(film.director)")
                         .font(.caption)
                 }
+                .accessibilityHidden(true)
                 .multilineTextAlignment(.leading)
             }
             .frame(height: 100)
         }
-        .accessibilityElement(children: .ignore)
+        .accessibilityElement(children: .combine)
+        .accessibilityCustomContent(.title, film.title, importance: .high)
+        .accessibilityCustomContent(.genre, film.genre)
+        .accessibilityCustomContent(.director, "Directed by \(film.director)", importance: .high)
         .accessibilityAddTraits(.isButton)
-        .accessibilityLabel(Text(film.title))
         .accessibilityHint("Double tap to go to Film's full details")
+    }
+}
+
+extension AccessibilityCustomContentKey {
+    static var director: AccessibilityCustomContentKey {
+        AccessibilityCustomContentKey("Director")
+    }
+    
+    static var title: AccessibilityCustomContentKey {
+        AccessibilityCustomContentKey("Title")
+    }
+    
+    static var genre: AccessibilityCustomContentKey {
+        AccessibilityCustomContentKey("Genre")
     }
 }

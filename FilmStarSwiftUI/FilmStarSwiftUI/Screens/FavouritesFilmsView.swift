@@ -19,7 +19,7 @@ struct FavouritesFilmsView: View {
             List {
                 ForEach(items) { item in
 
-                        FilmSumView()
+                        FilmSumCell()
                 
                         .onTapGesture {
                             viewModel.film = Film.mock
