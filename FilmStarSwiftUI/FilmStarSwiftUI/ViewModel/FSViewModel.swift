@@ -1,8 +1,16 @@
 import SwiftUI
 import RealityKit
 
-class SearchScreenViewModel: ObservableObject {
-    @Published var film: Film?
+class FSViewModel: ObservableObject {
+    @Published var film: Film? {
+        didSet {
+            if let film = film,
+               film.posterImage == nil {
+                fetchPosterData(for: film)
+            }
+            
+        }
+    }
     @Published var searchText = ""
 //    @Published var posterImage: UIImage?
     

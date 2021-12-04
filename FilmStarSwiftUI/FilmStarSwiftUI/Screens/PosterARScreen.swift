@@ -2,7 +2,7 @@ import SwiftUI
 import RealityKit
 
 struct PosterARScreen: View {
-    @ObservedObject var viewModel: SearchScreenViewModel
+    @ObservedObject var viewModel: FSViewModel
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -25,7 +25,7 @@ struct PosterARScreen: View {
 }
 
 struct ARViewContainer: UIViewRepresentable {
-    @ObservedObject var viewModel: SearchScreenViewModel
+    @ObservedObject var viewModel: FSViewModel
     
     func makeUIView(context: Context) -> ARView {
         let arView = PosterARView(viewModel: viewModel)

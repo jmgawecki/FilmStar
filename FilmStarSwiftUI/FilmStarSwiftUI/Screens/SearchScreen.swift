@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SearchScreen: View {
     @State private var searchText = ""
-    @ObservedObject var viewModel = SearchScreenViewModel()
+    @ObservedObject var viewModel: FSViewModel
     @FocusState private var titleIsFocused: Bool
     var body: some View {
         ZStack {
@@ -31,23 +31,13 @@ struct SearchScreen: View {
                         viewModel.fetchFilm(with: viewModel.searchText)
                     }
                 
-                RecentSearchView()
+                RecentSearchView(viewModel: viewModel)
                     .frame(
                         width: UIScreen.main.bounds.size.width - 50,
                         height: UIScreen.main.bounds.size.height * 0.40 )
                     .cornerRadius(20)
             }
         }
-        .fullScreenCover(
-            item: $viewModel.film,
-            onDismiss: {
-                viewModel.film?.posterImage = nil
-            },
-            content: { film in
-                FilmDetailsScreen(viewModel: viewModel)
-                    
-            }
-        )
         .onDisappear {
             titleIsFocused = false
         }
@@ -57,8 +47,8 @@ struct SearchScreen: View {
 struct SearchScreen_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SearchScreen()
-            SearchScreen()
+            SearchScreen(viewModel: FSViewModel())
+            SearchScreen(viewModel: FSViewModel())
                 .preferredColorScheme(.dark)
         }
     }

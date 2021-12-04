@@ -1,40 +1,41 @@
-import SwiftUI
-import CoreData
+//
+//  FavouritesFilmsView.swift
+//  FilmStarSwiftUI
+//
+//  Created by Jakub Gawecki on 04/12/2021.
+//
 
-struct RecentSearchView: View {
-    @ObservedObject var viewModel: FSViewModel
-    
+import SwiftUI
+
+struct FavouritesFilmsView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    
+
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
-    
     private var items: FetchedResults<Item>
-    
+    @ObservedObject var viewModel: FSViewModel
     var body: some View {
-        ScrollView {
-            VStack {
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
-                }
-                LazyVGrid(columns: [GridItem()]) {
-                    ForEach(items) { item in
+            List {
+                ForEach(items) { item in
+
                         FilmSumView()
-                            .onTapGesture {
-                                viewModel.film = Film.mock
-                            }
-                    }
+                
+                        .onTapGesture {
+                            viewModel.film = Film.mock
+                        }
+
+
                 }
+                .onDelete(perform: deleteItems)
             }
-        }
     }
-    
+
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
             newItem.timestamp = Date()
-            
+
             do {
                 try viewContext.save()
             } catch {
@@ -45,11 +46,11 @@ struct RecentSearchView: View {
             }
         }
     }
-    
+
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { items[$0] }.forEach(viewContext.delete)
-            
+
             do {
                 try viewContext.save()
             } catch {
@@ -62,10 +63,8 @@ struct RecentSearchView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct FavouritesFilmsView_Previews: PreviewProvider {
     static var previews: some View {
-        RecentSearchView(viewModel: FSViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        FavouritesFilmsView(viewModel: FSViewModel())
     }
 }
-
-

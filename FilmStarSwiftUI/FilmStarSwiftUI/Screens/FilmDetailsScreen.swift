@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FilmDetailsScreen: View {
-    @ObservedObject var viewModel: SearchScreenViewModel
+    @ObservedObject var viewModel: FSViewModel
     @FocusState private var isTextFieldFocused
     var body: some View {
         if let film = viewModel.film {
@@ -38,7 +38,7 @@ struct FilmDetailsScreen: View {
 //                            Spacer()
                             
                             FSBorederedButton(
-                                title: "Back",
+                                title: "",
                                 systemImage: "xmark",
                                 colour: .yellow,
                                 size: .large,
@@ -127,7 +127,7 @@ struct FilmDetailsScreen: View {
 
 struct FilmDetailsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FilmDetailsScreen(viewModel: SearchScreenViewModel())
+        FilmDetailsScreen(viewModel: FSViewModel())
             .preferredColorScheme(.light)
     }
 }
