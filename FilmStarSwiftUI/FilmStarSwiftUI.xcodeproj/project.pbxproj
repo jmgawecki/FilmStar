@@ -253,8 +253,8 @@
 		EF5EC8B3275957B400362FC0 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */,
 				EF5EC8B927595D9000362FC0 /* SearchScreen.swift */,
+				EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */,
 				EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */,
 				EFE316FB275AE97900A635A9 /* PosterARScreen.swift */,
 			);

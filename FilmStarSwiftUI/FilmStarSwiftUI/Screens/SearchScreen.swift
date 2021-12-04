@@ -3,21 +3,21 @@ import SwiftUI
 struct SearchScreen: View {
     @State private var searchText = ""
     @ObservedObject var viewModel = SearchScreenViewModel()
+    @FocusState private var titleIsFocused: Bool
     var body: some View {
         ZStack {
             VStack(spacing: 20) {
                 Spacer()
                 
                 
-                    Image("LogoSearchScreen")
-                        .resizable()
-                        .frame(width: 250, height: 250)
-                        .cornerRadius(20)
-                        .padding(.bottom)
-
-                
-                
+                Image(decorative: "LogoSearchScreen")
+                    .resizable()
+                    .frame(width: 250, height: 250)
+                    .cornerRadius(20)
+                    .padding(.bottom)
+                    
                 TextField("Search for film..", text: $viewModel.searchText)
+                    .focused($titleIsFocused)
                     .frame(width: 300, height: 44)
                     .padding(.horizontal)
                     .overlay(Capsule(style: .continuous)
@@ -38,15 +38,19 @@ struct SearchScreen: View {
                     .cornerRadius(20)
             }
         }
-                .fullScreenCover(
-                    item: $viewModel.film,
-                    onDismiss: {
-                        viewModel.film?.posterImage = nil
-                    },
-                    content: { film in
-                        FilmDetailsScreen(viewModel: viewModel)
-                    }
-                )
+        .fullScreenCover(
+            item: $viewModel.film,
+            onDismiss: {
+                viewModel.film?.posterImage = nil
+            },
+            content: { film in
+                FilmDetailsScreen(viewModel: viewModel)
+                    
+            }
+        )
+        .onDisappear {
+            titleIsFocused = false
+        }
     }
 }
 

@@ -76,7 +76,7 @@ struct RecentFilmCell: View {
     var body: some View {
         ZStack {
             HStack {
-                Image("LogoSearchScreen")
+                Image(decorative: "LogoSearchScreen")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 80)
@@ -85,6 +85,7 @@ struct RecentFilmCell: View {
                 VStack(alignment: .leading) {
                     Text(film.title)
                         .font(.subheadline)
+                        .accessibilityAddTraits(.isHeader)
                     Text(film.genre)
                         .font(.callout)
                     Text("By \(film.director)")
@@ -94,5 +95,12 @@ struct RecentFilmCell: View {
             }
             .frame(height: 100)
         }
+        .onTapGesture {
+            print("")
+        }
+        .accessibilityElement(children: .ignore)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityLabel(Text(film.title))
+        .accessibilityHint("Double tap to go to Film's full details")
     }
 }

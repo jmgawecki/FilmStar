@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>FilmStar.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>FilmStarSwiftUI.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>EF5EC880275954CD00362FC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF5EC895275954CE00362FC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EF5EC89F275954CE00362FC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

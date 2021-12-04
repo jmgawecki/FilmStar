@@ -2,6 +2,7 @@ import SwiftUI
 
 struct FilmDetailsScreen: View {
     @ObservedObject var viewModel: SearchScreenViewModel
+    @FocusState private var isTextFieldFocused
     var body: some View {
         if let film = viewModel.film {
             ScrollView(.vertical) {
@@ -12,15 +13,20 @@ struct FilmDetailsScreen: View {
                                 title: "Save",
                                 systemImage: "star",
                                 colour: .purple,
-                                size: .large) {
+                                size: .large,
+                                accessibilityLabel: "Save to favourites",
+                                accessibilityHint: "Double tap to add Film to your favourites") {
                                     print("nothin")
                                 }
+                            
                             
                             FSBorederedButton(
                                 title: "AR Poster",
                                 systemImage: "arkit",
                                 colour: .purple,
-                                size: .large) {
+                                size: .large,
+                                accessibilityLabel: "A R Poster",
+                                accessibilityHint: "A R Experience is not accessibility-friendly. We apologise for the incovienience.") {
                                     viewModel.isARPresenting.toggle()
                                 }
                                 .fullScreenCover(
@@ -34,8 +40,9 @@ struct FilmDetailsScreen: View {
                             FSBorederedButton(
                                 title: "Back",
                                 systemImage: "xmark",
-                                colour: .black,
-                                size: .large) {
+                                colour: .yellow,
+                                size: .large,
+                                accessibilityLabel: "Go back") {
                                     viewModel.film = nil
                                 }
 
@@ -52,6 +59,7 @@ struct FilmDetailsScreen: View {
                                         .frame(width: 200)
                                         .cornerRadius(10)
                                         .padding(.top)
+                                        .accessibilityHidden(true)
                                     
                                 }
                             }
@@ -60,9 +68,10 @@ struct FilmDetailsScreen: View {
                         VStack {
                             
                             Text("\(film.title) (\(film.year))")
-                            
                                 .font(.title3)
                                 .padding(.bottom)
+                                .accessibilityLabel(Text("\(film.title). Released in \(film.year)"))
+                                .accessibilityAddTraits(.isHeader)
                             
                             Text(film.plot)
                                 .font(.callout)
@@ -102,6 +111,9 @@ struct FilmDetailsScreen: View {
                                     .frame(width: 200, height: 75)
                                     .background(Color.purple)
                                     .cornerRadius(15)
+                                    .accessibilityElement(children: .ignore)
+                                    .accessibilityAddTraits(.isStaticText)
+                                    .accessibilityLabel(Text("\(rating.source) rate. \(rating.value)"))
                                 }
                             }
                         }
