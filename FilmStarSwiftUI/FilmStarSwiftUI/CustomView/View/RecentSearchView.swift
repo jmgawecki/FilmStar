@@ -20,7 +20,7 @@ struct RecentSearchView: View {
                 }
                 LazyVGrid(columns: [GridItem()]) {
                     ForEach(items) { item in
-                        FilmSumView()
+                        FilmSumCell()
                             .onTapGesture {
                                 viewModel.film = Film.mock
                             }

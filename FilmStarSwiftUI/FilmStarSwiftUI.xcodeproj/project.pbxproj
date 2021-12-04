@@ -185,12 +185,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		EF339194275C1A4A009CC023 /* GridElement */ = {
+		EF339194275C1A4A009CC023 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				EF339195275C1A65009CC023 /* FilmSumView.swift.swift */,
 			);
-			path = GridElement;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		EF5EC878275954CD00362FC0 = {
@@ -318,7 +318,7 @@
 		EFE316F2275AD99200A635A9 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				EF339194275C1A4A009CC023 /* GridElement */,
+				EF339194275C1A4A009CC023 /* Cell */,
 				EF339191275BC287009CC023 /* View */,
 				EFE316F3275AD99800A635A9 /* Button */,
 			);
