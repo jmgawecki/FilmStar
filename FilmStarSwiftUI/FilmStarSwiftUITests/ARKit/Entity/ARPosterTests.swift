@@ -1,10 +1,3 @@
-//
-//  ARPosterTests.swift
-//  FilmStarSwiftUITests
-//
-//  Created by Jakub Gawecki on 04/12/2021.
-//
-
 import XCTest
 import RealityKit
 @testable import FilmStarSwiftUI
@@ -18,7 +11,6 @@ class ARPosterTests: XCTestCase {
         // Act
         let data = try await NetworkManager.shared.fetchPosterData(with: film.posterUrl)
         if let data = data {
-            
             let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("posterTexureResource")
             try? data.write(to: filePath)
             DispatchQueue.main.async {
