@@ -40,20 +40,15 @@ struct SearchScreen: View {
                     .cornerRadius(20)
             }
         }
-        //        .fullScreenCover(
-        //            item: $viewModel.film,
-        //            onDismiss: {
-        //                viewModel.posterImage = nil
-        //            },
-        //            content: { film in
-        //                FilmDetailsScreen(viewModel: viewModel)
-        //            }
-        //        )
-        .sheet(item: $viewModel.film, onDismiss: {
-            viewModel.posterImage = nil
-        }) { film in
-            FilmDetailsScreen(viewModel: viewModel)
-        }
+                .fullScreenCover(
+                    item: $viewModel.film,
+                    onDismiss: {
+                        viewModel.film?.posterImage = nil
+                    },
+                    content: { film in
+                        FilmDetailsScreen(viewModel: viewModel)
+                    }
+                )
     }
 }
 

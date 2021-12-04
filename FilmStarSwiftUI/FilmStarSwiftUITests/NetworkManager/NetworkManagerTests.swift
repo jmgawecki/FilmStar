@@ -31,7 +31,7 @@ class NetworkManagerTests: XCTestCase {
             expectation.fulfill()
             // Assert
             
-            XCTAssertEqual(film, mockFilm)
+                XCTAssertEqual(film.imdbID, mockFilm.imdbID)
             
         } catch let error {
             XCTFail(error.localizedDescription)
@@ -67,7 +67,7 @@ class NetworkManagerTests: XCTestCase {
             let film = try JSONDecoder().decode(FilmMock.self, from: data)
             expectation.fulfill()
             // Assert
-            XCTAssertEqual(film, mockFilm)
+            XCTAssertEqual(film.imdbID, mockFilm.imdbID)
             
         } catch let error {
             XCTFail(error.localizedDescription)
@@ -150,7 +150,11 @@ class NetworkManagerTests: XCTestCase {
     func testFetchingtt3896198WithfetchFilmMethodSucceeds() async throws {
         do {
             let film = try await NetworkManager.shared.fetchFilm(fetchBy: .id, with: "tt3896198")
-            XCTAssertEqual(film.imdbID, "tt3896198")
+            if let film = film {
+                XCTAssertEqual(film.imdbID, "tt3896198")
+            } else {
+                XCTFail()
+            }
         } catch let error as FSError {
             XCTFail(error.rawValue)
         }
@@ -159,9 +163,27 @@ class NetworkManagerTests: XCTestCase {
     func testFetchingGuardiansWithTitleWithfetchFilmMethodSucceeds() async throws {
         do {
             let film = try await NetworkManager.shared.fetchFilm(fetchBy: .title, with: "Guardians+of+the+Galaxy+Vol.+2")
-            XCTAssertEqual(film.imdbID, "tt3896198")
+            if let film = film {
+                XCTAssertEqual(film.imdbID, "tt3896198")
+            } else {
+                XCTFail()
+            }
         } catch let error as FSError {
             XCTFail(error.rawValue)
+        }
+    }
+    
+    // MARK: - PosterData Fetching
+    
+    func testFetchingGuardiansPosterWillSucceeds() async throws {
+        let urlString = "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg"
+        do {
+            let data = try await NetworkManager.shared.fetchPosterData(with: urlString)
+            if let _ = data {
+                XCTAssert(true)
+            } else {
+                XCTAssert(false)
+            }
         }
     }
 }

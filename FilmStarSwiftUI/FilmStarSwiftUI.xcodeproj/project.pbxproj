@@ -11,6 +11,9 @@
 		EF0FC006275A770A0028D117 /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
 		EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */; };
 		EF0FC00B275A8DF80028D117 /* SearchScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC00A275A8DF80028D117 /* SearchScreenViewModel.swift */; };
+		EF22EDD6275B789300781FAF /* ARPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF22EDD5275B789300781FAF /* ARPoster.swift */; };
+		EF22EDDA275B894F00781FAF /* ARPosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF22EDD9275B894F00781FAF /* ARPosterTests.swift */; };
+		EF339190275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */; };
 		EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */; };
 		EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC886275954CD00362FC0 /* ContentView.swift */; };
 		EF5EC889275954CE00362FC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5EC888275954CE00362FC0 /* Assets.xcassets */; };
@@ -27,7 +30,13 @@
 		EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C427596A4100362FC0 /* FSError.swift */; };
 		EF5EC8C727596CC000362FC0 /* FilmRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmRating.swift */; };
 		EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */; };
+		EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */; };
+		EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684674275B73F20022E51B /* PosterARView+Configuration.swift */; };
 		EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */; };
+		EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F6275AE87A00A635A9 /* PosterARView.swift */; };
+		EFE316FA275AE8EA00A635A9 /* PosterARView+Coaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F9275AE8EA00A635A9 /* PosterARView+Coaching.swift */; };
+		EFE316FC275AE97900A635A9 /* PosterARScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316FB275AE97900A635A9 /* PosterARScreen.swift */; };
+		EFE316FE275AF9E700A635A9 /* FSProminentButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316FD275AF9E700A635A9 /* FSProminentButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +61,9 @@
 		EF0FC005275A770A0028D117 /* FilmMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmMock.swift; sourceTree = "<group>"; };
 		EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsScreen.swift; sourceTree = "<group>"; };
 		EF0FC00A275A8DF80028D117 /* SearchScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModel.swift; sourceTree = "<group>"; };
+		EF22EDD5275B789300781FAF /* ARPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPoster.swift; sourceTree = "<group>"; };
+		EF22EDD9275B894F00781FAF /* ARPosterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPosterTests.swift; sourceTree = "<group>"; };
+		EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+ARSessionDelegates.swift"; sourceTree = "<group>"; };
 		EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmStarSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIApp.swift; sourceTree = "<group>"; };
 		EF5EC886275954CD00362FC0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -71,7 +83,13 @@
 		EF5EC8C427596A4100362FC0 /* FSError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSError.swift; sourceTree = "<group>"; };
 		EF5EC8C627596CC000362FC0 /* FilmRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRating.swift; sourceTree = "<group>"; };
 		EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
+		EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModelTests.swift; sourceTree = "<group>"; };
+		EF684674275B73F20022E51B /* PosterARView+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Configuration.swift"; sourceTree = "<group>"; };
 		EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSBorderedButton.swift; sourceTree = "<group>"; };
+		EFE316F6275AE87A00A635A9 /* PosterARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterARView.swift; sourceTree = "<group>"; };
+		EFE316F9275AE8EA00A635A9 /* PosterARView+Coaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Coaching.swift"; sourceTree = "<group>"; };
+		EFE316FB275AE97900A635A9 /* PosterARScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterARScreen.swift; sourceTree = "<group>"; };
+		EFE316FD275AF9E700A635A9 /* FSProminentButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSProminentButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +149,30 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
+		EF22EDD4275B784300781FAF /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				EF22EDD5275B789300781FAF /* ARPoster.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		EF22EDD7275B892A00781FAF /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				EF22EDD8275B892E00781FAF /* Entity */,
+			);
+			path = ARKit;
+			sourceTree = "<group>";
+		};
+		EF22EDD8275B892E00781FAF /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				EF22EDD9275B894F00781FAF /* ARPosterTests.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		EF5EC878275954CD00362FC0 = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +196,7 @@
 		EF5EC883275954CD00362FC0 /* FilmStarSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				EFE316F8275AE88900A635A9 /* ARKit */,
 				EFE316F2275AD99200A635A9 /* CustomView */,
 				EF0FC009275A8DEC0028D117 /* ViewModel */,
 				EF5EC8C3275969C600362FC0 /* Utilities */,
@@ -182,6 +225,8 @@
 		EF5EC899275954CE00362FC0 /* FilmStarSwiftUITests */ = {
 			isa = PBXGroup;
 			children = (
+				EF22EDD7275B892A00781FAF /* ARKit */,
+				EF684671275B678E0022E51B /* ViewModel */,
 				EF0FC011275AB6AF0028D117 /* Screens */,
 				EF0FC00F275AB6A10028D117 /* NetworkManager */,
 				EF0FC00E275AB6980028D117 /* Model */,
@@ -204,6 +249,7 @@
 				EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */,
 				EF5EC8B927595D9000362FC0 /* SearchScreen.swift */,
 				EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */,
+				EFE316FB275AE97900A635A9 /* PosterARScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -241,6 +287,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		EF684671275B678E0022E51B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		EFE316F2275AD99200A635A9 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,8 +307,21 @@
 			isa = PBXGroup;
 			children = (
 				EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */,
+				EFE316FD275AF9E700A635A9 /* FSProminentButton.swift */,
 			);
 			path = Button;
+			sourceTree = "<group>";
+		};
+		EFE316F8275AE88900A635A9 /* ARKit */ = {
+			isa = PBXGroup;
+			children = (
+				EF22EDD4275B784300781FAF /* Entity */,
+				EFE316F6275AE87A00A635A9 /* PosterARView.swift */,
+				EFE316F9275AE8EA00A635A9 /* PosterARView+Coaching.swift */,
+				EF684674275B73F20022E51B /* PosterARView+Configuration.swift */,
+				EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */,
+			);
+			path = ARKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,17 +454,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFE316FC275AE97900A635A9 /* PosterARScreen.swift in Sources */,
 				EF5EC88E275954CE00362FC0 /* Persistence.swift in Sources */,
 				EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */,
+				EF339190275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift in Sources */,
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EF5EC8B5275957C400362FC0 /* TabViewScreen.swift in Sources */,
+				EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */,
 				EF5EC8C527596A4100362FC0 /* FSError.swift in Sources */,
 				EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */,
 				EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */,
 				EF5EC8C727596CC000362FC0 /* FilmRating.swift in Sources */,
+				EFE316FA275AE8EA00A635A9 /* PosterARView+Coaching.swift in Sources */,
 				EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */,
 				EF5EC887275954CD00362FC0 /* ContentView.swift in Sources */,
 				EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */,
+				EFE316FE275AF9E700A635A9 /* FSProminentButton.swift in Sources */,
+				EF22EDD6275B789300781FAF /* ARPoster.swift in Sources */,
+				EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */,
 				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
 				EF0FC00B275A8DF80028D117 /* SearchScreenViewModel.swift in Sources */,
@@ -408,8 +482,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF22EDDA275B894F00781FAF /* ARPosterTests.swift in Sources */,
 				EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */,
 				EF0FC006275A770A0028D117 /* FilmMock.swift in Sources */,
+				EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */,
 				EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +642,7 @@
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "CAMERA DESCRIPTION";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -596,6 +673,7 @@
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "CAMERA DESCRIPTION";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

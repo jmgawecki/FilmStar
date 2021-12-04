@@ -14,7 +14,7 @@ class NetworkManager {
     
     private init() {}
     
-    func fetchFilm(fetchBy: FilmFetchType, with filmNameOrID: String) async throws -> Film {
+    func fetchFilm(fetchBy: FilmFetchType, with filmNameOrID: String) async throws -> Film? {
         let endpoint = baseURL + fetchBy.rawValue + filmNameOrID + apiKey
         
         guard let url = URL(string: endpoint)
@@ -35,7 +35,7 @@ class NetworkManager {
         }
     }
     
-    func fetchPoster(with urlString: String) async throws -> UIImage? {
+    func fetchPosterData(with urlString: String) async throws -> Data? {
         guard let url = URL(string: urlString)
         else { return nil }
         
@@ -43,6 +43,6 @@ class NetworkManager {
         
         let (data, _) = try await URLSession.shared.data(for: request)
         
-        return UIImage(data: data)
+        return data
     }
 }
