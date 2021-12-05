@@ -2,124 +2,41 @@ import SwiftUI
 
 struct FilmDetailsScreen: View {
     @ObservedObject var viewModel: FSViewModel
+    @AccessibilityFocusState var isScreenFocused: Bool
     @FocusState private var isTextFieldFocused
     var body: some View {
-        if let film = viewModel.film {
+        if let film = Film.mockOptional {
             ScrollView(.vertical) {
                 ZStack {
                     VStack() {
-                        HStack {
-                            FSBorederedButton(
-                                title: "Save",
-                                systemImage: "star",
-                                colour: .purple,
-                                size: .large,
-                                accessibilityLabel: "Save to favourites",
-                                accessibilityHint: "Double tap to add Film to your favourites") {
-                                    print("nothin")
-                                }
-                            
-                            
-                            FSBorederedButton(
-                                title: "AR Poster",
-                                systemImage: "arkit",
-                                colour: .purple,
-                                size: .large,
-                                accessibilityLabel: "A R Poster",
-                                accessibilityHint: "A R Experience is not accessibility-friendly. We apologise for the incovienience.") {
-                                    viewModel.isARPresenting.toggle()
-                                }
-                                .fullScreenCover(
-                                    isPresented: $viewModel.isARPresenting,
-                                    onDismiss: nil) {
-                                        PosterARScreen(viewModel: viewModel)
-                                    }
-                            
-//                            Spacer()
-                            
-                            FSBorederedButton(
-                                title: "",
-                                systemImage: "xmark",
-                                colour: .yellow,
-                                size: .large,
-                                accessibilityLabel: "Go back") {
-                                    viewModel.film = nil
-                                }
-
-                        }
-//                        .font(.title2)
-                        .padding(.top)
-                        .padding(.horizontal)
-                        HStack(alignment:.top) {
-                            ZStack(alignment: .center) {
-                                if let poster = viewModel.film?.posterImage {
-                                    Image(uiImage: poster)
-                                        .resizable()
-                                        .scaledToFit()
-                                        .frame(width: 200)
-                                        .cornerRadius(10)
-                                        .padding(.top)
-                                        .accessibilityHidden(true)
-                                    
-                                }
-                            }
-                            
-                        }
-                        VStack {
-                            
-                            Text("\(film.title) (\(film.year))")
-                                .font(.title3)
-                                .padding(.bottom)
-                                .accessibilityLabel(Text("\(film.title). Released in \(film.year)"))
-                                .accessibilityAddTraits(.isHeader)
-                            
-                            Text(film.plot)
-                                .font(.callout)
-                                .padding(.bottom)
-                        }
-                        .multilineTextAlignment(.center)
-                        VStack(alignment: .leading) {
-                            Text(film.genre)
-                                .font(.callout)
-                            Text("Directed by \(film.director)")
-                                .font(.callout)
-                            Text("Written by \(film.writer)")
-                                .font(.caption)
-                            Text("Actors: \(film.actors)")
-                                .font(.caption)
-                            Text("Box office: \(film.boxOffice)")
-                                .font(.subheadline)
-                            Text(film.awards)
-                                .font(.subheadline)
-                        }
-                        .multilineTextAlignment(.leading)
-                        .padding(.trailing)
-                        .padding(.bottom)
+                        ButtonsPanel(viewModel: viewModel)
+                            .accessibilitySortPriority(6)
                         
-                        ScrollView(.horizontal, showsIndicators: true) {
-                            LazyHGrid(rows: [GridItem()]) {
-                                ForEach(film.ratings) { rating in
-                                    VStack {
-                                        Text(rating.source)
-                                            .fontWeight(.medium)
-                                        Text(rating.value)
-                                            .fontWeight(.bold)
-                                    }
-                                    .multilineTextAlignment(.center)
-                                    .font(.subheadline)
-                                    .foregroundColor(Color.white)
-                                    .frame(width: 200, height: 75)
-                                    .background(Color.purple)
-                                    .cornerRadius(15)
-                                    .accessibilityElement(children: .ignore)
-                                    .accessibilityAddTraits(.isStaticText)
-                                    .accessibilityLabel(Text("\(rating.source) rate. \(rating.value)"))
-                                }
-                            }
-                        }
+                        Poster(viewModel: viewModel)
+                        
+                        HeaderView(film: film)
+                            .padding(.horizontal, 10)
+                            .accessibilitySortPriority(10)
+                            .accessibilityFocused($isScreenFocused) 
+                        
+                        FirstDetailView(film: film)
+                            .padding(.horizontal, 10)
+                            .accessibilitySortPriority(9)
+                        
+                        SecondDetailView(film: film)
+                            .padding(.horizontal)
+                            .accessibilitySortPriority(8)
+                        
+                        RatingsVGrid(film: film)
+                            .padding(.horizontal, 10)
+                            .accessibilitySortPriority(7)
+                        
                         Spacer()
                     }
                 }
+            }
+            .onAppear {
+                isScreenFocused = true
             }
         }
     }
@@ -127,8 +44,176 @@ struct FilmDetailsScreen: View {
 
 struct FilmDetailsScreen_Previews: PreviewProvider {
     static var previews: some View {
-        FilmDetailsScreen(viewModel: FSViewModel())
-            .preferredColorScheme(.light)
+        Group {
+            FilmDetailsScreen(viewModel: FSViewModel())
+                .preferredColorScheme(.dark)
+            FilmDetailsScreen(viewModel: FSViewModel())
+                .preferredColorScheme(.light)
+        }
     }
 }
 
+
+struct ButtonsPanel: View {
+    @ObservedObject var viewModel: FSViewModel
+    
+    var body: some View {
+        HStack {
+            FSBorederedButton(
+                title: "Save",
+                systemImage: "star",
+                colour: .purple,
+                size: .large,
+                accessibilityLabel: "Save to favourites",
+                accessibilityHint: "Double tap to add Film to your favourites") {
+                    print("nothin")
+                }
+            
+            FSBorederedButton(
+                title: "AR Poster",
+                systemImage: "arkit",
+                colour: .purple,
+                size: .large,
+                accessibilityLabel: "A R Poster",
+                accessibilityHint: "A R Experience is not accessibility-friendly. We apologise for the incovienience.") {
+                    viewModel.isARPresenting.toggle()
+                }
+                .fullScreenCover(
+                    isPresented: $viewModel.isARPresenting,
+                    onDismiss: nil) {
+                        PosterARScreen(viewModel: viewModel)
+                    }
+            
+            FSBorederedButton(
+                title: "",
+                systemImage: "xmark",
+                colour: .yellow,
+                size: .large,
+                accessibilityLabel: "Go back") {
+                    viewModel.film = nil
+                }
+        }
+        .padding(.top)
+        .padding(.horizontal)
+    }
+}
+
+struct Poster: View {
+    @ObservedObject var viewModel: FSViewModel
+    
+    var body: some View {
+        ZStack {
+            if let poster = viewModel.film?.posterImage {
+                Image(uiImage: poster)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .cornerRadius(10)
+                    .padding(.top)
+                    .accessibilityHidden(true)
+                
+            }
+        }
+    }
+}
+
+struct HeaderView: View {
+    var film: Film
+    var body: some View {
+        ColouredVPadder(
+            backgroundColour: .purple,
+            cornerRadius: 12,
+            alignment: .leading) {
+                Text("\(film.title) (\(film.year))")
+                    .minimumScaleFactor(0.3)
+                    .font(.title2)
+                    .lineLimit(2)
+                    .accessibilityHidden(true)
+                
+                Text(film.plot)
+                    .font(.callout)
+                    .accessibilityHidden(true)
+            }
+            .accessibilityElement(children: .combine)
+            .accessibilityCustomContent(.title, "\(film.title). Released in (\(film.year))", importance: .high)
+            .accessibilityCustomContent(.plot, film.plot)
+            .accessibilityAddTraits(.isHeader)
+            .accessibilityHint("Swipe down for the plot.")
+    }
+        
+}
+
+struct FirstDetailView: View {
+    var film: Film
+    var body: some View {
+        ColouredVPadder(
+            backgroundColour: .purple,
+            cornerRadius: 12,
+            alignment: .leading) {
+                Text(film.genre)
+                    .font(.callout)
+                    .accessibilitySortPriority(10)
+                Text("Directed by \(film.director)")
+                    .font(.callout)
+                    .accessibilitySortPriority(9)
+                Text("Written by \(film.writer)")
+                    .font(.caption)
+                    .accessibilitySortPriority(8)
+                Text("Actors: \(film.actors)")
+                    .font(.caption)
+                    .accessibilitySortPriority(7)
+                
+            }
+            .accessibilityHidden(true)
+            .accessibilityElement(children: .combine)
+            .accessibilityCustomContent(.genre, film.genre, importance: .high)
+            .accessibilityCustomContent(.director, "Directed by \(film.director)")
+            .accessibilityCustomContent(.writer, "Written by \(film.writer)")
+            .accessibilityCustomContent(.actors, "Actors: \(film.actors)")
+            .accessibilityHint("Swipe down for more info")
+    }
+}
+
+struct SecondDetailView: View {
+    var film: Film
+    var body: some View {
+        ColouredVPadder(
+            backgroundColour: .purple,
+            cornerRadius: 12,
+            alignment: .leading) {
+                Text(film.awards)
+                    .font(.subheadline)
+                Text("Box office: \(film.boxOffice)")
+                    .font(.subheadline)
+            }
+            .accessibilityElement(children: .combine)
+    }
+}
+
+
+struct RatingsVGrid: View {
+    var film: Film
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            LazyHGrid(
+                rows: [GridItem()],
+                spacing: 10
+            ) {
+                ForEach(film.ratings) { rating in
+                    ColouredVPadder(
+                        backgroundColour: .purple,
+                        cornerRadius: 12) {
+                            Text(rating.source)
+                                .fontWeight(.medium)
+                            Text(rating.value)
+                                .fontWeight(.bold)
+                        }
+                        .accessibilityElement(children: .ignore)
+                        .accessibilityAddTraits(.isStaticText)
+                        .accessibilityLabel(Text("\(rating.source) rate. \(rating.value)"))
+                }
+            }
+        }
+    }
+}

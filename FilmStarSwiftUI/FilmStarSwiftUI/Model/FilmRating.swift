@@ -3,12 +3,12 @@ import Foundation
 protocol FilmRatingProtocol: Codable, Equatable, Identifiable {
     var source: String { get set }
     var value: String { get set }
-    var id: UUID { get }
+    var id: String { get }
 }
 
 extension FilmRatingProtocol {
-    var id: UUID {
-        return UUID()
+    var id: String {
+        return source
     }
 }
 

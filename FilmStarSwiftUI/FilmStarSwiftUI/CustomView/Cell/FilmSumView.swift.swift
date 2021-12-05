@@ -29,21 +29,7 @@ struct FilmSumCell: View {
         .accessibilityCustomContent(.title, film.title, importance: .high)
         .accessibilityCustomContent(.genre, film.genre)
         .accessibilityCustomContent(.director, "Directed by \(film.director)", importance: .high)
-        .accessibilityAddTraits(.isButton)
         .accessibilityHint("Double tap to go to Film's full details")
     }
 }
 
-extension AccessibilityCustomContentKey {
-    static var director: AccessibilityCustomContentKey {
-        AccessibilityCustomContentKey("Director")
-    }
-    
-    static var title: AccessibilityCustomContentKey {
-        AccessibilityCustomContentKey("Title")
-    }
-    
-    static var genre: AccessibilityCustomContentKey {
-        AccessibilityCustomContentKey("Genre")
-    }
-}

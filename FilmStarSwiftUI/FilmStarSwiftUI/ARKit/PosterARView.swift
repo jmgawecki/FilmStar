@@ -24,7 +24,7 @@ class PosterARView: ARView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = configuration
         
-        button.addTarget(self, action: #selector(resetSession), for: .touchUpInside)
+        button.addTarget(self, action: #selector(resetARSession), for: .touchUpInside)
         
         return button
     }()
