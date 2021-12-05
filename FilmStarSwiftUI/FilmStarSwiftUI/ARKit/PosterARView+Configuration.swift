@@ -15,7 +15,7 @@ extension PosterARView {
     }
     
     @objc
-    func resetSession() {
+    func resetARSession() {
         isPlaced = false
         scene.anchors.removeAll()
         configureSession()
