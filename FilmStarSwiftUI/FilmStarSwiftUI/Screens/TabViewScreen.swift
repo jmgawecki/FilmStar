@@ -1,31 +1,40 @@
 import SwiftUI
 
 struct TabViewScreen: View {
+    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @ObservedObject var viewModel = FSViewModel()
     var body: some View {
-        TabView {
-            SearchScreen(viewModel: viewModel)
-                .tabItem {
-                    Text("Search")
-                    Image(systemName: SFSymbol.search)
-                }
+        ZStack {
+            TabView {
+                SearchScreen(viewModel: viewModel)
+                    .tabItem {
+                        Text("Search")
+                        Image(systemName: SFSymbol.search)
+                    }
                 
-            FavouritesFilmsScreen(viewModel: viewModel)
-                .tabItem {
-                    Text("Favourites")
-                    Image(systemName: SFSymbol.favourites)
-                }
+                FavouritesFilmsScreen(viewModel: viewModel)
+                    .tabItem {
+                        Text("Favourites")
+                        Image(systemName: SFSymbol.favourites)
+                    }
+            }
+            .fullScreenCover(isPresented: $shouldShowOnboarding, onDismiss: {
+                print("Dismissed")
+            }, content: {
+                OnboardingTab(shouldPresentOnboarding: $shouldShowOnboarding)
+            })
+            .accentColor(Color.purple)
         }
-        .accentColor(Color.purple)
         .fullScreenCover(
             item: $viewModel.film,
             onDismiss: {
                 viewModel.film?.posterImage = nil
             },
             content: { film in
-                FilmDetailsScreen(viewModel: viewModel)     
+                FilmDetailsScreen(viewModel: viewModel)
             }
         )
+
     }
 }
 
