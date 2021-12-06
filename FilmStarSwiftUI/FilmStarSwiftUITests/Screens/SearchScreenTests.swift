@@ -175,6 +175,20 @@ class SearchScreenTests: XCTestCase {
         XCTAssertEqual(result.1, expected.1)
     }
     
+    func testCapitalIDShouldReturnLowercased() {
+        // Arrange
+        let sut = FSViewModel()
+        let id = "TT38961938"
+        let expected = (FilmFetchType.id, "tt38961938")
+        
+        // Act
+        let result = sut.prepareForFilmFetching(with: id)
+        
+        // Assert
+        print(result.1)
+        XCTAssertEqual(result.1, expected.1)
+    }
+    
     func testMethodPrepareForFilmFetchingShouldReturnTitleTypeAndTitleStringFor9Title() {
         // Arrange
         let sut = FSViewModel()
