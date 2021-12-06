@@ -71,11 +71,13 @@ class FSViewModel: ObservableObject {
         if titleOrId.count == 9,
            (String(titleOrId.dropLast(7)).filter({ $0.isLetter })).count == 2,
            ((titleOrId.dropFirst(2)) as NSString).integerValue != 0 {
-            return (FilmFetchType.id, titleOrId)
+            let id = titleOrId.lowercased()
+            return (FilmFetchType.id, id)
         } else if titleOrId.count == 10,
                   (String(titleOrId.dropLast(8)).filter({ $0.isLetter })).count == 2,
                   ((titleOrId.dropFirst(2)) as NSString).integerValue != 0 {
-            return (FilmFetchType.id, titleOrId)
+            let id = titleOrId.lowercased()
+            return (FilmFetchType.id, id)
         } else {
             return (FilmFetchType.title, titleOrId.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+"))
         }
