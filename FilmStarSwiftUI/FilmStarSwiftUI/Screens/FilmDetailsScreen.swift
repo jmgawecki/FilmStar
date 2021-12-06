@@ -119,6 +119,7 @@ struct ButtonsPanel: View {
                     systemImage: isFavourite ? "star.fill" : "star",
                     colour: .purple,
                     size: .large,
+                    isAnimated: true,
                     accessibilityLabel: "Save to favourites",
                     accessibilityHint: "Double tap to add Film to your favourites") {
                         changeFavouritesStatus()
@@ -167,18 +168,25 @@ struct ButtonsPanel: View {
 
 struct Poster: View {
     @ObservedObject var viewModel: FSViewModel
+    @State private var isShowingPoster = false
     
     var body: some View {
         ZStack {
-            if let poster = viewModel.film?.posterImage {
-                Image(uiImage: poster)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
-                    .cornerRadius(10)
-                    .padding(.top)
-                    .accessibilityHidden(true)
-                
+            if isShowingPoster {
+                if let poster = viewModel.film?.posterImage {
+                    Image(uiImage: poster)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200)
+                        .cornerRadius(10)
+                        .padding(.top)
+                        .accessibilityHidden(true)
+                }
+            }
+        }
+        .onChange(of: viewModel.film?.posterImage) { _ in
+            withAnimation {
+                isShowingPoster.toggle()
             }
         }
     }
