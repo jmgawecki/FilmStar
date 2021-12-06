@@ -14,7 +14,6 @@ class FSViewModel: ObservableObject {
     @Published var searchText = ""
     
     // MARK: - CoreData
-    
     @Environment(\.managedObjectContext) private var context
     @FetchRequest(
         sortDescriptors: [
@@ -26,48 +25,6 @@ class FSViewModel: ObservableObject {
         animation: .default)
     
     var films: FetchedResults<FSFilmSum>
-    
-    func add(_ film: Film) {
-        if ((films.filter({ $0.imdbID == film.imdbID }).first) == nil) {
-            withAnimation {
-                let newFilm = FSFilmSum(context: context)
-                newFilm.imdbID = film.imdbID
-                newFilm.title = film.title
-                newFilm.posterUrl = film.posterUrl
-                newFilm.genre = film.genre
-                newFilm.director = film.director
-                newFilm.isFavourite = false
-                newFilm.timestamp = Date()
-                do {
-                    try context.save()
-                } catch let error {
-                    fatalError(error.localizedDescription)
-                }
-            }
-        }
-    }
-    
-    func changeFavouritesStatus() {
-        if let recent = films.filter({ $0.imdbID == film?.imdbID }).first {
-            recent.isFavourite.toggle()
-            do {
-                try context.save()
-            } catch {
-                fatalError("Failed changing favourites status")
-            }
-        }
-    }
-    
-    private func deleteFavourite(_ film: Film) {
-        if let favourite = films.filter({ $0.imdbID == film.imdbID }).first {
-            favourite.isFavourite = false
-            do {
-                try context.save()
-            } catch {
-                fatalError("Failed removing from favourites")
-            }
-        }
-    }
     
     var filmSum: FSFilmSum? {
         return films.filter({ $0.imdbID == film?.imdbID }).first
@@ -124,7 +81,7 @@ class FSViewModel: ObservableObject {
         }
     }
     
-    // MARK: - ARScreens
+    // MARK: - AR Screens
     @Published var isARPresenting: Bool = false
     @Published var isCoachingActive: Bool = false
 }
