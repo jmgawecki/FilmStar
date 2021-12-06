@@ -45,7 +45,6 @@ struct FilmDetailsScreen: View {
                         RatingsVGrid(film: film)
                             .padding(.horizontal, 10)
                             .accessibilitySortPriority(7)
-                        
                         Spacer()
                     }
                 }

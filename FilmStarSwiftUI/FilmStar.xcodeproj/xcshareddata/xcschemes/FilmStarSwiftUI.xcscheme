@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EF5EC880275954CD00362FC0"
-               BuildableName = "FilmStarSwiftUI.app"
-               BlueprintName = "FilmStarSwiftUI"
-               ReferencedContainer = "container:FilmStarSwiftUI.xcodeproj">
+               BuildableName = "FilmStar.app"
+               BlueprintName = "FilmStar"
+               ReferencedContainer = "container:FilmStar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,8 +26,29 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EF5EC895275954CE00362FC0"
+               BuildableName = "FilmStarTests.xctest"
+               BlueprintName = "FilmStarTests"
+               ReferencedContainer = "container:FilmStar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EF5EC89F275954CE00362FC0"
+               BuildableName = "FilmStarUITests.xctest"
+               BlueprintName = "FilmStarUITests"
+               ReferencedContainer = "container:FilmStar.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -45,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EF5EC880275954CD00362FC0"
-            BuildableName = "FilmStarSwiftUI.app"
-            BlueprintName = "FilmStarSwiftUI"
-            ReferencedContainer = "container:FilmStarSwiftUI.xcodeproj">
+            BuildableName = "FilmStar.app"
+            BlueprintName = "FilmStar"
+            ReferencedContainer = "container:FilmStar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +83,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EF5EC880275954CD00362FC0"
-            BuildableName = "FilmStarSwiftUI.app"
-            BlueprintName = "FilmStarSwiftUI"
-            ReferencedContainer = "container:FilmStarSwiftUI.xcodeproj">
+            BuildableName = "FilmStar.app"
+            BlueprintName = "FilmStar"
+            ReferencedContainer = "container:FilmStar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

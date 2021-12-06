@@ -75,15 +75,15 @@
 		EF22EDD9275B894F00781FAF /* ARPosterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPosterTests.swift; sourceTree = "<group>"; };
 		EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+ARSessionDelegates.swift"; sourceTree = "<group>"; };
 		EF339197275C1BCB009CC023 /* FavouritesFilmsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesFilmsScreen.swift; sourceTree = "<group>"; };
-		EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmStarSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF5EC881275954CD00362FC0 /* FilmStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilmStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIApp.swift; sourceTree = "<group>"; };
 		EF5EC886275954CD00362FC0 /* RecentSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchView.swift; sourceTree = "<group>"; };
 		EF5EC888275954CE00362FC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EF5EC88B275954CE00362FC0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EF5EC88D275954CE00362FC0 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		EF5EC890275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FilmStarSwiftUI.xcdatamodel; sourceTree = "<group>"; };
-		EF5EC896275954CE00362FC0 /* FilmStarSwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarSwiftUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF5EC8A0275954CE00362FC0 /* FilmStarSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF5EC896275954CE00362FC0 /* FilmStarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF5EC8A0275954CE00362FC0 /* FilmStarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilmStarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5EC8A4275954CE00362FC0 /* FilmStarSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITests.swift; sourceTree = "<group>"; };
 		EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EF5EC8B4275957C400362FC0 /* TabViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewScreen.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 		EF5EC878275954CD00362FC0 = {
 			isa = PBXGroup;
 			children = (
-				EF5EC883275954CD00362FC0 /* FilmStarSwiftUI */,
+				EF5EC883275954CD00362FC0 /* FilmStar */,
 				EF5EC899275954CE00362FC0 /* FilmStarSwiftUITests */,
 				EF5EC8A3275954CE00362FC0 /* FilmStarSwiftUIUITests */,
 				EF5EC882275954CD00362FC0 /* Products */,
@@ -217,14 +217,14 @@
 		EF5EC882275954CD00362FC0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */,
-				EF5EC896275954CE00362FC0 /* FilmStarSwiftUITests.xctest */,
-				EF5EC8A0275954CE00362FC0 /* FilmStarSwiftUIUITests.xctest */,
+				EF5EC881275954CD00362FC0 /* FilmStar.app */,
+				EF5EC896275954CE00362FC0 /* FilmStarTests.xctest */,
+				EF5EC8A0275954CE00362FC0 /* FilmStarUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EF5EC883275954CD00362FC0 /* FilmStarSwiftUI */ = {
+		EF5EC883275954CD00362FC0 /* FilmStar */ = {
 			isa = PBXGroup;
 			children = (
 				EFF26555275CCF280019B45D /* Extension */,
@@ -241,7 +241,7 @@
 				EF5EC88F275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld */,
 				EF5EC88A275954CE00362FC0 /* Preview Content */,
 			);
-			path = FilmStarSwiftUI;
+			path = FilmStar;
 			sourceTree = "<group>";
 		};
 		EF5EC88A275954CE00362FC0 /* Preview Content */ = {
@@ -388,9 +388,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EF5EC880275954CD00362FC0 /* FilmStarSwiftUI */ = {
+		EF5EC880275954CD00362FC0 /* FilmStar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF5EC8AA275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarSwiftUI" */;
+			buildConfigurationList = EF5EC8AA275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStar" */;
 			buildPhases = (
 				EF5EC87D275954CD00362FC0 /* Sources */,
 				EF5EC87E275954CD00362FC0 /* Frameworks */,
@@ -400,14 +400,14 @@
 			);
 			dependencies = (
 			);
-			name = FilmStarSwiftUI;
+			name = FilmStar;
 			productName = FilmStarSwiftUI;
-			productReference = EF5EC881275954CD00362FC0 /* FilmStarSwiftUI.app */;
+			productReference = EF5EC881275954CD00362FC0 /* FilmStar.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EF5EC895275954CE00362FC0 /* FilmStarSwiftUITests */ = {
+		EF5EC895275954CE00362FC0 /* FilmStarTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF5EC8AD275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarSwiftUITests" */;
+			buildConfigurationList = EF5EC8AD275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarTests" */;
 			buildPhases = (
 				EF5EC892275954CE00362FC0 /* Sources */,
 				EF5EC893275954CE00362FC0 /* Frameworks */,
@@ -418,14 +418,14 @@
 			dependencies = (
 				EF5EC898275954CE00362FC0 /* PBXTargetDependency */,
 			);
-			name = FilmStarSwiftUITests;
+			name = FilmStarTests;
 			productName = FilmStarSwiftUITests;
-			productReference = EF5EC896275954CE00362FC0 /* FilmStarSwiftUITests.xctest */;
+			productReference = EF5EC896275954CE00362FC0 /* FilmStarTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EF5EC89F275954CE00362FC0 /* FilmStarSwiftUIUITests */ = {
+		EF5EC89F275954CE00362FC0 /* FilmStarUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EF5EC8B0275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarSwiftUIUITests" */;
+			buildConfigurationList = EF5EC8B0275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarUITests" */;
 			buildPhases = (
 				EF5EC89C275954CE00362FC0 /* Sources */,
 				EF5EC89D275954CE00362FC0 /* Frameworks */,
@@ -436,9 +436,9 @@
 			dependencies = (
 				EF5EC8A2275954CE00362FC0 /* PBXTargetDependency */,
 			);
-			name = FilmStarSwiftUIUITests;
+			name = FilmStarUITests;
 			productName = FilmStarSwiftUIUITests;
-			productReference = EF5EC8A0275954CE00362FC0 /* FilmStarSwiftUIUITests.xctest */;
+			productReference = EF5EC8A0275954CE00362FC0 /* FilmStarUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -464,7 +464,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EF5EC87C275954CD00362FC0 /* Build configuration list for PBXProject "FilmStarSwiftUI" */;
+			buildConfigurationList = EF5EC87C275954CD00362FC0 /* Build configuration list for PBXProject "FilmStar" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -477,9 +477,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EF5EC880275954CD00362FC0 /* FilmStarSwiftUI */,
-				EF5EC895275954CE00362FC0 /* FilmStarSwiftUITests */,
-				EF5EC89F275954CE00362FC0 /* FilmStarSwiftUIUITests */,
+				EF5EC880275954CD00362FC0 /* FilmStar */,
+				EF5EC895275954CE00362FC0 /* FilmStarTests */,
+				EF5EC89F275954CE00362FC0 /* FilmStarUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -572,12 +572,12 @@
 /* Begin PBXTargetDependency section */
 		EF5EC898275954CE00362FC0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EF5EC880275954CD00362FC0 /* FilmStarSwiftUI */;
+			target = EF5EC880275954CD00362FC0 /* FilmStar */;
 			targetProxy = EF5EC897275954CE00362FC0 /* PBXContainerItemProxy */;
 		};
 		EF5EC8A2275954CE00362FC0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EF5EC880275954CD00362FC0 /* FilmStarSwiftUI */;
+			target = EF5EC880275954CD00362FC0 /* FilmStar */;
 			targetProxy = EF5EC8A1275954CE00362FC0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -705,8 +705,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FilmStarSwiftUI/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"FilmStar/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -723,7 +723,7 @@
 				MARKETING_VERSION = 0.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fss.FilmStarSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FilmStar;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -736,8 +736,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FilmStarSwiftUI/Preview Content\"";
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_ASSET_PATHS = "\"FilmStar/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -754,7 +754,7 @@
 				MARKETING_VERSION = 0.1;
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fss.FilmStarSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FilmStar;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -782,7 +782,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilmStarSwiftUI.app/FilmStarSwiftUI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilmStar.app/FilmStar";
 			};
 			name = Debug;
 		};
@@ -807,7 +807,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilmStarSwiftUI.app/FilmStarSwiftUI";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FilmStar.app/FilmStar";
 			};
 			name = Release;
 		};
@@ -860,7 +860,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EF5EC87C275954CD00362FC0 /* Build configuration list for PBXProject "FilmStarSwiftUI" */ = {
+		EF5EC87C275954CD00362FC0 /* Build configuration list for PBXProject "FilmStar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF5EC8A8275954CE00362FC0 /* Debug */,
@@ -869,7 +869,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF5EC8AA275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarSwiftUI" */ = {
+		EF5EC8AA275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF5EC8AB275954CE00362FC0 /* Debug */,
@@ -878,7 +878,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF5EC8AD275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarSwiftUITests" */ = {
+		EF5EC8AD275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF5EC8AE275954CE00362FC0 /* Debug */,
@@ -887,7 +887,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EF5EC8B0275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarSwiftUIUITests" */ = {
+		EF5EC8B0275954CE00362FC0 /* Build configuration list for PBXNativeTarget "FilmStarUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EF5EC8B1275954CE00362FC0 /* Debug */,

@@ -1,6 +1,5 @@
 import UIKit
 import RealityKit
-@testable import FilmStarSwiftUI
 
 struct FilmMock: Filmable {
     var title: String
