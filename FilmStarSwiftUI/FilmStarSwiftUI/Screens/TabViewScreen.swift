@@ -10,7 +10,7 @@ struct TabViewScreen: View {
                     Image(systemName: SFSymbol.search)
                 }
                 
-            FavouritesFilmsView(viewModel: viewModel)
+            FavouritesFilmsScreen(viewModel: viewModel)
                 .tabItem {
                     Text("Favourites")
                     Image(systemName: SFSymbol.favourites)

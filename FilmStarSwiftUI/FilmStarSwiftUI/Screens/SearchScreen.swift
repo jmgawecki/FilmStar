@@ -3,11 +3,7 @@ import SwiftUI
 struct SearchScreen: View {
     @State private var searchText = ""
     @ObservedObject var viewModel: FSViewModel
-    @FocusState private var titleIsFocused: Bool {
-        didSet {
-            print("I've been set to \(titleIsFocused)")
-        }
-    }
+
     var body: some View {
         ZStack {
             VStack(spacing: 20) {
@@ -20,13 +16,13 @@ struct SearchScreen: View {
                     .padding(.bottom)
                 
                 TextField("Search for film..", text: $viewModel.searchText)
-                    .focused($titleIsFocused)
                     .frame(width: 300, height: 44)
                     .padding(.horizontal)
                     .overlay(
                         Capsule(style: .continuous)
                             .stroke(Color.black, lineWidth: 2)
                     )
+                    .accessibilitySortPriority(10)
                 
                 FSBorederedButton(
                     title: "Search",
@@ -35,12 +31,14 @@ struct SearchScreen: View {
                     size: .large) {
                         viewModel.fetchFilm(with: viewModel.searchText)
                     }
+                    .accessibilitySortPriority(9)
                 
                 RecentSearchView(viewModel: viewModel)
                     .frame(
                         width: UIScreen.main.bounds.size.width - 50,
                         height: UIScreen.main.bounds.size.height * 0.40 )
                     .cornerRadius(20)
+                    .accessibilitySortPriority(8)
             }
         }
     }
