@@ -34,7 +34,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EF5EC895275954CE00362FC0"
-               BuildableName = "FilmStarSwiftUITests.xctest"
+               BuildableName = "FilmStarTests.xctest"
                BlueprintName = "FilmStarTests"
                ReferencedContainer = "container:FilmStar.xcodeproj">
             </BuildableReference>
@@ -44,7 +44,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EF5EC89F275954CE00362FC0"
-               BuildableName = "FilmStarSwiftUIUITests.xctest"
+               BuildableName = "FilmStarUITests.xctest"
                BlueprintName = "FilmStarUITests"
                ReferencedContainer = "container:FilmStar.xcodeproj">
             </BuildableReference>
