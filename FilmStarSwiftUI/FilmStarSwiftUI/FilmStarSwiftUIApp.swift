@@ -2,8 +2,6 @@ import SwiftUI
 
 @main
 struct FilmStarSwiftUIApp: App {
-    let persistenceController = PersistenceController.shared
-    
     init() {
         UITabBar.appearance().isTranslucent = false
         UITabBar.appearance().backgroundColor = .systemBackground
@@ -12,7 +10,10 @@ struct FilmStarSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             TabViewScreen()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(
+                    \.managedObjectContext,
+                     PersistenceController.shared.container.viewContext
+                )
         }
     }
 }

@@ -23,8 +23,7 @@ struct TabViewScreen: View {
                 viewModel.film?.posterImage = nil
             },
             content: { film in
-                FilmDetailsScreen(viewModel: viewModel)
-                    
+                FilmDetailsScreen(viewModel: viewModel)     
             }
         )
     }

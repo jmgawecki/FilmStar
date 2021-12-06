@@ -1,61 +1,38 @@
-//
-//  FavouritesFilmsView.swift
-//  FilmStarSwiftUI
-//
-//  Created by Jakub Gawecki on 04/12/2021.
-//
-
 import SwiftUI
 
 struct FavouritesFilmsView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
+        sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \FSFilmSum.imdbID,
+                ascending: true
+            )
+        ],
+        animation: .default) private var films: FetchedResults<FSFilmSum>
+    
     @ObservedObject var viewModel: FSViewModel
     var body: some View {
-            List {
-                ForEach(items) { item in
-
-                        FilmSumCell()
-                
-                        .onTapGesture {
-                            viewModel.film = Film.mock
+        List {
+            ForEach(films.filter({ $0.isFavourite == true })) { film in
+                FilmFavouriteCell(film: film)
+                    .onTapGesture {
+                        if let imdbID = film.imdbID {
+                            viewModel.fetchFilm(with: imdbID)
                         }
-
-
-                }
-                .onDelete(perform: deleteItems)
+                    }
             }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            .onDelete(perform: deleteItems)
         }
     }
-
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
+            offsets.map { films[$0] }.forEach(viewContext.delete)
+            
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }

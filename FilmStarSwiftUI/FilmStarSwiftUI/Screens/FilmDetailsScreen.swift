@@ -4,8 +4,20 @@ struct FilmDetailsScreen: View {
     @ObservedObject var viewModel: FSViewModel
     @AccessibilityFocusState var isScreenFocused: Bool
     @FocusState private var isTextFieldFocused
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \FSFilmSum.imdbID,
+                ascending: true
+            )
+        ],
+        animation: .default)
+    var films: FetchedResults<FSFilmSum>
+    
     var body: some View {
-        if let film = Film.mockOptional {
+        if let film = viewModel.film {
             ScrollView(.vertical) {
                 ZStack {
                     VStack() {
@@ -17,7 +29,7 @@ struct FilmDetailsScreen: View {
                         HeaderView(film: film)
                             .padding(.horizontal, 10)
                             .accessibilitySortPriority(10)
-                            .accessibilityFocused($isScreenFocused) 
+                            .accessibilityFocused($isScreenFocused)
                         
                         FirstDetailView(film: film)
                             .padding(.horizontal, 10)
@@ -36,7 +48,29 @@ struct FilmDetailsScreen: View {
                 }
             }
             .onAppear {
+                add(film)
                 isScreenFocused = true
+            }
+        }
+    }
+    
+    func add(_ film: Film) {
+        if ((films.filter({ $0.imdbID == film.imdbID }).first) == nil) {
+            withAnimation {
+                let newFilm = FSFilmSum(context: viewContext)
+                newFilm.imdbID = film.imdbID
+                newFilm.title = film.title
+                newFilm.posterUrl = film.posterUrl
+                newFilm.genre = film.genre
+                newFilm.director = film.director
+                newFilm.isFavourite = false
+                newFilm.timestamp = Date()
+                
+                do {
+                    try viewContext.save()
+                } catch let error {
+                    fatalError(error.localizedDescription)
+                }
             }
         }
     }
@@ -57,17 +91,34 @@ struct FilmDetailsScreen_Previews: PreviewProvider {
 struct ButtonsPanel: View {
     @ObservedObject var viewModel: FSViewModel
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \FSFilmSum.imdbID,
+                ascending: true
+            )
+        ],
+        animation: .default)
+    
+    var films: FetchedResults<FSFilmSum>
+    
+    
     var body: some View {
         HStack {
-            FSBorederedButton(
-                title: "Save",
-                systemImage: "star",
-                colour: .purple,
-                size: .large,
-                accessibilityLabel: "Save to favourites",
-                accessibilityHint: "Double tap to add Film to your favourites") {
-                    print("nothin")
-                }
+            if let film = viewModel.film,
+               let filmCored = films.filter({ $0.imdbID == film.imdbID }).first,
+               let isFavourite = filmCored.isFavourite {
+                FSBorederedButton(
+                    title: isFavourite ? "Saved" : "Save",
+                    systemImage: isFavourite ? "star.fill" : "star",
+                    colour: .purple,
+                    size: .large,
+                    accessibilityLabel: "Save to favourites",
+                    accessibilityHint: "Double tap to add Film to your favourites") {
+                        changeFavouritesStatus()
+                    }
+            }
             
             FSBorederedButton(
                 title: "AR Poster",
@@ -95,6 +146,17 @@ struct ButtonsPanel: View {
         }
         .padding(.top)
         .padding(.horizontal)
+    }
+    
+    func changeFavouritesStatus() {
+        if let recent = films.filter({ $0.imdbID == viewModel.film?.imdbID }).first {
+            recent.isFavourite.toggle()
+            do {
+                try viewContext.save()
+            } catch {
+                fatalError("fail changing favourites status")
+            }
+        }
     }
 }
 
@@ -140,7 +202,7 @@ struct HeaderView: View {
             .accessibilityAddTraits(.isHeader)
             .accessibilityHint("Swipe down for the plot.")
     }
-        
+    
 }
 
 struct FirstDetailView: View {
