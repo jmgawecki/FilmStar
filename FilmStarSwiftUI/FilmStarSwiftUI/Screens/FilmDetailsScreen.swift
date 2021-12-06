@@ -2,8 +2,11 @@ import SwiftUI
 
 struct FilmDetailsScreen: View {
     @ObservedObject var viewModel: FSViewModel
-    @AccessibilityFocusState var isScreenFocused: Bool
-    @FocusState private var isTextFieldFocused
+    @AccessibilityFocusState var isScreenFocused: Bool {
+        didSet {
+            print(isScreenFocused)
+        }
+    }
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
@@ -49,7 +52,9 @@ struct FilmDetailsScreen: View {
             }
             .onAppear {
                 add(film)
-                isScreenFocused = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isScreenFocused = true
+                }
             }
         }
     }

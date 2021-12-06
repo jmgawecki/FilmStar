@@ -3,7 +3,6 @@ import SwiftUI
 struct FilmFavouriteCell: View {
     var film: FSFilmSum
     var body: some View {
-        ZStack {
             HStack {
                 VStack(alignment: .leading) {
                     Text(film.title ?? "Title unknown")
@@ -19,12 +18,11 @@ struct FilmFavouriteCell: View {
                 .padding(.leading)
                 Spacer()
             }
-        }
         .accessibilityElement(children: .combine)
-        .accessibilityCustomContent(.title, "unknown", importance: .high)
-        .accessibilityCustomContent(.genre, "unknown")
-        .accessibilityCustomContent(.director, "Directed by \(film.director ?? "")", importance: .high)
-        .accessibilityHint("Double tap to go to Film's full details")
+        .accessibilityCustomContent(.title, film.title ?? "unknown", importance: .high)
+        .accessibilityCustomContent(.genre, film.genre ?? "unknown")
+        .accessibilityCustomContent(.director, "Directed by \(film.director ?? "unknown")", importance: .high)
+        .accessibilityHint("Swipe down for more details or double tap to go to Film's full details")
     }
 }
 
