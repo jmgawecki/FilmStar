@@ -37,8 +37,6 @@ struct FavouritesFilmsScreen: View {
                         }
                         .onDelete(perform: removeFavouriteFilm)
                         .accessibilityFocused($isScreenFocused)
-                        
-                        
                     }
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
