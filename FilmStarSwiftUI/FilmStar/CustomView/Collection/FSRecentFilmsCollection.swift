@@ -1,9 +1,50 @@
 import SwiftUI
+import CoreData
+
+
+/// `FSRecentFilmsCollection` manages displaying films that user has saved to its favourites with `FSRecentFilmCell`. Films are being fetched from CoreData Model.
+struct FSRecentFilmsCollection: View {
+    @ObservedObject var viewModel: FSViewModel
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \FSFilmSum.timestamp,
+                ascending: false
+            )
+        ],
+        animation: .default
+    ) private var films: FetchedResults<FSFilmSum>
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                LazyVGrid(columns: [GridItem()]) {
+                    ForEach(films) { film in
+                        FSRecentFilmCell(film: film)
+                            .onTapGesture {
+                                if let imdbID = film.imdbID {
+                                    viewModel.fetchFilm(with: imdbID)
+                                }
+                            }
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        FSRecentFilmsCollection(viewModel: FSViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
 
 /// `FSRecentFilmCell` is used to present films saved by the user to its favourites. Struct uses `FSRecentFilmsCollection` CoreData model for displaying.
 ///
 /// Struct's accessibility has been adjusted and currently reads title and the director only. Structs provides instruction for users with accessibility enabled.
-struct FSRecentFilmCell: View {
+fileprivate struct FSRecentFilmCell: View {
     var film: FSFilmSum
     var body: some View {
         ZStack {

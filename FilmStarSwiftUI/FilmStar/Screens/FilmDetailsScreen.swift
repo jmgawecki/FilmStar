@@ -2,22 +2,7 @@ import SwiftUI
 
 struct FilmDetailsScreen: View {
     @ObservedObject var viewModel: FSViewModel
-    @AccessibilityFocusState var isScreenFocused: Bool {
-        didSet {
-            print(isScreenFocused)
-        }
-    }
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(
-                keyPath: \FSFilmSum.imdbID,
-                ascending: true
-            )
-        ],
-        animation: .default)
-    var films: FetchedResults<FSFilmSum>
+    @AccessibilityFocusState var isScreenFocused: Bool
     
     var body: some View {
         if let film = viewModel.film {
@@ -49,15 +34,111 @@ struct FilmDetailsScreen: View {
                     }
                 }
             }
-            .onAppear {
-                add(film)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    isScreenFocused = true
+        }
+    }
+}
+
+// MARK: - Preview
+struct FilmDetailsScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            FilmDetailsScreen(viewModel: FSViewModel())
+                .preferredColorScheme(.dark)
+            FilmDetailsScreen(viewModel: FSViewModel())
+                .preferredColorScheme(.light)
+        }
+    }
+}
+
+// MARK: - Fileprivate Views
+fileprivate struct ButtonsPanel: View {
+    @ObservedObject var viewModel: FSViewModel
+    @State var isShowingError: Bool = false {
+        didSet {
+            if isShowingError == true {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    withAnimation {
+                        isShowingError = false
+                    }
                 }
             }
         }
     }
     
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(
+        sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \FSFilmSum.imdbID,
+                ascending: true
+            )
+        ],
+        animation: .default) var films: FetchedResults<FSFilmSum>
+    
+    var body: some View {
+        VStack {
+            if isShowingError {
+                Text("Something went wrong. Please try again.")
+                    .frame(width: 300, height: 50)
+                    .font(.caption)
+                    .foregroundColor(Color.red)
+                    .accessibilityHidden(true)
+            }
+            HStack {
+                if let film = viewModel.film,
+                   let filmCored = films.filter({ $0.imdbID == film.imdbID }).first,
+                   let isFavourite = filmCored.isFavourite {
+                    FSBorederedButton(
+                        title: isFavourite ? "Saved" : "Save",
+                        systemImage: isFavourite ? "star.fill" : "star",
+                        colour: .purple,
+                        size: .large,
+                        isAnimated: true,
+                        accessibilityLabel: "Save to favourites",
+                        accessibilityHint: "Double tap to add Film to your favourites") {
+                            changeFavouritesStatus()
+                        }
+                }
+                
+                FSBorederedButton(
+                    title: "AR Poster",
+                    systemImage: "arkit",
+                    colour: .purple,
+                    size: .large,
+                    accessibilityLabel: "A R Poster",
+                    accessibilityHint: "A R Experience is not accessibility-friendly. We apologise for the incovienience.") {
+                        viewModel.isARPresenting.toggle()
+                    }
+                    .fullScreenCover(
+                        isPresented: $viewModel.isARPresenting,
+                        onDismiss: nil) {
+                            PosterARScreen(viewModel: viewModel)
+                        }
+                
+                FSBorederedButton(
+                    title: "",
+                    systemImage: "xmark",
+                    colour: .yellow,
+                    size: .large,
+                    accessibilityLabel: "Go back") {
+                        viewModel.film = nil
+                    }
+            }
+        }
+        .padding(.top)
+        .padding(.horizontal)
+        .onAppear {
+            if let film = viewModel.film {
+                add(film)
+            }
+        }
+    }
+    
+    
+    /// Method to save film as `FSFilmSum` model into CoreData.
+    ///
+    /// Methods is being called immediately after loading the `FilmDetailsScreen` as it reflects all recent successful searches performed by the user
+    /// - Parameter film: Method takes `Film` instance and converts it into `FSFilmSum` object that can be saved in CoreData.
     func add(_ film: Film) {
         if ((films.filter({ $0.imdbID == film.imdbID }).first) == nil) {
             withAnimation {
@@ -73,101 +154,29 @@ struct FilmDetailsScreen: View {
         } else if let film = films.filter({ $0.imdbID == film.imdbID }).first {
             film.timestamp = Date()
         }
-        
         do {
             try viewContext.save()
-        } catch let error {
-            fatalError(error.localizedDescription)
-        }
-    }
-}
-
-struct FilmDetailsScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            FilmDetailsScreen(viewModel: FSViewModel())
-                .preferredColorScheme(.dark)
-            FilmDetailsScreen(viewModel: FSViewModel())
-                .preferredColorScheme(.light)
-        }
-    }
-}
-
-
-struct ButtonsPanel: View {
-    @ObservedObject var viewModel: FSViewModel
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(
-                keyPath: \FSFilmSum.imdbID,
-                ascending: true
-            )
-        ],
-        animation: .default)
-    
-    var films: FetchedResults<FSFilmSum>
-    
-    
-    var body: some View {
-        HStack {
-            if let film = viewModel.film,
-               let filmCored = films.filter({ $0.imdbID == film.imdbID }).first,
-               let isFavourite = filmCored.isFavourite {
-                FSBorederedButton(
-                    title: isFavourite ? "Saved" : "Save",
-                    systemImage: isFavourite ? "star.fill" : "star",
-                    colour: .purple,
-                    size: .large,
-                    isAnimated: true,
-                    accessibilityLabel: "Save to favourites",
-                    accessibilityHint: "Double tap to add Film to your favourites") {
-                        changeFavouritesStatus()
-                    }
-            }
-            
-            FSBorederedButton(
-                title: "AR Poster",
-                systemImage: "arkit",
-                colour: .purple,
-                size: .large,
-                accessibilityLabel: "A R Poster",
-                accessibilityHint: "A R Experience is not accessibility-friendly. We apologise for the incovienience.") {
-                    viewModel.isARPresenting.toggle()
-                }
-                .fullScreenCover(
-                    isPresented: $viewModel.isARPresenting,
-                    onDismiss: nil) {
-                        PosterARScreen(viewModel: viewModel)
-                    }
-            
-            FSBorederedButton(
-                title: "",
-                systemImage: "xmark",
-                colour: .yellow,
-                size: .large,
-                accessibilityLabel: "Go back") {
-                    viewModel.film = nil
-                }
-        }
-        .padding(.top)
-        .padding(.horizontal)
+        } catch {}
     }
     
+    /// Methods changes `FSFilmSum`'s `isFavourite` property that is already being stored within the CoreData
+    ///
+    /// Currently the change is performed on film that's id matches the observed film property from within the `FSViewModel`.
     func changeFavouritesStatus() {
         if let recent = films.filter({ $0.imdbID == viewModel.film?.imdbID }).first {
             recent.isFavourite.toggle()
             do {
                 try viewContext.save()
             } catch {
-                fatalError("fail changing favourites status")
+                withAnimation {
+                    isShowingError = true
+                }
             }
         }
     }
 }
 
-struct Poster: View {
+fileprivate struct Poster: View {
     @ObservedObject var viewModel: FSViewModel
     @State private var isShowingPoster = false
     
@@ -188,14 +197,14 @@ struct Poster: View {
         .onChange(of: viewModel.film?.posterImage) { image in
             withAnimation {
                 if image != nil {
-                isShowingPoster = true
+                    isShowingPoster = true
                 }
             }
         }
     }
 }
 
-struct HeaderView: View {
+fileprivate struct HeaderView: View {
     var film: Film
     var body: some View {
         ColouredVPadder(
@@ -221,7 +230,7 @@ struct HeaderView: View {
     
 }
 
-struct FirstDetailView: View {
+fileprivate struct FirstDetailView: View {
     var film: Film
     var body: some View {
         ColouredVPadder(
@@ -252,7 +261,7 @@ struct FirstDetailView: View {
     }
 }
 
-struct SecondDetailView: View {
+fileprivate struct SecondDetailView: View {
     var film: Film
     var body: some View {
         ColouredVPadder(
@@ -269,7 +278,7 @@ struct SecondDetailView: View {
 }
 
 
-struct RatingsVGrid: View {
+fileprivate struct RatingsVGrid: View {
     var film: Film
     
     var body: some View {
