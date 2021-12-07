@@ -3,6 +3,8 @@ import RealityKit
 import Combine
 
 class FSViewModel: ObservableObject {
+    
+    /// Observed `Film` that is being populated with the succesfull asynchronous fetching with `FSViewModel`'s `fetchFilm` method.
     @Published var film: Film? {
         didSet {
             if let film = film,
@@ -12,65 +14,65 @@ class FSViewModel: ObservableObject {
             
         }
     }
+    
+    /// Observable boolean that triggers action leading to presenting `FilmSearchCollectionScreen`.
+    ///
+    /// Boolean is being triggered from the `SearchScreen`
     @Published var isShowingListOfFilms: Bool = false
     
-    @Published var listOfFilms: [FilmTeaser] = [] {
+    /// Observable array of `[FilmTeaser]`. Triggers presenting the `FilmSearchCollectionScreen` upon populating.
+    ///
+    /// Upon change from empty to not empty, property obsever toggles `isShowingListOfFilm` and thus `FilmSearchCollectionScreen` is being presented from the `SearchScreen`
+    ///
+    /// The initial trigger happens in the `SearchScreen` upon the user's tapGesture on the second out of two buttons. That triggers the `fetchListOfFilms` method from the `FSViewModel`. Then asynchronous fetching of spoken teasers happens.
+    @Published var listOfTeasers: [FilmTeaser] = [] {
         didSet {
-            if !listOfFilms.isEmpty {
+            if !listOfTeasers.isEmpty {
                 isShowingListOfFilms = true
             } else {
                 isShowingListOfFilms = false
             }
         }
     }
-    @Published var searchText = ""
+    
+    /// Observable String to be included within the `URL` that will be used to fetch a single `Film` or an array of `FilmTeaser` depending on the pressed button from within `SearchScreen`
+    ///
+    /// Property is observed and toggles  the `isSearchTextFieldEmpty` boolean.
+    @Published var searchFilmScreenText = "" {
+        didSet {
+            if searchFilmScreenText.isEmpty {
+                isSearchTextFieldEmpty = true
+            } else {
+                isSearchTextFieldEmpty = false
+            }
+        }
+    }
+    
+    /// Observable boolean that corresponds to `SearchFilmScreenText` being filled.
+    ///
+    /// The boolean will enable/disable both search buttons from the `SearchScreen` when `searchFilmScreenText` is filled/empty
     @Published var isSearchTextFieldEmpty = true
+    
+    
+    /// Observed String by the `FetchingErrorView` from the `SearchScreen`.
+    ///
+    /// When the property has a value it means that the RawValue of the `FSFilmFetchingError` has been assigned to it, therefore fetching a `Film` or an array of `FilmTeaser` failed.
+    ///
+    /// Upon the value, an alert informing the user on failure will be presented above the `SearchFilmTextField` in the `SearchScreen`
     @Published var searchingError: String? {
         didSet {
             if searchingError != nil {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.searchingError = nil
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    withAnimation {
+                        self.searchingError = nil
+                    }
                 }
             }
         }
     }
     
-    // MARK: - Initialiser
-    init() {
-        isSearchTextFieldEmptyPublisher
-            .receive(on: RunLoop.main)
-            .assign(to: \.isSearchTextFieldEmpty, on: self)
-            .store(in: &subscriptions)
-    }
-    
-    // MARK: - Concurrency
-    private var subscriptions = Set<AnyCancellable>()
-    
-    private var isSearchTextFieldEmptyPublisher: AnyPublisher<Bool, Never> {
-        $searchText
-            .removeDuplicates()
-            .map { $0.isEmpty }
-            .eraseToAnyPublisher()
-    }
-    
-    // MARK: - CoreData
-    @Environment(\.managedObjectContext) private var context
-    @FetchRequest(
-        sortDescriptors: [
-            NSSortDescriptor(
-                keyPath: \FSFilmSum.imdbID,
-                ascending: true
-            )
-        ],
-        animation: .default)
-    
-    var films: FetchedResults<FSFilmSum>
-    
-    var filmSum: FSFilmSum? {
-        return films.filter({ $0.imdbID == film?.imdbID }).first
-    }
-    
     // MARK: - NetworkManager
+
     func fetchFilm(with filmIdOrTitle: String) {
         Task.init(priority: .high) { [weak self] in
             guard let self = self else { return }
@@ -101,7 +103,7 @@ class FSViewModel: ObservableObject {
                 let films = try await NetworkManager.shared.fetchListOfFilms(with: titlePrepared)
                 if !films.isEmpty {
                     DispatchQueue.main.async {
-                        self.listOfFilms = films
+                        self.listOfTeasers = films
                     }
                 }
             } catch let error {
@@ -131,28 +133,6 @@ class FSViewModel: ObservableObject {
             }
         }
     }
-//
-//    func fetchPosters() {
-//        listOfFilms.map({ $0.title = "asf" })
-//        listOfFilms.forEach { film in
-//            Task.init(priority: .high) { [weak self] in
-//                guard let self = self else { return }
-//                let data = try await NetworkManager.shared.fetchPosterData(with: film.posterUrl)
-//                if let data = data {
-//                    DispatchQueue.main.async {
-//
-//                    }
-//                    let filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("posterTexureResource")
-//
-//                    try? data.write(to: filePath)
-//                    DispatchQueue.main.async {
-//                        self.film?.arResource = try? TextureResource.load(contentsOf: filePath)
-//                    }
-//                }
-//            }
-//        }
-//
-//    }
     
     func prepareForFilmFetching(with titleOrId: String) -> (FilmFetchType, String) {
         if titleOrId.count == 9,
@@ -173,7 +153,5 @@ class FSViewModel: ObservableObject {
     // MARK: - AR Screens
     @Published var isARPresenting: Bool = false
     @Published var isCoachingActive: Bool = false
-    
-    // MARK: - Error handling
 }
 
