@@ -8,18 +8,16 @@ struct ColouredVPadder<Content: View>: View {
     var body: some View {
         ZStack {
             backgroundColour
-                .padding(10)
-                .background(.ultraThinMaterial)
-                .cornerRadius(12)
-                .padding(.horizontal)
+                .cornerRadius(15)
+                .opacity(0.15)
             HStack {
                 VStack(alignment: alignment) {
                     content
+                        .foregroundColor(.purple)
                 }
                 Spacer()
             }
             .padding()
-            .background(.thinMaterial)
             .cornerRadius(12)
         }
     }

@@ -19,29 +19,35 @@ struct FavouritesFilmsScreen: View {
     @ObservedObject var viewModel: FSViewModel
     var body: some View {
         ZStack {
-            VStack {
-                Text("Favourite Films")
-                    .accessibilityHint("Swipe right to get to the list of your favourite Films.")
-                List {
-                    ForEach(films.filter({ $0.isFavourite == true })) { film in
-                        FilmFavouriteCell(film: film)
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                if let imdbID = film.imdbID {
-                                    viewModel.fetchFilm(with: imdbID)
+            if !films.isEmpty {
+                VStack {
+                    Text("Favourite Films")
+                        .fontWeight(.bold)
+                        .font(.title2)
+                        .accessibilityHint("Swipe right to get to the list of your favourite Films.")
+                    List {
+                        ForEach(films.filter({ $0.isFavourite == true })) { film in
+                            FilmFavouriteCell(film: film)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    if let imdbID = film.imdbID {
+                                        viewModel.fetchFilm(with: imdbID)
+                                    }
                                 }
-                            }
+                        }
+                        .onDelete(perform: removeFavouriteFilm)
+                        .accessibilityFocused($isScreenFocused)
+                        
+                        
                     }
-                    .onDelete(perform: removeFavouriteFilm)
-                    .accessibilityFocused($isScreenFocused)
-                    
-                    
-                }
-                .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        isScreenFocused.toggle()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            isScreenFocused.toggle()
+                        }
                     }
                 }
+            } else {
+                Text("Your favourites are empty... go ahead and add some!")
             }
         }
     }

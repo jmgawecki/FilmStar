@@ -1,5 +1,5 @@
 import XCTest
-@testable import FilmStarSwiftUI
+@testable import FilmStar
 
 class SearchScreenTests: XCTestCase {
     // MARK: - IMDbID Recognition

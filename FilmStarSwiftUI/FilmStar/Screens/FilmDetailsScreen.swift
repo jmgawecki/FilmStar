@@ -69,13 +69,15 @@ struct FilmDetailsScreen: View {
                 newFilm.director = film.director
                 newFilm.isFavourite = false
                 newFilm.timestamp = Date()
-                
-                do {
-                    try viewContext.save()
-                } catch let error {
-                    fatalError(error.localizedDescription)
-                }
             }
+        } else if let film = films.filter({ $0.imdbID == film.imdbID }).first {
+            film.timestamp = Date()
+        }
+        
+        do {
+            try viewContext.save()
+        } catch let error {
+            fatalError(error.localizedDescription)
         }
     }
 }
@@ -185,7 +187,9 @@ struct Poster: View {
         }
         .onChange(of: viewModel.film?.posterImage) { _ in
             withAnimation {
-                isShowingPoster.toggle()
+                if viewModel.film?.posterImage != nil {
+                isShowingPoster = true
+                }
             }
         }
     }

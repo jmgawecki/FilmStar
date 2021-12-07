@@ -6,11 +6,21 @@ struct TabViewScreen: View {
     var body: some View {
         ZStack {
             TabView {
-                SearchScreen(viewModel: viewModel)
-                    .tabItem {
-                        Text("Search")
-                        Image(systemName: SFSymbol.search)
-                    }
+                ZStack {
+                    SearchScreen(viewModel: viewModel)
+                        .fullScreenCover(
+                            isPresented: $viewModel.isShowingListOfFilms,
+                            onDismiss: nil) {
+                                FilmsListScreen(viewModel: viewModel)
+                            }
+                        
+                }
+                .tabItem {
+                    Text("Search")
+                    Image(systemName: SFSymbol.search)
+                }
+                
+
                 
                 FavouritesFilmsScreen(viewModel: viewModel)
                     .tabItem {
