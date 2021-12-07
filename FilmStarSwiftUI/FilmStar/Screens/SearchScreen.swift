@@ -44,39 +44,40 @@ struct SearchScreen: View {
                     Color.secondary.opacity(0.2)
                         .cornerRadius(12)
                         .padding(.horizontal, 35)
-                        
+                    
                     
                     TextField("Search for film..", text: $viewModel.searchText)
                         .frame(width: 300, height: 44)
                         .padding(.horizontal)
-//                        .background(Color.secondary)
                         .foregroundColor(Color.purple)
                         .cornerRadius(12)
                         .accessibilitySortPriority(10)
-                
+                    
                 }
                 HStack {
-                FSBorederedButton(
-                    title: "Lucky shot",
-                    systemImage: "dice",
-                    colour: .mint,
-                    size: .large) {
+                    FSBorederedButton(
+                        title: "Lucky shot",
+                        systemImage: "dice",
+                        colour: .mint,
+                        size: .large,
+                        accessibilityHint: "Double tap to search for one film.") {
                             viewModel.searchingError = nil
-                        viewModel.fetchFilm(with: viewModel.searchText)
-                    }
+                            viewModel.fetchFilm(with: viewModel.searchText)
+                        }
                     
-                    .accessibilitySortPriority(9)
+                        .accessibilitySortPriority(9)
                     
                     FSBorederedButton(
                         title: "Get the list",
                         systemImage: SFSymbol.film,
                         colour: .purple,
-                        size: .large) {
-                                viewModel.searchingError = nil
+                        size: .large,
+                        accessibilityHint: "Double tap to search for the list of movies") {
+                            viewModel.searchingError = nil
                             viewModel.fetchListOfFilms(with: viewModel.searchText)
                         }
                         .accessibilitySortPriority(8)
-                
+                    
                 }
                 .disabled(viewModel.isSearchTextFieldEmpty)
                 RecentSearchView(viewModel: viewModel)

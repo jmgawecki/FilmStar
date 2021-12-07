@@ -24,7 +24,8 @@ struct FavouritesFilmsScreen: View {
                     Text("Favourite Films")
                         .fontWeight(.bold)
                         .font(.title2)
-                        .accessibilityHint("Swipe right to get to the list of your favourite Films.")
+                        .accessibilityFocused($isScreenFocused)
+                        .accessibilityLabel("Favourite Films. Swipe right to get to the list of your favourite Films.")
                     List {
                         ForEach(films.filter({ $0.isFavourite == true })) { film in
                             FilmFavouriteCell(film: film)
@@ -36,7 +37,6 @@ struct FavouritesFilmsScreen: View {
                                 }
                         }
                         .onDelete(perform: removeFavouriteFilm)
-                        .accessibilityFocused($isScreenFocused)
                     }
                     .onAppear {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
