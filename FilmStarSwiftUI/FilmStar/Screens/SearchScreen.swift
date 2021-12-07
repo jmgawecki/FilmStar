@@ -41,7 +41,8 @@ struct SearchScreen: View {
                 }
                 
                 ZStack {
-                    Color.secondary.opacity(0.2)
+                    Color.secondary
+                        .opacity(0.2)
                         .cornerRadius(12)
                         .padding(.horizontal, 35)
                     

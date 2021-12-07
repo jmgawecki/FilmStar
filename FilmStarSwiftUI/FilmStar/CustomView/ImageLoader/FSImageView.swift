@@ -17,7 +17,7 @@ struct FSImageView: View {
                 ProgressView()
             }
         }
-        
         .onAppear(perform: loader.load)
+        .accessibilityHidden(true)
     }
 }
