@@ -5,9 +5,15 @@ struct FilmRecentCell: View {
     var body: some View {
         ZStack {
             Color.purple
-                .frame(width: 275, height: 80, alignment: .center)
-                .cornerRadius(15)
+                .opacity(0.15)
             HStack {
+                if let posterUrl = film.posterUrl {
+                    FSImageView(urlString: posterUrl)
+                        .scaledToFit()
+                        .frame(minWidth: 60)
+                        .cornerRadius(12)
+                        .padding()
+                }
                 VStack(alignment: .leading) {
                     Text(film.title ?? "Title unknown")
                         .font(.title3)
@@ -17,15 +23,15 @@ struct FilmRecentCell: View {
                     Text("Directed by \(film.director ?? "")")
                         .font(.caption)
                 }
+                .foregroundColor(.purple)
                 .accessibilityHidden(true)
                 .multilineTextAlignment(.leading)
                 .padding(.leading)
                 Spacer()
             }
-            .frame(width: 300, height: 100, alignment: .center)
-            .background(.ultraThinMaterial)
-            .cornerRadius(15)
         }
+        .frame(width: 350, height: 130, alignment: .center)
+        .cornerRadius(15)
         .accessibilityElement(children: .combine)
         .accessibilityCustomContent(.title, film.title ?? "unknown", importance: .high)
         .accessibilityCustomContent(.genre, film.genre ?? "unknown")

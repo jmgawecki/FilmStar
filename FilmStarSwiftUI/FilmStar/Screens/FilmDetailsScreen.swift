@@ -185,9 +185,9 @@ struct Poster: View {
                 }
             }
         }
-        .onChange(of: viewModel.film?.posterImage) { _ in
+        .onChange(of: viewModel.film?.posterImage) { image in
             withAnimation {
-                if viewModel.film?.posterImage != nil {
+                if image != nil {
                 isShowingPoster = true
                 }
             }

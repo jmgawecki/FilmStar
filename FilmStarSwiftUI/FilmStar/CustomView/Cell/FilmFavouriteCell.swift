@@ -33,7 +33,7 @@ struct FilmFavouriteCell: View {
             .accessibilityCustomContent(.title, film.title ?? "unknown", importance: .high)
             .accessibilityCustomContent(.genre, film.genre ?? "unknown")
             .accessibilityCustomContent(.director, "Directed by \(film.director ?? "unknown")", importance: .high)
-        .accessibilityHint("Swipe down for more details or double tap to go to Film's full details")
+            .accessibilityHint("Swipe down for more details or double tap to go to Film's full details")
         }
     }
 }
