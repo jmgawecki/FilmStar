@@ -1,5 +1,6 @@
 import SwiftUI
 
+/// `ColouredVPadder` gives you a ready to use cell-like view to display multiple a content vertically.
 struct ColouredVPadder<Content: View>: View {
     var backgroundColour: Color
     var cornerRadius: CGFloat

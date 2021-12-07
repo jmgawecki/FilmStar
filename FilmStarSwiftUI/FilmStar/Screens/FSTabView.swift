@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TabViewScreen: View {
+struct FSTabView: View {
     @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
     @ObservedObject var viewModel = FSViewModel()
     var body: some View {
@@ -50,6 +50,6 @@ struct TabViewScreen: View {
 
 struct TabViewScreen_Previews: PreviewProvider {
     static var previews: some View {
-        TabViewScreen()
+        FSTabView()
     }
 }

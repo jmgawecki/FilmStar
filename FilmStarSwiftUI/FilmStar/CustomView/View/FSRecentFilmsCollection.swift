@@ -1,23 +1,28 @@
 import SwiftUI
 import CoreData
 
-struct RecentSearchView: View {
+
+/// `FSRecentFilmsCollection` manages displaying films that user has saved to its favourites with `FSRecentFilmCell`. Films are being fetched from CoreData Model.
+struct FSRecentFilmsCollection: View {
     @ObservedObject var viewModel: FSViewModel
     
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \FSFilmSum.timestamp, ascending: false)],
+        sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \FSFilmSum.timestamp,
+                ascending: false
+            )
+        ],
         animation: .default
-    )
-    
-    private var films: FetchedResults<FSFilmSum>
+    ) private var films: FetchedResults<FSFilmSum>
     
     var body: some View {
         ScrollView {
             VStack {
                 LazyVGrid(columns: [GridItem()]) {
                     ForEach(films) { film in
-                        FilmRecentCell(film: film)
+                        FSRecentFilmCell(film: film)
                             .onTapGesture {
                                 if let imdbID = film.imdbID {
                                     viewModel.fetchFilm(with: imdbID)
@@ -32,7 +37,7 @@ struct RecentSearchView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        RecentSearchView(viewModel: FSViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        FSRecentFilmsCollection(viewModel: FSViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

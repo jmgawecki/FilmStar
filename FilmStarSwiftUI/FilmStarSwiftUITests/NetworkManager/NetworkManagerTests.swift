@@ -155,7 +155,7 @@ class NetworkManagerTests: XCTestCase {
             } else {
                 XCTFail()
             }
-        } catch let error as FSError {
+        } catch let error as FSFilmFetchingError {
             XCTFail(error.rawValue)
         }
     }
@@ -168,7 +168,7 @@ class NetworkManagerTests: XCTestCase {
             } else {
                 XCTFail()
             }
-        } catch let error as FSError {
+        } catch let error as FSFilmFetchingError {
             XCTFail(error.rawValue)
         }
     }
@@ -176,7 +176,7 @@ class NetworkManagerTests: XCTestCase {
     func testSearchForListGuardiansShouldNotThrowErrors() async throws {
         do {
             let _ = try await NetworkManager.shared.fetchListOfFilms(with: "Guardians+of+the+Galaxy+Vol.+2")
-        } catch let error as FSError {
+        } catch let error as FSFilmFetchingError {
             XCTFail(error.rawValue)
         }
     }

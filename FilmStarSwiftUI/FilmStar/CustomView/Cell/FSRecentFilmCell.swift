@@ -1,6 +1,9 @@
 import SwiftUI
 
-struct FilmRecentCell: View {
+/// `FSRecentFilmCell` is used to present films saved by the user to its favourites. Struct uses `FSRecentFilmsCollection` CoreData model for displaying.
+///
+/// Struct's accessibility has been adjusted and currently reads title and the director only. Structs provides instruction for users with accessibility enabled.
+struct FSRecentFilmCell: View {
     var film: FSFilmSum
     var body: some View {
         ZStack {

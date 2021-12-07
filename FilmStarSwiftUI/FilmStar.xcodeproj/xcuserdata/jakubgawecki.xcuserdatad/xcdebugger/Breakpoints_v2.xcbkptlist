@@ -78,8 +78,8 @@
             filePath = "FilmStar/Manager/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "fetchListOfFilms(with:)"
             landmarkType = "7">
          </BreakpointContent>

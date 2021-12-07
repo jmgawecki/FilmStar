@@ -17,17 +17,17 @@ extension FilmShortProtocol {
     }
 }
 
-struct FilmShort: FilmShortProtocol {
+
+/// `FilmTeaser` is the result of fetching whole list of films with the `s=` url modifier.
+///
+/// `FilmTeaser` is being used to display results in `FilmsListScreen`
+struct FilmTeaser: FilmShortProtocol {
     var imdbID: String
     var title: String
     var year: String
     var type: String
     var posterUrl: String
     var posterImage: UIImage?
-    
-    mutating func changePoster() {
-        
-    }
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"
@@ -38,8 +38,10 @@ struct FilmShort: FilmShortProtocol {
     }
 }
 
+
+/// `SearchResult` is a placeholder structure for fetchin an array of `FilmTeaser`
 struct SearchResult: Codable {
-    var films: [FilmShort]
+    var films: [FilmTeaser]
     
     enum CodingKeys: String, CodingKey {
         case films = "Search"

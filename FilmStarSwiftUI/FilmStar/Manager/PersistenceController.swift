@@ -1,5 +1,6 @@
 import CoreData
 
+/// Struct manages fetching films from the CoreData.
 struct PersistenceController {
     static let shared = PersistenceController()
 
