@@ -1,5 +1,10 @@
 import SwiftUI
 
+/// Modern style button with the matching colour for the title, image and background.
+///
+/// `FSBorederedButton` allows image to be animated upon the tap gesture
+///
+/// Accessibility can be easily applied by providing strings within the initialiser respective parameters.
 struct FSBorederedButton: View {
     let title: String
     let systemImage: String

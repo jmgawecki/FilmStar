@@ -50,7 +50,7 @@ struct FilmMock: FilmProtocol, PosterDisplayable, Codable {
     
     // MARK: - Displayable
     var posterImage: UIImage?
-    var arResource: TextureResource?
+    var arPosterTexture: TextureResource?
 
     // MARK: - static Mocks
     static let gogv2 = FilmMock(

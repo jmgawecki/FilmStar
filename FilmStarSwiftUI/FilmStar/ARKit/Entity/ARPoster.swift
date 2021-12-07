@@ -1,5 +1,8 @@
 import RealityKit
 
+/// AR Poster class represents the Entity for rendering virtual poster onto the wall of the room.
+///
+///
 class ARPoster: Entity, HasModel, HasCollision {
     
     required init(with textureResource: TextureResource) {

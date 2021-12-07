@@ -28,7 +28,7 @@ struct FavouritesFilmsScreen: View {
                         .accessibilityLabel("Favourite Films. Swipe right to get to the list of your favourite Films.")
                     List {
                         ForEach(films.filter({ $0.isFavourite == true })) { film in
-                            FilmFavouriteCell(film: film)
+                            FSFavouriteFilmCell(film: film)
                                 .contentShape(Rectangle())
                                 .onTapGesture {
                                     if let imdbID = film.imdbID {

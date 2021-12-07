@@ -81,7 +81,7 @@ struct SearchScreen: View {
                     
                 }
                 .disabled(viewModel.isSearchTextFieldEmpty)
-                RecentSearchView(viewModel: viewModel)
+                FSRecentFilmsCollection(viewModel: viewModel)
                     .frame(
                         width: UIScreen.main.bounds.size.width - 50,
                         height: UIScreen.main.bounds.size.height * 0.40 )

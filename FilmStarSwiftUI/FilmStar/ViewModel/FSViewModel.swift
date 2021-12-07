@@ -14,7 +14,7 @@ class FSViewModel: ObservableObject {
     }
     @Published var isShowingListOfFilms: Bool = false
     
-    @Published var listOfFilms: [FilmShort] = [] {
+    @Published var listOfFilms: [FilmTeaser] = [] {
         didSet {
             if !listOfFilms.isEmpty {
                 isShowingListOfFilms = true
@@ -84,7 +84,7 @@ class FSViewModel: ObservableObject {
                     fetchPosterData(for: film)
                 }
             } catch let error {
-                if let error = error as? FSError {
+                if let error = error as? FSFilmFetchingError {
                     DispatchQueue.main.async {
                         self.searchingError = error.rawValue
                     }
@@ -105,7 +105,7 @@ class FSViewModel: ObservableObject {
                     }
                 }
             } catch let error {
-                if let error = error as? FSError {
+                if let error = error as? FSFilmFetchingError {
                     DispatchQueue.main.async {
                         self.searchingError = error.rawValue
                     }
@@ -126,7 +126,7 @@ class FSViewModel: ObservableObject {
                 
                 try? data.write(to: filePath)
                 DispatchQueue.main.async {
-                    self.film?.arResource = try? TextureResource.load(contentsOf: filePath)
+                    self.film?.arPosterTexture = try? TextureResource.load(contentsOf: filePath)
                 }
             }
         }

@@ -21,7 +21,7 @@ protocol FilmProtocol: Identifiable, Codable {
 
 protocol PosterDisplayable {
     var posterImage: UIImage? { get set }
-    var arResource: TextureResource? { get set }
+    var arPosterTexture: TextureResource? { get set }
 }
 
 extension FilmProtocol {
@@ -33,6 +33,7 @@ extension FilmProtocol {
 typealias Filmable = FilmProtocol & PosterDisplayable
 
 struct Film: Filmable {
+    // MARK: - Properties
     var title: String
     var year: String
     var released: String
@@ -50,9 +51,9 @@ struct Film: Filmable {
     
     // MARK: - Displayable
     var posterImage: UIImage?
-    var arResource: TextureResource?
+    var arPosterTexture: TextureResource?
     
-    
+    // MARK: - Codable
     enum CodingKeys: String, CodingKey {
         case title = "Title"
         case year = "Year"

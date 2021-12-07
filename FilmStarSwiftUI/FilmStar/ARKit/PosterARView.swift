@@ -9,6 +9,15 @@ import RealityKit
 import ARKit
 
 
+/// PosterARView is a subclass of `ARView` to project an experience of "hanging" the `ARPoster` onto the vertical plane of any type
+///
+/// When tap gesture is being recognised, ARView performs RayCast to check if any plane has been detected and can be used as an Anchor.
+///
+/// Upon the successfull RayCast, a poster is being placed on the vertical plane
+///
+/// Session infroms the user if it has enough information about the scene. If it does not, it asks user to perform some action that may improve the experience.
+///
+/// With the reset button, the Session can be reset, and thus a user can go thorugh the experience again and hang the poster more precisely.
 class PosterARView: ARView {
     // MARK: - UI
     private lazy var resetSessionButton: UIButton = {
@@ -38,7 +47,7 @@ class PosterARView: ARView {
     
     // MARK: - Init
     required init(viewModel: FSViewModel) {
-        if let arResource = viewModel.film?.arResource {
+        if let arResource = viewModel.film?.arPosterTexture {
             arPoster = ARPoster(with: arResource)
         }
         self.viewModel = viewModel
@@ -59,6 +68,8 @@ class PosterARView: ARView {
     }
     
     // MARK: - @Objc
+    /// Performs RayCasting, searches for vertical plane. If such plane has been found, it renders an ARPoster onto it.
+    /// - Parameter recogniser: Tap gesture on the screen.
     @objc
     func handleTap(recogniser: UITapGestureRecognizer) {
         if !isPlaced {
@@ -86,10 +97,6 @@ class PosterARView: ARView {
         
         scene.addAnchor(posterAnchor)
         isPlaced.toggle()
-        
-        // TEST
-        
-        
     }
     
     func configureUI() {

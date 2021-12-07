@@ -9,7 +9,7 @@ struct FilmStarSwiftUIApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabViewScreen()
+            FSTabView()
                 .environment(
                     \.managedObjectContext,
                      PersistenceController.shared.container.viewContext

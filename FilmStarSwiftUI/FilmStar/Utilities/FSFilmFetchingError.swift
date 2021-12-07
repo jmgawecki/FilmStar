@@ -1,6 +1,8 @@
 import Foundation
 
-enum FSError: String, Error {
+
+/// `FSFilmFetchingError` provides user-friendly information for an unsuccessful data fetch.
+enum FSFilmFetchingError: String, Error {
     case wrongFormat = "Sorry but it seems that you typed the wrong format. Try to pass the film's name or its valid IMDb ID."
     case unableToComplete = "Unable to complete your request. Please check your internet connection"
     case invalidResponse = "Something went wrong on the server side. Please try again."
