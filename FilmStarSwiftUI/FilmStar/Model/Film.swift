@@ -24,11 +24,6 @@ protocol PosterDisplayable {
     var arResource: TextureResource? { get set }
 }
 
-protocol FilmAccessible {
-    var writerAccessible: String { get }
-    var actorsAccessible: String { get }
-}
-
 extension FilmProtocol {
     var id: String {
         return imdbID

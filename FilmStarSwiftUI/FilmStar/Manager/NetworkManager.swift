@@ -31,7 +31,29 @@ class NetworkManager {
             let film = try JSONDecoder().decode(Film.self, from: data)
             return film
         } catch {
-            throw FSError.invalidData
+            throw FSError.noDataTitleID
+        }
+    }
+    
+    func fetchListOfFilms(with filmName: String) async throws -> [FilmShort] {
+        let endpoint = baseURL + "s=" + filmName + apiKey
+        
+        guard let url = URL(string: endpoint)
+        else { throw FSError.wrongFormat }
+        
+        let request = URLRequest.init(url: url)
+        
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200
+        else { throw FSError.invalidResponse }
+        
+        do {
+            let results = try JSONDecoder().decode(SearchResult.self, from: data)
+            return results.films.filter({ $0.type == "movie" })
+        } catch let error {
+            print(error.localizedDescription)
+            throw FSError.noDataTitle
         }
     }
     

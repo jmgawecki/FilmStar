@@ -1,5 +1,5 @@
 import XCTest
-@testable import FilmStarSwiftUI
+@testable import FilmStar
 
 class NetworkManagerTests: XCTestCase {
     
@@ -168,6 +168,14 @@ class NetworkManagerTests: XCTestCase {
             } else {
                 XCTFail()
             }
+        } catch let error as FSError {
+            XCTFail(error.rawValue)
+        }
+    }
+    
+    func testSearchForListGuardiansShouldNotThrowErrors() async throws {
+        do {
+            let _ = try await NetworkManager.shared.fetchListOfFilms(with: "Guardians+of+the+Galaxy+Vol.+2")
         } catch let error as FSError {
             XCTFail(error.rawValue)
         }

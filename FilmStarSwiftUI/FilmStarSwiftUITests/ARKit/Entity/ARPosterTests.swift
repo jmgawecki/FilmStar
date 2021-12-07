@@ -1,6 +1,6 @@
 import XCTest
 import RealityKit
-@testable import FilmStarSwiftUI
+@testable import FilmStar
 
 class ARPosterTests: XCTestCase {
     

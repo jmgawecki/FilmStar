@@ -1,7 +1,7 @@
 import UIKit
 import RealityKit
 
-struct FilmMock: Filmable {
+struct FilmMock: FilmProtocol, PosterDisplayable, Codable {
     var title: String
     var year: String
     var rated: String
@@ -49,15 +49,10 @@ struct FilmMock: Filmable {
     }
     
     // MARK: - Displayable
-    func fetchImage() async throws -> Data? {
-        return try await NetworkManager.shared.fetchPosterData(with: posterUrl)
-    }
-
-    var posterData: Data?
     var posterImage: UIImage?
     var arResource: TextureResource?
 
-    // MARK: - tatic Mocks
+    // MARK: - static Mocks
     static let gogv2 = FilmMock(
         title: "Guardians of the Galaxy Vol. 2",
         year: "2017",
