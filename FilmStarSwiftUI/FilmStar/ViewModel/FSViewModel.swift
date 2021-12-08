@@ -7,7 +7,7 @@ class FSViewModel: ObservableObject {
     /// Observed boolean that display a `ProgressView` on the `SearchScreen` when the data is being fetched
     @Published var isFetchingFilms: Bool = false
     
-    // MARK: - Search Parameters
+    /// Observed boolean that triggers presentation of `SearchFiltersScreen` to configure a search network call
     @Published var isChangingFilters: Bool = false
     
     var searchTypes = ["Any", "Movie", "Series", "Episode"]
@@ -21,7 +21,6 @@ class FSViewModel: ObservableObject {
     @Published var year = 0
     @Published var typeIndex = 0
     
-    // MARK: - Observed
     /// Observed `Film` that is being populated with the succesfull asynchronous fetching with `FSViewModel`'s `fetchFilm` method.
     @Published var film: Film? {
         didSet {
@@ -29,7 +28,6 @@ class FSViewModel: ObservableObject {
                film.posterImage == nil {
                 fetchPosterData(for: film)
             }
-            
         }
     }
     
@@ -76,7 +74,7 @@ class FSViewModel: ObservableObject {
     ///
     /// When the property has a value it means that the RawValue of the `FSFilmFetchingError` has been assigned to it, therefore fetching a `Film` or an array of `FilmTeaser` failed.
     ///
-    /// Upon the value, an alert informing the user on failure will be presented above the `SearchFilmTextField` in the `SearchScreen`
+    /// Upon the value, an alert informing the user on failure will be presented above the `SearchFilmTextField` in the `SearchScreen` for 4 seconds
     @Published var searchingError: String? {
         didSet {
             if searchingError != nil {
@@ -91,6 +89,9 @@ class FSViewModel: ObservableObject {
     
     // MARK: - NetworkManager
 
+    
+    /// Fetches data about the movie or series and converts it to `Film`.
+    /// - Parameter filmIdOrTitle: film's title or IMDb ID provided by the user.
     func fetchFilm(with filmIdOrTitle: String) {
         Task.init(priority: .high) { [weak self] in
             guard let self = self else { return }
@@ -119,7 +120,19 @@ class FSViewModel: ObservableObject {
         }
     }
     
+    
+    /// Fetches a list of films or series and converts it to an array of `FilmTeaser`. Upon the sucesfull fetching, `FilmSearchCollectionScreen` is being presented with the displayed list.
+    /// - Parameter filmTitle: Films title provided by the user. IMDb ID will not return any results. In case of IMDb ID being provided instead, the method will detect it and throw the information to the user above the TextField.
     func fetchListOfFilms(with filmTitle: String) {
+        guard prepareForFilmFetching(with: filmTitle).0 != .id else {
+            withAnimation {
+                DispatchQueue.main.async {
+                    self.isFetchingFilms = false
+                }
+            }
+            searchingError = FSFilmFetchingError.titleNotId.rawValue
+            return
+        }
         Task.init(priority: .high) { [weak self] in
             guard let self = self else { return }
             do {
@@ -146,6 +159,16 @@ class FSViewModel: ObservableObject {
         }
     }
     
+    
+    /// Fetches `Data` that can be transformed into the `UIImage` and `TextureResource` to represent film's poster.
+    ///
+    /// Upon success, the method directly assigns `UIImage` to `FSViewModel`'s `film`'s `posterImage` property. Then it assigns `TextureResource` to `arPostureTexture` subproperty.
+    ///
+    /// It's important to notice that upon succeful fetching and assigning those properties, some actions are being trigerred around the app.
+    ///
+    /// Currently the method is being fetched only for `Film`. Fetching for `FilmTeaser`s is being trigerred with the `DataTaskPublisher` from `FSImageLoader`
+    ///
+    /// - Parameter film: film fetched with the `func fetchFilm(with filmIdOrTitle: String)` method
     func fetchPosterData(for film: Film) {
         Task.init(priority: .high) { [weak self] in
             guard let self = self else { return }
@@ -164,24 +187,30 @@ class FSViewModel: ObservableObject {
         }
     }
     
+    
+    /// Method recognises wether a user passed the IMDb ID or a title.
+    /// - Parameter titleOrId: Title or IMDb ID provided by the user
+    /// - Returns: Returns lowercased IMDb ID to reach the requirement, or a fully prepared title with spaces replaced to + signs to reach the requirement
     func prepareForFilmFetching(with titleOrId: String) -> (FilmFetchType, String) {
-        if titleOrId.count == 9,
-           (String(titleOrId.dropLast(7)).filter({ $0.isLetter })).count == 2,
-           ((titleOrId.dropFirst(2)) as NSString).integerValue != 0 {
-            let id = titleOrId.lowercased()
+        let trimmedTitleOrID = titleOrId.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedTitleOrID.count == 9,
+           (String(trimmedTitleOrID.dropLast(7)).filter({ $0.isLetter })).count == 2,
+           ((trimmedTitleOrID.dropFirst(2)) as NSString).integerValue != 0 {
+            let id = trimmedTitleOrID.lowercased()
             return (FilmFetchType.id, id)
-        } else if titleOrId.count == 10,
-                  (String(titleOrId.dropLast(8)).filter({ $0.isLetter })).count == 2,
-                  ((titleOrId.dropFirst(2)) as NSString).integerValue != 0 {
-            let id = titleOrId.lowercased()
+        } else if trimmedTitleOrID.count == 10,
+                  (String(trimmedTitleOrID.dropLast(8)).filter({ $0.isLetter })).count == 2,
+                  ((trimmedTitleOrID.dropFirst(2)) as NSString).integerValue != 0 {
+            let id = trimmedTitleOrID.lowercased()
             return (FilmFetchType.id, id)
         } else {
-            return (FilmFetchType.title, titleOrId.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+"))
+            return (FilmFetchType.title, trimmedTitleOrID.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+"))
         }
     }
     
     // MARK: - AR Screens
-    @Published var isARPresenting: Bool = false
-    @Published var isCoachingActive: Bool = false
+    
+    /// Observed boolean triggered with the button from the FilmDetailsScreen to activate the AR Experience
+    @Published var isPresentingARExperience: Bool = false
 }
 

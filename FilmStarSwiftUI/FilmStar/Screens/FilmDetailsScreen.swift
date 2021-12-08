@@ -148,10 +148,10 @@ fileprivate struct ButtonsPanel: View {
                         size: .large,
                         accessibilityLabel: FSAccessibilityString.arPoster,
                         accessibilityHint: FSAccessibilityString.arExperienceNotFriendlyHint) {
-                            viewModel.isARPresenting.toggle()
+                            viewModel.isPresentingARExperience.toggle()
                         }
                         .fullScreenCover(
-                            isPresented: $viewModel.isARPresenting,
+                            isPresented: $viewModel.isPresentingARExperience,
                             onDismiss: nil) {
                                 PosterARScreen(viewModel: viewModel)
                             }

@@ -24,17 +24,14 @@ class RotationAnimationManager: ObservableObject {
     private var subscription: AnyCancellable?
     private var switcher: Bool = true
     
-    init() {
-        withAnimation {
-            rotationAngle -= 360
-        }
-    }
-    
     deinit {
         cancel()
     }
     
     func load() {
+        withAnimation {
+            rotationAngle -= 360
+        }
         subscription = Timer.publish(every: 3.5, on: RunLoop.main, in: .common)
             .autoconnect()
             .sink(receiveValue: { [weak self] _ in

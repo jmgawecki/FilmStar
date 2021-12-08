@@ -3,7 +3,7 @@ import RealityKit
 
 struct PosterARScreen: View {
     @ObservedObject var viewModel: FSViewModel
-    @AppStorage(FSOperationalString.appStorageShouldShowAROnboarding) var shouldShowAROnboarding: Bool = true
+    @AppStorage(FSOperationalString.appStorageShouldShowAROnboarding) var shouldPresentAROnboarding: Bool = true
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -16,13 +16,13 @@ struct PosterARScreen: View {
                     colour: .purple,
                     size: .large,
                     accessibilityLabel: FSAccessibilityString.goBack) {
-                        viewModel.isARPresenting.toggle()
+                        viewModel.isPresentingARExperience.toggle()
                     }
                     .opacity(0.85)
                     .padding()
         }
-        .fullScreenCover(isPresented: $shouldShowAROnboarding, content: {
-            AROnboardingTab(shouldPresentOnboarding: $shouldShowAROnboarding)
+        .fullScreenCover(isPresented: $shouldPresentAROnboarding, content: {
+            AROnboardingTab(shouldPresentAROnboarding: $shouldPresentAROnboarding)
         })
     }
 }

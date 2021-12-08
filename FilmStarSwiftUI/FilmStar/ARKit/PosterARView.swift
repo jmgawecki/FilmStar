@@ -2,19 +2,13 @@ import RealityKit
 import ARKit
 import SwiftUI
 
-protocol PosterARViewDelegate: NSObject {
-    func didUpdateWorldMappingStatus(with message: String, and colour: Color)
-}
-
 /// PosterARView is a subclass of `ARView` to project an experience of "hanging" the `ARPoster` onto the vertical plane of any type
 ///
-/// When tap gesture is being recognised, ARView performs RayCast to check if any plane has been detected and can be used as an Anchor.
+/// Upon the tapping the button, ARView performs RayCast to check if any plane has been detected and can be used as an Anchor.
 ///
 /// Upon the successfull RayCast, a poster is being placed on the vertical plane
 ///
 /// Session infroms the user if it has enough information about the scene. If it does not, it asks user to perform some action that may improve the experience.
-///
-/// With the reset button, the Session can be reset, and thus a user can go thorugh the experience again and hang the poster more precisely.
 class PosterARView: ARView {
     // MARK: - UI
     lazy var resetSessionButton: UIButton = {
@@ -40,7 +34,6 @@ class PosterARView: ARView {
     let coachingOverlay = ARCoachingOverlayView()
     var arPoster: ARPoster?
     var arResource: TextureResource
-    var isPlaced = false
     var posterAnchor: AnchorEntity?
     
     static let isARExperienceAvailable: Bool = ARWorldTrackingConfiguration.supportsFrameSemantics([.personSegmentationWithDepth, .sceneDepth]) && ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)

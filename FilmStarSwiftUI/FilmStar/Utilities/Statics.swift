@@ -1,10 +1,3 @@
-//
-//  FSString.swift
-//  FilmStar
-//
-//  Created by Jakub Gawecki on 08/12/2021.
-//
-
 import Foundation
 
 enum FSImage {
@@ -21,6 +14,7 @@ enum SFSymbol {
     static let arkit = "arkit"
     static let settings = "gearshape.fill"
     static let dice = "dice"
+    static let listOfFilms = "list.and.film"
     static let checkmark = "checkmark"
     static let restart = "restart.circle"
 }
@@ -36,7 +30,8 @@ enum FSString {
     static let resultsForTheSearch = "Results for the search"
     static let textFieldPlaceholder = "Search for film.."
     static let luckyShot = "Lucky shot"
-    static let getTheList = "Get the list"
+    static let searchForOne = "Search one"
+    static let searchForMany = "Search many"
     static let search = "Search"
     static let favourites = "Favourites"
     static let favouriteFilms = "Favourite Films"
@@ -118,6 +113,11 @@ enum FSAROnboarding {
     static let pageFourthTitle = "Try to rotate it!"
     static let pageFourthSubtitle = "By swiping with your two fingers"
     static let pageFourthImage = "rotate.3d"
+    
+    static let pageFifthTitle = "Landscape mode is currently not supported"
+    static let pageFifthSubtitle = "We are working on it."
+    static let pageFifthImage = "iphone.landscape"
+    static let pageFifthImageCross = "xmark"
 }
 
 typealias AROnboarding = FSAROnboarding
