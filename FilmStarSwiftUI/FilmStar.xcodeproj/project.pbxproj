@@ -206,6 +206,7 @@
 		EF339191275BC287009CC023 /* Collection */ = {
 			isa = PBXGroup;
 			children = (
+				EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */,
 				EF5EC886275954CD00362FC0 /* FSRecentFilmsCollection.swift */,
 			);
 			path = Collection;
@@ -285,11 +286,11 @@
 				EFD3ED90275EA5200066B050 /* Onboarding */,
 				EF5EC8B4275957C400362FC0 /* FSTabView.swift */,
 				EF5EC8B927595D9000362FC0 /* SearchScreen.swift */,
-				EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */,
+				EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */,
+				EF339191275BC287009CC023 /* Collection */,
 				EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */,
 				EFE316FB275AE97900A635A9 /* PosterARScreen.swift */,
 				EF339197275C1BCB009CC023 /* FavouritesFilmsScreen.swift */,
-				EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -364,7 +365,6 @@
 				EF7BE61C2760F9F500503368 /* EmptyState */,
 				EFF958D5275FB4F400DE9C13 /* ImageLoader */,
 				EFA058C1275C3F8100AC85C9 /* Style */,
-				EF339191275BC287009CC023 /* Collection */,
 				EFE316F3275AD99800A635A9 /* Button */,
 			);
 			path = CustomView;
@@ -737,7 +737,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"FilmStar/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
@@ -768,7 +768,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_ASSET_PATHS = "\"FilmStar/Preview Content\"";
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;

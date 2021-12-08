@@ -54,7 +54,7 @@ struct FavouritesFilmsScreen: View {
             do {
                 try viewContext.save()
             } catch {
-                let nsError = error as NSError
+                let _ = error as NSError
                 // Handle errors
             }
         }

@@ -66,7 +66,6 @@ class NetworkManager {
             let results = try JSONDecoder().decode(SearchResult.self, from: data)
             return results.films.filter({ $0.type == "movie" })
         } catch let error {
-            print(error.localizedDescription)
             throw FSFilmFetchingError.noDataTitle
         }
     }

@@ -157,8 +157,8 @@ fileprivate struct SearchButtonsPanel: View {
     var body: some View {
         HStack {
             FSBorederedButton(
-                title: Description.luckyShot,
-                systemImage: SFSymbol.dice,
+                title: Description.searchForOne,
+                systemImage: SFSymbol.film,
                 colour: .mint,
                 size: .large,
                 accessibilityHint: VoiceOver.doubleTapForOneFilmSearch) {
@@ -171,8 +171,8 @@ fileprivate struct SearchButtonsPanel: View {
                 .accessibilitySortPriority(9)
             
             FSBorederedButton(
-                title: Description.getTheList,
-                systemImage: SFSymbol.film,
+                title: Description.searchForMany,
+                systemImage: SFSymbol.listOfFilms,
                 colour: .purple,
                 size: .large,
                 accessibilityHint: VoiceOver.doubleTapForList) {

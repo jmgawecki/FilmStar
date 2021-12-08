@@ -54,7 +54,6 @@ class SearchScreenTests: XCTestCase {
         } else if movieID.count == 10,
                   (String(movieID.dropLast(8)).filter({ $0.isLetter })).count == 2,
                   ((movieID.dropFirst(2)) as NSString).integerValue != 0 {
-            print(((movieID.dropFirst(2)) as NSString).integerValue != 0)
             XCTAssert(false)
         } else {
             XCTAssert(true)
@@ -185,7 +184,6 @@ class SearchScreenTests: XCTestCase {
         let result = sut.prepareForFilmFetching(with: id)
         
         // Assert
-        print(result.1)
         XCTAssertEqual(result.1, expected.1)
     }
     

@@ -14,15 +14,6 @@ extension PosterARView {
         configuration.planeDetection = [.vertical]
         configuration.sceneReconstruction = .meshWithClassification
         configuration.environmentTexturing = .automatic
-        debugOptions = [.showSceneUnderstanding, .showPhysics]
         session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
-    }
-    
-    /// Resets the current session and configures a new one.
-    @objc
-    func resetARSession() {
-        isPlaced = false
-        scene.anchors.removeAll()
-        configureSession()
     }
 }
