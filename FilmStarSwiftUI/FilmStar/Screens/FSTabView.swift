@@ -13,13 +13,13 @@ struct FSTabView: View {
                             FilmsSearchCollectionScreen(viewModel: viewModel)
                         }
                         .tabItem {
-                            Text(FSDescription.search)
+                            Text(Description.search)
                             Image(systemName: SFSymbol.search)
                         }
                 
                 FavouritesFilmsScreen(viewModel: viewModel)
                     .tabItem {
-                        Text(FSDescription.favourites)
+                        Text(Description.favourites)
                         Image(systemName: SFSymbol.favourite)
                     }
             }

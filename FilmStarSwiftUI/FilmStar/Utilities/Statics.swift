@@ -46,9 +46,11 @@ enum FSString {
     static let resetSettings = "Reset settings"
     static let done = "Done"
     static let searchFilters = "Search filters"
+    static let yourFavouritesAreEmpty = "Your favourites are empty..."
+    static let addSomeFavourites = "go ahead and add some!"
 }
 
-typealias FSDescription = FSString
+typealias Description = FSString
 
 enum FSOperationalString {
     static let appStorageShouldShowOnboarding = "shouldShowOnboarding"
@@ -74,6 +76,10 @@ enum FSAccessibilityString {
     static let doubleTapToRemoveFilters = "Double tap to remove all the filters from the search"
     static let doubleTapToConfirmSettings = "Double tap to confirm settings and go back."
     static let favouriteFilmSwipeRightForList = "Favourite Films. Swipe right to get to the list of your favourite Films."
+    static let searchFilterSettings = "Search filter settings"
+    static let doubleTapForFilterSettingsHint = "Double tap to open and adjust filters for the search"
+    static let yourFavouritesAreEmpty = "Your favourites are empty."
+    static let goBackToSearchScreenHint = "Go back to the Search Screen to add some."
 }
 
 typealias VoiceOver = FSAccessibilityString

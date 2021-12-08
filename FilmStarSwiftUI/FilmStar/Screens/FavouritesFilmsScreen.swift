@@ -1,11 +1,8 @@
 import SwiftUI
+import Combine
 
 struct FavouritesFilmsScreen: View {
-    @AccessibilityFocusState var isScreenFocused: Bool {
-        didSet {
-            print(isScreenFocused)
-        }
-    }
+    @AccessibilityFocusState var isScreenFocused: Bool
     @Environment(\.managedObjectContext) private var viewContext
     @FetchRequest(
         sortDescriptors: [
@@ -21,7 +18,7 @@ struct FavouritesFilmsScreen: View {
         ZStack {
             if !films.isEmpty {
                 VStack {
-                    Text(FSDescription.favouriteFilms)
+                    Text(Description.favouriteFilms)
                         .fontWeight(.bold)
                         .font(.title2)
                         .accessibilityFocused($isScreenFocused)
@@ -45,7 +42,7 @@ struct FavouritesFilmsScreen: View {
                     }
                 }
             } else {
-                Text("Your favourites are empty... go ahead and add some!")
+                FavouriteEmptyView()
             }
         }
     }
@@ -74,7 +71,7 @@ struct FavouritesFilmsView_Previews: PreviewProvider {
 /// `FSFavouriteFilmCell` is used to present films saved by the user to its favourites. Struct uses `FSFilmSum` CoreData model for displaying.
 ///
 /// Struct's accessibility has been adjusted and currently reads title and the director only. Structs provides instruction for users with accessibility enabled.
-struct FSFavouriteFilmCell: View {
+fileprivate struct FSFavouriteFilmCell: View {
     var film: FSFilmSum
     var body: some View {
         ZStack {
@@ -88,10 +85,10 @@ struct FSFavouriteFilmCell: View {
                             .accessibility(hidden: true)
                     }
                     VStack(alignment: .leading) {
-                        Text(film.title ?? FSDescription.titleUnknown)
+                        Text(film.title ?? Description.titleUnknown)
                             .font(.title3)
                             .accessibilityAddTraits(.isHeader)
-                        Text(film.genre ?? FSDescription.genreUnknown)
+                        Text(film.genre ?? Description.genreUnknown)
                             .font(.callout)
                         Text("Directed by \(film.director ?? VoiceOver.unknown)")
                             .font(.caption)
@@ -111,6 +108,7 @@ struct FSFavouriteFilmCell: View {
         }
     }
 }
+
 
 
 
