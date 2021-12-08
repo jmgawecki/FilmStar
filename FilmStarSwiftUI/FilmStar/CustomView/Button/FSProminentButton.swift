@@ -29,7 +29,7 @@ struct FSProminentButton: View {
                 .animation(.easeIn, value: animationAngle)
             Text(title)
         }
-        .buttonStyle(.bordered)
+        .buttonStyle(.borderedProminent)
         .tint(colour)
         .controlSize(size)
         .accessibilityLabel(Text(accessibilityLabel ?? title))

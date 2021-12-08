@@ -12,7 +12,8 @@ class FSViewModel: ObservableObject {
     
     var searchTypes = ["Any", "Movie", "Series", "Episode"]
     var searchYears: [String] = {
-        var searchYears = Array<Int>(1888...2021).reversed().map({ String($0) })
+        let currentYear = Int(Calendar.current.component(.year, from: Date()))
+        var searchYears = Array<Int>(1888...currentYear).reversed().map({ String($0) })
         searchYears.insert("Any", at: 0)
         return searchYears
     }()
