@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FSTabView: View {
-    @AppStorage("shouldShowOnboarding") var shouldShowOnboarding: Bool = true
+    @AppStorage(FSOperationalString.appStorageShouldShowOnboarding) var shouldShowOnboarding: Bool = true
     @ObservedObject var viewModel = FSViewModel()
     var body: some View {
         ZStack {
@@ -13,19 +13,17 @@ struct FSTabView: View {
                             FilmsSearchCollectionScreen(viewModel: viewModel)
                         }
                         .tabItem {
-                            Text("Search")
+                            Text(FSDescription.search)
                             Image(systemName: SFSymbol.search)
                         }
                 
                 FavouritesFilmsScreen(viewModel: viewModel)
                     .tabItem {
-                        Text("Favourites")
-                        Image(systemName: SFSymbol.favourites)
+                        Text(FSDescription.favourites)
+                        Image(systemName: SFSymbol.favourite)
                     }
             }
-            .fullScreenCover(isPresented: $shouldShowOnboarding, onDismiss: {
-                print("Dismissed")
-            }, content: {
+            .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
                 OnboardingTab(shouldPresentOnboarding: $shouldShowOnboarding)
             })
             .accentColor(Color.purple)

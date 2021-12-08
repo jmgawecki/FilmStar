@@ -26,7 +26,6 @@
 		EF5EC88E275954CE00362FC0 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC88D275954CE00362FC0 /* PersistenceController.swift */; };
 		EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC88F275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld */; };
 		EF5EC8B5275957C400362FC0 /* FSTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B4275957C400362FC0 /* FSTabView.swift */; };
-		EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B7275958F400362FC0 /* SFSymbol.swift */; };
 		EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B927595D9000362FC0 /* SearchScreen.swift */; };
 		EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8BE275967D200362FC0 /* NetworkManager.swift */; };
 		EF5EC8C2275968D100362FC0 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C1275968D100362FC0 /* Film.swift */; };
@@ -34,10 +33,10 @@
 		EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */; };
 		EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */; };
 		EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684674275B73F20022E51B /* PosterARView+Configuration.swift */; };
-		EF7BE61B2760E31900503368 /* FSString.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61A2760E31900503368 /* FSString.swift */; };
+		EF7BE61B2760E31900503368 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61A2760E31900503368 /* Statics.swift */; };
 		EFA058BE275C2A9400AC85C9 /* FilmStarSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */; };
 		EFA058C0275C3E1200AC85C9 /* ColouredVPadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA058BF275C3E1200AC85C9 /* ColouredVPadder.swift */; };
-		EFA2488127609E150015D5B9 /* SearchParametersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA2488027609E150015D5B9 /* SearchParametersScreen.swift */; };
+		EFA2488127609E150015D5B9 /* SearchFiltersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */; };
 		EFCB91EB275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */; };
 		EFD3ED92275EA5330066B050 /* OnboardingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD3ED91275EA5330066B050 /* OnboardingTab.swift */; };
 		EFDAF2FB275F59E500839C6B /* FilmTeaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */; };
@@ -91,7 +90,6 @@
 		EF5EC8A4275954CE00362FC0 /* FilmStarSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITests.swift; sourceTree = "<group>"; };
 		EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmStarSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EF5EC8B4275957C400362FC0 /* FSTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTabView.swift; sourceTree = "<group>"; };
-		EF5EC8B7275958F400362FC0 /* SFSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbol.swift; sourceTree = "<group>"; };
 		EF5EC8B927595D9000362FC0 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		EF5EC8BE275967D200362FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		EF5EC8C1275968D100362FC0 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
@@ -100,9 +98,9 @@
 		EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModelTests.swift; sourceTree = "<group>"; };
 		EF684674275B73F20022E51B /* PosterARView+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Configuration.swift"; sourceTree = "<group>"; };
-		EF7BE61A2760E31900503368 /* FSString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSString.swift; sourceTree = "<group>"; };
+		EF7BE61A2760E31900503368 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		EFA058BF275C3E1200AC85C9 /* ColouredVPadder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColouredVPadder.swift; sourceTree = "<group>"; };
-		EFA2488027609E150015D5B9 /* SearchParametersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParametersScreen.swift; sourceTree = "<group>"; };
+		EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersScreen.swift; sourceTree = "<group>"; };
 		EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsSearchCollectionScreen.swift; sourceTree = "<group>"; };
 		EFD3ED91275EA5330066B050 /* OnboardingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTab.swift; sourceTree = "<group>"; };
 		EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTeaser.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 				EF5EC8C3275969C600362FC0 /* Utilities */,
 				EF5EC8C0275968CB00362FC0 /* Model */,
 				EF5EC8BD275967C900362FC0 /* Manager */,
-				EF5EC8B6275958E300362FC0 /* UIHelper */,
 				EF5EC8B3275957B400362FC0 /* Screens */,
 				EF5EC884275954CD00362FC0 /* FilmStarSwiftUIApp.swift */,
 				EF5EC888275954CE00362FC0 /* Assets.xcassets */,
@@ -284,18 +281,9 @@
 				EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */,
 				EFE316FB275AE97900A635A9 /* PosterARScreen.swift */,
 				EF339197275C1BCB009CC023 /* FavouritesFilmsScreen.swift */,
-				EFA2488027609E150015D5B9 /* SearchParametersScreen.swift */,
+				EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		EF5EC8B6275958E300362FC0 /* UIHelper */ = {
-			isa = PBXGroup;
-			children = (
-				EF5EC8B7275958F400362FC0 /* SFSymbol.swift */,
-				EF7BE61A2760E31900503368 /* FSString.swift */,
-			);
-			path = UIHelper;
 			sourceTree = "<group>";
 		};
 		EF5EC8BD275967C900362FC0 /* Manager */ = {
@@ -322,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				EF5EC8C427596A4100362FC0 /* FSFilmFetchingError.swift */,
+				EF7BE61A2760E31900503368 /* Statics.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -530,7 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFE316FC275AE97900A635A9 /* PosterARScreen.swift in Sources */,
-				EFA2488127609E150015D5B9 /* SearchParametersScreen.swift in Sources */,
+				EFA2488127609E150015D5B9 /* SearchFiltersScreen.swift in Sources */,
 				EF5EC88E275954CE00362FC0 /* PersistenceController.swift in Sources */,
 				EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */,
 				EF339190275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift in Sources */,
@@ -550,14 +539,13 @@
 				EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */,
 				EFCB91EB275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift in Sources */,
 				EF5EC887275954CD00362FC0 /* FSRecentFilmsCollection.swift in Sources */,
-				EF5EC8B8275958F400362FC0 /* SFSymbol.swift in Sources */,
 				EF00B0DD275E5C5F007E5323 /* FilmDummy.swift in Sources */,
 				EFE316FE275AF9E700A635A9 /* FSProminentButton.swift in Sources */,
 				EFA058C0275C3E1200AC85C9 /* ColouredVPadder.swift in Sources */,
 				EF339198275C1BCB009CC023 /* FavouritesFilmsScreen.swift in Sources */,
 				EF059348275F5E1D00186D9C /* FilmRating.swift in Sources */,
 				EF22EDD6275B789300781FAF /* ARPoster.swift in Sources */,
-				EF7BE61B2760E31900503368 /* FSString.swift in Sources */,
+				EF7BE61B2760E31900503368 /* Statics.swift in Sources */,
 				EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */,
 				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,

@@ -5,25 +5,25 @@ struct OnboardingTab: View {
     var body: some View {
         TabView {
             OnboardingPageView(
-                title: "Search for your favourite films",
-                subtitle: "Search with the title or search with the IMDb ID",
-                imageName: "mail.and.text.magnifyingglass",
+                title: Onboarding.pageOneTitle,
+                subtitle: Onboarding.pageOneSubtitle,
+                imageName: Onboarding.pageOneImage,
                 showsDismissButton: false,
                 shouldPresentOnboarding: $shouldPresentOnboarding
             )
             
             OnboardingPageView(
-                title: "Add films to your favourites",
-                subtitle: "And check those that you've recently searched for",
-                imageName: "star.fill",
+                title: Onboarding.pageTwoTitle,
+                subtitle: Onboarding.pageTwoSubtitle,
+                imageName: Onboarding.pageTwoImage,
                 showsDismissButton: false,
                 shouldPresentOnboarding: $shouldPresentOnboarding
             )
             
             OnboardingPageView(
-                title: "Go through an exciting AR experience!",
-                subtitle: "See how the film's poster will fit above the sofa",
-                imageName: "arkit",
+                title: Onboarding.pageThreeTitle,
+                subtitle: Onboarding.pageThreeSubtitle,
+                imageName: Onboarding.pageThreeImage,
                 showsDismissButton: true,
                 shouldPresentOnboarding: $shouldPresentOnboarding
             )
@@ -62,11 +62,11 @@ struct OnboardingPageView: View {
                 
                 if showsDismissButton {
                     FSBorederedButton(
-                        title: "Got it!",
-                        systemImage: "checkmark",
+                        title: FSDescription.gotIt,
+                        systemImage: SFSymbol.checkmark,
                         colour: .purple,
                         size: .large,
-                        accessibilityHint: "Double tab to close onboarding screens.") {
+                        accessibilityHint: VoiceOver.doubleTapToCloseOnboarding) {
                             shouldPresentOnboarding.toggle()
                         }
                 }

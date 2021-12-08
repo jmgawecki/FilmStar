@@ -54,8 +54,8 @@ struct FilmDetailsScreen: View {
                                 .padding(.horizontal, 10)
                                 .accessibilitySortPriority(9)
                             
-                            if film.awards.uppercased() != "N/A" &&
-                                film.boxOffice?.uppercased() != "N/A" {
+                            if film.awards.uppercased() != FSString.notApplicable &&
+                                film.boxOffice?.uppercased() != FSString.notApplicable {
                                 SecondDetailView(film: film)
                                     .padding(.horizontal, 10)
                                     .accessibilitySortPriority(8)
@@ -117,7 +117,7 @@ fileprivate struct ButtonsPanel: View {
     var body: some View {
         VStack {
             if isShowingError {
-                Text("Something went wrong. Please try again.")
+                Text(FSString.somethingWentWrong)
                     .frame(width: 300, height: 50)
                     .font(.caption)
                     .foregroundColor(Color.red)
@@ -128,24 +128,24 @@ fileprivate struct ButtonsPanel: View {
                    let filmCored = films.filter({ $0.imdbID == film.imdbID }).first,
                    let isFavourite = filmCored.isFavourite {
                     FSBorederedButton(
-                        title: isFavourite ? "Saved" : "Save",
-                        systemImage: isFavourite ? "star.fill" : "star",
+                        title: isFavourite ? FSString.saved : FSString.save,
+                        systemImage: isFavourite ? SFSymbol.favourite : SFSymbol.notFavourite,
                         colour: .purple,
                         size: .large,
                         isAnimated: true,
-                        accessibilityLabel: "Save to favourites",
-                        accessibilityHint: "Double tap to add Film to your favourites") {
+                        accessibilityLabel: FSAccessibilityString.saveToFavourites,
+                        accessibilityHint: FSAccessibilityString.saveToFavouritesHint) {
                             changeFavouritesStatus()
                         }
                 }
                 
                 FSBorederedButton(
-                    title: "AR Poster",
-                    systemImage: "arkit",
+                    title: FSString.arPoster,
+                    systemImage: SFSymbol.arkit,
                     colour: .purple,
                     size: .large,
-                    accessibilityLabel: "A R Poster",
-                    accessibilityHint: "A R Experience is not accessibility-friendly. We apologise for the incovienience.") {
+                    accessibilityLabel: FSAccessibilityString.arPoster,
+                    accessibilityHint: FSAccessibilityString.arExperienceNotFriendlyHint) {
                         viewModel.isARPresenting.toggle()
                     }
                     .fullScreenCover(
@@ -155,11 +155,10 @@ fileprivate struct ButtonsPanel: View {
                         }
                 
                 FSBorederedButton(
-                    title: "",
-                    systemImage: "xmark",
+                    systemImage: SFSymbol.close,
                     colour: .yellow,
                     size: .large,
-                    accessibilityLabel: "Go back") {
+                    accessibilityLabel: FSAccessibilityString.goBack) {
                         withAnimation {
                             viewModel.film = nil
                         }
@@ -266,7 +265,7 @@ fileprivate struct HeaderView: View {
             .accessibilityCustomContent(.title, "\(film.title). Released in (\(film.year))", importance: .high)
             .accessibilityCustomContent(.plot, film.plot)
             .accessibilityAddTraits(.isHeader)
-            .accessibilityHint("Swipe down for the plot.")
+            .accessibilityHint(FSAccessibilityString.swipeDownForThePlotHint)
     }
     
 }
@@ -305,7 +304,7 @@ fileprivate struct FirstDetailView: View {
             .accessibilityCustomContent(.director, "Directed by \(film.director)")
             .accessibilityCustomContent(.writer, "Written by \(film.writer)")
             .accessibilityCustomContent(.actors, "Actors: \(film.actors)")
-            .accessibilityHint("Swipe down for more info")
+            .accessibilityHint(FSAccessibilityString.swipeDownForMoreInfoHint)
     }
 }
 

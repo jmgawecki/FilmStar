@@ -21,11 +21,11 @@ struct FavouritesFilmsScreen: View {
         ZStack {
             if !films.isEmpty {
                 VStack {
-                    Text("Favourite Films")
+                    Text(FSDescription.favouriteFilms)
                         .fontWeight(.bold)
                         .font(.title2)
                         .accessibilityFocused($isScreenFocused)
-                        .accessibilityLabel("Favourite Films. Swipe right to get to the list of your favourite Films.")
+                        .accessibilityLabel(VoiceOver.favouriteFilmSwipeRightForList)
                     List {
                         ForEach(films.filter({ $0.isFavourite == true })) { film in
                             FSFavouriteFilmCell(film: film)
@@ -88,12 +88,12 @@ struct FSFavouriteFilmCell: View {
                             .accessibility(hidden: true)
                     }
                     VStack(alignment: .leading) {
-                        Text(film.title ?? "Title unknown")
+                        Text(film.title ?? FSDescription.titleUnknown)
                             .font(.title3)
                             .accessibilityAddTraits(.isHeader)
-                        Text(film.genre ?? "Genre unknown")
+                        Text(film.genre ?? FSDescription.genreUnknown)
                             .font(.callout)
-                        Text("Directed by \(film.director ?? "")")
+                        Text("Directed by \(film.director ?? VoiceOver.unknown)")
                             .font(.caption)
                     }
                     .foregroundColor(Color.purple)
@@ -104,10 +104,10 @@ struct FSFavouriteFilmCell: View {
                 Spacer()
             }
             .accessibilityElement(children: .combine)
-            .accessibilityCustomContent(.title, film.title ?? "unknown", importance: .high)
-            .accessibilityCustomContent(.genre, film.genre ?? "unknown")
-            .accessibilityCustomContent(.director, "Directed by \(film.director ?? "unknown")", importance: .high)
-            .accessibilityHint("Swipe down for more details or double tap to go to Film's full details")
+            .accessibilityCustomContent(.title, film.title ?? VoiceOver.unknown, importance: .high)
+            .accessibilityCustomContent(.genre, film.genre ?? VoiceOver.unknown)
+            .accessibilityCustomContent(.director, "Directed by \(film.director ?? VoiceOver.unknown)", importance: .high)
+            .accessibilityHint(VoiceOver.swipeDownForCellDetailsOrTapForFull)
         }
     }
 }

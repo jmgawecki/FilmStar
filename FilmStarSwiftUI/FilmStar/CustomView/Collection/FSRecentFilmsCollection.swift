@@ -59,10 +59,10 @@ fileprivate struct FSRecentFilmCell: View {
                         .padding()
                 }
                 VStack(alignment: .leading) {
-                    Text(film.title ?? "Title unknown")
+                    Text(film.title ?? FSDescription.titleUnknown)
                         .font(.title3)
                         .accessibilityAddTraits(.isHeader)
-                    Text(film.genre ?? "Genre unknown")
+                    Text(film.genre ?? FSDescription.genreUnknown)
                         .font(.callout)
                     
                     if let director = film.director, director != "N/A" {
@@ -80,10 +80,10 @@ fileprivate struct FSRecentFilmCell: View {
         .frame(minWidth: 250, idealWidth: 350, idealHeight: 130)
         .cornerRadius(15)
         .accessibilityElement(children: .combine)
-        .accessibilityCustomContent(.title, film.title ?? "unknown", importance: .high)
-        .accessibilityCustomContent(.genre, film.genre ?? "unknown")
-        .accessibilityCustomContent(.director, "Directed by \(film.director ?? "unknown")", importance: .high)
-        .accessibilityHint("Swipe down for more details or double tap to go to Film's full details")
+        .accessibilityCustomContent(.title, film.title ?? VoiceOver.unknown, importance: .high)
+        .accessibilityCustomContent(.genre, film.genre ?? VoiceOver.unknown)
+        .accessibilityCustomContent(.director, "Directed by \(film.director ?? VoiceOver.unknown)", importance: .high)
+        .accessibilityHint(VoiceOver.swipeDownForCellDetailsOrTapForFull)
     }
 }
 

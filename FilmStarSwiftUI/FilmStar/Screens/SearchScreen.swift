@@ -11,7 +11,7 @@ struct SearchScreen: View {
             VStack(spacing: 20) {
                 Spacer()
                 
-                Image(decorative: "LogoSearchScreen")
+                Image(decorative: FSImage.logoSearchScreen)
                     .resizable()
                     .frame(width: 250, height: 250)
                     .cornerRadius(20)
@@ -43,7 +43,7 @@ struct SearchScreen: View {
                     VStack {
                         FetchingErrorView(viewModel: viewModel)
                         
-                        Image(decorative: "LogoSearchScreen")
+                        Image(decorative: FSImage.logoSearchScreen)
                             .resizable()
                             .frame(
                                 minWidth: 40, idealWidth: 150,
@@ -113,7 +113,7 @@ fileprivate struct SearchFilmTextField: View {
                 .cornerRadius(12)
                 .frame(width: 360, height: 44)
             
-            TextField("Search for film..", text: $viewModel.searchFilmScreenText)
+            TextField(FSString.textFieldPlaceholder, text: $viewModel.searchFilmScreenText)
                 .frame(width: 300, height: 44)
                 .padding(.horizontal)
                 .padding(.leading)
@@ -121,7 +121,7 @@ fileprivate struct SearchFilmTextField: View {
                 .cornerRadius(12)
                 .accessibilitySortPriority(10)
             
-            Image(systemName: "gearshape.fill")
+            Image(systemName: SFSymbol.settings)
                 .rotationEffect(.degrees(animationAngle))
                 .animation(.easeIn, value: animationAngle)
                 .padding()
@@ -131,7 +131,7 @@ fileprivate struct SearchFilmTextField: View {
                 }
         }
         .popover(isPresented: $viewModel.isChangingFilters, content: {
-            SearchParametersScreen(viewModel: viewModel)
+            SearchFiltersScreen(viewModel: viewModel)
         })
     }
 }
@@ -142,22 +142,22 @@ fileprivate struct SearchButtonsPanel: View {
     var body: some View {
         HStack {
             FSBorederedButton(
-                title: "Lucky shot",
-                systemImage: "dice",
+                title: FSDescription.luckyShot,
+                systemImage: SFSymbol.dice,
                 colour: .mint,
                 size: .large,
-                accessibilityHint: "Double tap to search for one film.") {
+                accessibilityHint: VoiceOver.doubleTapForOneFilmSearch) {
                     viewModel.searchingError = nil
                     viewModel.fetchFilm(with: viewModel.searchFilmScreenText)
                 }
                 .accessibilitySortPriority(9)
             
             FSBorederedButton(
-                title: "Get the list",
+                title: FSDescription.getTheList,
                 systemImage: SFSymbol.film,
                 colour: .purple,
                 size: .large,
-                accessibilityHint: "Double tap to search for the list of movies") {
+                accessibilityHint: VoiceOver.doubleTapForList) {
                     viewModel.searchingError = nil
                     viewModel.fetchListOfFilms(with: viewModel.searchFilmScreenText)
                 }
