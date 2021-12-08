@@ -1,13 +1,10 @@
-//
-//  PosterARView.swift.swift
-//  FilmStarSwiftUI
-//
-//  Created by Jakub Gawecki on 04/12/2021.
-//
-
 import RealityKit
 import ARKit
+import SwiftUI
 
+protocol PosterARViewDelegate: NSObject {
+    func didUpdateWorldMappingStatus(with message: String, and colour: Color)
+}
 
 /// PosterARView is a subclass of `ARView` to project an experience of "hanging" the `ARPoster` onto the vertical plane of any type
 ///
@@ -20,20 +17,20 @@ import ARKit
 /// With the reset button, the Session can be reset, and thus a user can go thorugh the experience again and hang the poster more precisely.
 class PosterARView: ARView {
     // MARK: - UI
-    private lazy var resetSessionButton: UIButton = {
+    lazy var resetSessionButton: UIButton = {
         let button = UIButton()
-        var configuration = UIButton.Configuration.borderedTinted()
+        var configuration = UIButton.Configuration.filled()
         configuration.cornerStyle = UIButton.Configuration.CornerStyle.large
-        configuration.title = "Reset"
-        configuration.baseBackgroundColor = .yellow
-        configuration.baseForegroundColor = .white
-        configuration.image = UIImage(systemName: "restart")
+        configuration.title = "Hang it!"
+        configuration.baseBackgroundColor = .yellow.withAlphaComponent(0.70)
+        configuration.baseForegroundColor = .black
+        configuration.image = UIImage(systemName: "paintpalette")
         configuration.buttonSize = .large
         
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = configuration
         
-        button.addTarget(self, action: #selector(resetARSession), for: .touchUpInside)
+        button.addTarget(self, action: #selector(performHanging), for: .touchUpInside)
         
         return button
     }()
@@ -42,21 +39,24 @@ class PosterARView: ARView {
     var viewModel: FSViewModel
     let coachingOverlay = ARCoachingOverlayView()
     var arPoster: ARPoster?
+    var arResource: TextureResource
     var isPlaced = false
+    var posterAnchor: AnchorEntity?
+    
+    static let isARExperienceAvailable: Bool = ARWorldTrackingConfiguration.supportsFrameSemantics([.personSegmentationWithDepth, .sceneDepth]) && ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)
     
     
     // MARK: - Init
     required init(viewModel: FSViewModel) {
-        if let arResource = viewModel.film?.arPosterTexture {
-            arPoster = ARPoster(with: arResource)
-        }
+        /// No nil possible since the View would be never initialised otherwise
+        self.arResource = viewModel.film!.arPosterTexture!
+        arPoster = ARPoster(with: arResource)
         self.viewModel = viewModel
         super.init(frame: .zero)
         configureUI()
-        session.delegate = self 
+        session.delegate = self
         addCoachingOverlay()
         configureSession()
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(recogniser:))))
     }
     
     @MainActor @objc required dynamic init(frame frameRect: CGRect) {
@@ -67,38 +67,46 @@ class PosterARView: ARView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - @Objc
+    // MARK: - RayCast and Hanging
     /// Performs RayCasting, searches for vertical plane. If such plane has been found, it renders an ARPoster onto it.
     /// - Parameter recogniser: Tap gesture on the screen.
     @objc
-    func handleTap(recogniser: UITapGestureRecognizer) {
-        if !isPlaced {
-            let tapLocation = recogniser.location(in: self)
-            
-            let result = raycast(
-                from: tapLocation,
-                allowing: .estimatedPlane,
-                alignment: .vertical
-            )
-            
-            if let firstResult = result.first,
-               let arPoster = arPoster {
-                let coordinates = simd_make_float3(firstResult.worldTransform.columns.3)
-                placePoster(arPoster, at: coordinates)
-            }
+    func performHanging() {
+        let result = raycast(
+            from: CGPoint.init(x: UIScreen.main.bounds.size.width * 0.5 , y: UIScreen.main.bounds.size.height * 0.5),
+            allowing: .estimatedPlane,
+            alignment: .vertical
+        )
+        
+        if let firstResult = result.first,
+           let _ = arPoster {
+            let coordinates = simd_make_float3(firstResult.worldTransform.columns.3)
+            placePoster(at: coordinates)
         }
     }
     
-    // MARK: - Logic
-    func placePoster(_ poster: ARPoster, at location: SIMD3<Float>) {
-        let posterAnchor = AnchorEntity(world: location)
+    func placePoster(at location: SIMD3<Float>) {
+        if let posterAnchor = posterAnchor {
+            scene.removeAnchor(posterAnchor)
+        }
         
-        posterAnchor.addChild(poster)
+        posterAnchor = nil
+        posterAnchor = AnchorEntity(world: location)
         
-        scene.addAnchor(posterAnchor)
-        isPlaced.toggle()
+        arPoster?.removeFromParent()
+        arPoster = nil
+        arPoster = ARPoster(with: arResource)
+        
+        self.installGestures(
+            [.rotation, .scale],
+            for: arPoster! as HasCollision
+        )
+        
+        posterAnchor!.addChild(arPoster!)
+        scene.addAnchor(posterAnchor!)
     }
     
+    // MARK: - Layout UI
     func configureUI() {
         addSubview(resetSessionButton)
         

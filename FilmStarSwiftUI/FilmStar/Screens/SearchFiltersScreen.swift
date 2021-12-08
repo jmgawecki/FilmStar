@@ -14,8 +14,8 @@ struct SearchFiltersScreen: View {
                         }
                         
                         Picker("Year", selection: $viewModel.year) {
-                            ForEach(0..<viewModel.searchYears.count) { index in
-                                Text(String(viewModel.searchYears[index]))
+                            ForEach(0..<viewModel.searchYears.count, id: \.self) {
+                                Text(String(viewModel.searchYears[$0])).tag($0)
                             }
                         }
                     }

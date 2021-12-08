@@ -55,7 +55,7 @@ struct FavouritesFilmsScreen: View {
                 try viewContext.save()
             } catch {
                 let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                // Handle errors
             }
         }
     }

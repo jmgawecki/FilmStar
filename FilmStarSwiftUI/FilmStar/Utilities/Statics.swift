@@ -54,6 +54,7 @@ typealias Description = FSString
 
 enum FSOperationalString {
     static let appStorageShouldShowOnboarding = "shouldShowOnboarding"
+    static let appStorageShouldShowAROnboarding = "shouldShowAROnboarding"
 }
 
 enum FSAccessibilityString {
@@ -100,3 +101,23 @@ enum FSOnboardingString {
 }
 
 typealias Onboarding = FSOnboardingString
+
+enum FSAROnboarding {
+    static let pageOneTitle = "Go to the well enlighted room"
+    static let pageOneSubtitle = "Find some distinctive vertical surface"
+    static let pageOneImage = "arkit"
+    
+    static let pageTwoTitle = "Hit the button and hang the poster"
+    static let pageTwoSubtitle = "If a poster won't appear, try again!"
+    static let pageTwoImage = "paintpalette"
+    
+    static let pageThreeTitle = "Try to scale it!"
+    static let pageThreeSubtitle = "By pinching a poster with your fingers"
+    static let pageThreeImage = "scale.3d"
+    
+    static let pageFourthTitle = "Try to rotate it!"
+    static let pageFourthSubtitle = "By swiping with your two fingers"
+    static let pageFourthImage = "rotate.3d"
+}
+
+typealias AROnboarding = FSAROnboarding

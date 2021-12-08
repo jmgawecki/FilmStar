@@ -1,4 +1,5 @@
 import SwiftUI
+import ARKit
 
 struct FilmDetailsScreen: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
@@ -138,21 +139,23 @@ fileprivate struct ButtonsPanel: View {
                             changeFavouritesStatus()
                         }
                 }
-                
-                FSBorederedButton(
-                    title: FSString.arPoster,
-                    systemImage: SFSymbol.arkit,
-                    colour: .purple,
-                    size: .large,
-                    accessibilityLabel: FSAccessibilityString.arPoster,
-                    accessibilityHint: FSAccessibilityString.arExperienceNotFriendlyHint) {
-                        viewModel.isARPresenting.toggle()
-                    }
-                    .fullScreenCover(
-                        isPresented: $viewModel.isARPresenting,
-                        onDismiss: nil) {
-                            PosterARScreen(viewModel: viewModel)
+                if PosterARView.isARExperienceAvailable,
+                   viewModel.film?.arPosterTexture != nil {
+                    FSBorederedButton(
+                        title: FSString.arPoster,
+                        systemImage: SFSymbol.arkit,
+                        colour: .purple,
+                        size: .large,
+                        accessibilityLabel: FSAccessibilityString.arPoster,
+                        accessibilityHint: FSAccessibilityString.arExperienceNotFriendlyHint) {
+                            viewModel.isARPresenting.toggle()
                         }
+                        .fullScreenCover(
+                            isPresented: $viewModel.isARPresenting,
+                            onDismiss: nil) {
+                                PosterARScreen(viewModel: viewModel)
+                            }
+                }
                 
                 FSBorederedButton(
                     systemImage: SFSymbol.close,

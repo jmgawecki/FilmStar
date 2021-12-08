@@ -3,14 +3,14 @@ import RealityKit
 
 struct PosterARScreen: View {
     @ObservedObject var viewModel: FSViewModel
+    @AppStorage(FSOperationalString.appStorageShouldShowAROnboarding) var shouldShowAROnboarding: Bool = true
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ARViewContainer(viewModel: viewModel)
                 .edgesIgnoringSafeArea(.all)
-            
-            if !viewModel.isCoachingActive {
-                FSBorederedButton(
+        
+                FSProminentButton(
                     title: FSString.back,
                     systemImage: SFSymbol.close,
                     colour: .purple,
@@ -18,9 +18,19 @@ struct PosterARScreen: View {
                     accessibilityLabel: FSAccessibilityString.goBack) {
                         viewModel.isARPresenting.toggle()
                     }
+                    .opacity(0.85)
                     .padding()
-            }
         }
+        .fullScreenCover(isPresented: $shouldShowAROnboarding, content: {
+            AROnboardingTab(shouldPresentOnboarding: $shouldShowAROnboarding)
+        })
+    }
+}
+
+
+struct Preview_PosterARScreen: PreviewProvider {
+    static var previews: some View {
+        PosterARScreen(viewModel: FSViewModel())
     }
 }
 

@@ -8,6 +8,7 @@ class ARPoster: Entity, HasModel, HasCollision {
     required init(with textureResource: TextureResource) {
         super.init()
         generatePoster(with: textureResource)
+        generateCollision()
     }
     
     required init() { fatalError("init() has not been implemented") }
@@ -25,9 +26,7 @@ class ARPoster: Entity, HasModel, HasCollision {
             ),
             materials: [material]
         )
-        
     }
-    
     
     // MARK: - HasCollision
     func generateCollision() {

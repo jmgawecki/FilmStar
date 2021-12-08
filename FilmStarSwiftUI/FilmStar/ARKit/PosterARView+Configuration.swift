@@ -2,18 +2,19 @@ import Foundation
 import ARKit
 
 extension PosterARView {
-    
     /// Configures Session by implementing `ARWorldTrackingConfiguration`
     ///
     /// Experience is largery improved when using an iOS device with the built-in LiDAR scanner.
     func configureSession() {
         let configuration = ARWorldTrackingConfiguration()
-        if ARWorldTrackingConfiguration.supportsFrameSemantics(.personSegmentationWithDepth),
-           ARWorldTrackingConfiguration.supportsFrameSemantics(.sceneDepth) {
-            configuration.frameSemantics = [.personSegmentationWithDepth, .sceneDepth]
-        }
+        guard
+            PosterARView.isARExperienceAvailable
+        else { return }
+        configuration.frameSemantics = [.personSegmentationWithDepth, .sceneDepth]
         configuration.planeDetection = [.vertical]
+        configuration.sceneReconstruction = .meshWithClassification
         configuration.environmentTexturing = .automatic
+        debugOptions = [.showSceneUnderstanding, .showPhysics]
         session.run(configuration, options: [.removeExistingAnchors, .resetTracking])
     }
     
