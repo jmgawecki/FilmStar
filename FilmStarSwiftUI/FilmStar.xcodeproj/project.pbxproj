@@ -742,7 +742,7 @@
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "CAMERA DESCRIPTION";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow the app to use your camera input for displaying AR experience";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -773,7 +773,7 @@
 				DEVELOPMENT_TEAM = 9HHDDYFD2W;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "CAMERA DESCRIPTION";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow the app to use your camera input for displaying AR experience";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

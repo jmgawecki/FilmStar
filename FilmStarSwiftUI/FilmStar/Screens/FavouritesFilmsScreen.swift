@@ -16,7 +16,7 @@ struct FavouritesFilmsScreen: View {
     @ObservedObject var viewModel: FSViewModel
     var body: some View {
         ZStack {
-            if !films.isEmpty {
+            if !films.filter({ $0.isFavourite == true }).isEmpty {
                 VStack {
                     Text(Description.favouriteFilms)
                         .fontWeight(.bold)

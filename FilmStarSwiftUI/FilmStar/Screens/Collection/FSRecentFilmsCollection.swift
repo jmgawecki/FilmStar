@@ -35,12 +35,6 @@ struct FSRecentFilmsCollection: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        FSRecentFilmsCollection(viewModel: FSViewModel()).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
-
 /// `FSRecentFilmCell` is used to present films saved by the user to its favourites. Struct uses `FSRecentFilmsCollection` CoreData model for displaying.
 ///
 /// Struct's accessibility has been adjusted and currently reads title and the director only. Structs provides instruction for users with accessibility enabled.

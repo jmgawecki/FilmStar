@@ -64,8 +64,8 @@ class NetworkManager {
         
         do {
             let results = try JSONDecoder().decode(SearchResult.self, from: data)
-            return results.films.filter({ $0.type == "movie" })
-        } catch let error {
+            return results.films
+        } catch {
             throw FSFilmFetchingError.noDataTitle
         }
     }
