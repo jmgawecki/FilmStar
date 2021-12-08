@@ -6,7 +6,7 @@ import SwiftUI
 ///
 /// Accessibility can be easily applied by providing strings within the initialiser respective parameters.
 struct FSBorederedButton: View {
-    let title: String
+    var title: String? = nil
     let systemImage: String
     let colour: Color
     let size: ControlSize
@@ -27,12 +27,14 @@ struct FSBorederedButton: View {
             Image(systemName: systemImage)
                 .rotationEffect(.degrees(animationAngle))
                 .animation(.easeIn, value: animationAngle)
-            Text(title)
+            if let title = title {
+                Text(title)
+            }
         }
         .buttonStyle(.bordered)
         .tint(colour)
         .controlSize(size)
-        .accessibilityLabel(Text(accessibilityLabel ?? title))
+        .accessibilityLabel(Text(accessibilityLabel ?? title ?? ""))
         .accessibilityAddTraits(.isButton)
         .accessibilityHint(accessibilityHint ?? "")
     }

@@ -49,26 +49,25 @@ fileprivate struct FilmSearchCollectionTopBar: View {
     
     var body: some View {
         HStack {
-            Text("Results for the search")
+            Text(FSString.resultsForTheSearch)
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundColor(.purple)
                 .padding(.leading)
                 .minimumScaleFactor(0.5)
-                .accessibilityLabel("Results")
+                .accessibilityLabel(VoiceOver.resultsForTheSearch)
                 .accessibilityAddTraits(.isHeader)
-                .accessibilityHint("Swipe right to go back or to see results")
+                .accessibilityHint(VoiceOver.swipeRightForResultsHint)
                 .accessibilityFocused($isViewFocused)
             
             Spacer()
             
             FSBorederedButton(
-                title: "",
-                systemImage: "xmark",
+                systemImage: SFSymbol.close,
                 colour: .yellow,
                 size: .large,
-                accessibilityLabel: "Back button",
-                accessibilityHint: "Double tap to go back to the Search Screen or swipe right to see results") {
+                accessibilityLabel: VoiceOver.goBack,
+                accessibilityHint: FSAccessibilityString.doubleTapToBackOrSwipeRight) {
                     withAnimation {
                         viewModel.listOfTeasers.removeAll()
                     }
@@ -92,8 +91,6 @@ fileprivate struct FilmsSearchCollectionCell: View {
                 VStack(alignment: .leading) {
                     Text("\(filmTeaser.title) (\(filmTeaser.year))")
                         .font(.subheadline)
-//                        .scaledToFit()
-//                        .minimumScaleFactor(0.5)
                 }
                 Spacer()
             }
@@ -104,7 +101,7 @@ fileprivate struct FilmsSearchCollectionCell: View {
         .cornerRadius(15)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(filmTeaser.title). Released in \(filmTeaser.year)")
-        .accessibilityHint("Double tap to go to Film's full details")
+        .accessibilityHint(VoiceOver.doubleTapForFilmDetails)
         .contentShape(Rectangle())
         .accessibilitySortPriority(9)
     }

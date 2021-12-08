@@ -11,11 +11,11 @@ struct PosterARScreen: View {
             
             if !viewModel.isCoachingActive {
                 FSBorederedButton(
-                    title: "Back",
-                    systemImage: "xmark",
+                    title: FSString.back,
+                    systemImage: SFSymbol.close,
                     colour: .purple,
                     size: .large,
-                    accessibilityLabel: "Go back") {
+                    accessibilityLabel: FSAccessibilityString.goBack) {
                         viewModel.isARPresenting.toggle()
                     }
                     .padding()

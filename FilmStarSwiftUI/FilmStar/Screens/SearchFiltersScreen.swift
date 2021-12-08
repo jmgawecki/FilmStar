@@ -1,21 +1,12 @@
 import SwiftUI
 
-class FSSearchParameters: ObservableObject {
-    var searchTypes = ["Any", "Movie", "Series", "Episode"]
-    var searchYears: [Int] = Array<Int>(1888...2021).reversed()
-    
-    @Published var year = 0
-    @Published var typeIndex = 0
-}
-
-struct SearchParametersScreen: View {
-    @ObservedObject var searchParameters = FSSearchParameters()
+struct SearchFiltersScreen: View {
     @ObservedObject var viewModel: FSViewModel
     var body: some View {
         NavigationView {
             VStack {
                 Form {
-                    Section(header: Text("Search parameters")) {
+                    Section(header: Text(FSDescription.searchFilters)) {
                         Picker("Type", selection: $viewModel.typeIndex) {
                             ForEach(0..<viewModel.searchTypes.count) {
                                 Text(viewModel.searchTypes[$0])
@@ -31,24 +22,24 @@ struct SearchParametersScreen: View {
                 }
                 HStack {
                     FSBorederedButton(
-                        title: "Reset settings",
-                        systemImage: "restart.circle",
+                        title: FSDescription.resetSettings,
+                        systemImage: SFSymbol.restart,
                         colour: .red,
                         size: .large,
                         isAnimated: true,
-                        accessibilityLabel: "Reset settings",
-                        accessibilityHint: "Double tap to remove all the filters from the search") {
+                        accessibilityLabel: FSDescription.resetSettings,
+                        accessibilityHint: VoiceOver.doubleTapToRemoveFilters) {
                             viewModel.year = 0
                             viewModel.typeIndex = 0
                         }
                     
                     FSBorederedButton(
-                        title: "Done",
-                        systemImage: "checkmark",
+                        title: FSDescription.done,
+                        systemImage: SFSymbol.checkmark,
                         colour: .green,
                         size: .large,
-                        accessibilityLabel: "Done",
-                        accessibilityHint: "Double tap to confirm settings and go back.") {
+                        accessibilityLabel: FSDescription.done,
+                        accessibilityHint: VoiceOver.doubleTapToConfirmSettings) {
                             viewModel.isChangingFilters = false
                         }
                 }
@@ -60,6 +51,6 @@ struct SearchParametersScreen: View {
 
 struct SearchParametersScreen_Previews: PreviewProvider {
     static var previews: some View {
-        SearchParametersScreen(viewModel: FSViewModel())
+        SearchFiltersScreen(viewModel: FSViewModel())
     }
 }
