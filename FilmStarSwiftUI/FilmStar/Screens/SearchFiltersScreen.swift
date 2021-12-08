@@ -52,5 +52,6 @@ struct SearchFiltersScreen: View {
 struct SearchParametersScreen_Previews: PreviewProvider {
     static var previews: some View {
         SearchFiltersScreen(viewModel: FSViewModel())
+.previewInterfaceOrientation(.landscapeRight)
     }
 }

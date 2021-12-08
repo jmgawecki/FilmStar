@@ -145,7 +145,7 @@ fileprivate struct SearchFilmTextField: View {
                 isScreenFocused = true
             }
         }
-        .popover(isPresented: $viewModel.isChangingFilters, content: {
+        .fullScreenCover(isPresented: $viewModel.isChangingFilters, content: {
             SearchFiltersScreen(viewModel: viewModel)
         })
     }
