@@ -57,6 +57,15 @@ struct SearchScreen: View {
                 }
             }
         }
+        .overlay {
+            if viewModel.isFetchingFilms {
+                ProgressView()
+                    .scaledToFill()
+                    .tint(.purple)
+                    .scaleEffect(2)
+                    
+            }
+        }
     }
 }
 
@@ -155,6 +164,9 @@ fileprivate struct SearchButtonsPanel: View {
                 accessibilityHint: VoiceOver.doubleTapForOneFilmSearch) {
                     viewModel.searchingError = nil
                     viewModel.fetchFilm(with: viewModel.searchFilmScreenText)
+                    withAnimation {
+                        viewModel.isFetchingFilms = true
+                    }
                 }
                 .accessibilitySortPriority(9)
             
@@ -166,6 +178,9 @@ fileprivate struct SearchButtonsPanel: View {
                 accessibilityHint: VoiceOver.doubleTapForList) {
                     viewModel.searchingError = nil
                     viewModel.fetchListOfFilms(with: viewModel.searchFilmScreenText)
+                    withAnimation {
+                        viewModel.isFetchingFilms = true
+                    }
                 }
                 .accessibilitySortPriority(8)
         }
