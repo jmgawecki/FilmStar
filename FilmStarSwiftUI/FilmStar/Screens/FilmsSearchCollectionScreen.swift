@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct FilmsSearchCollectionScreen: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var viewModel: FSViewModel
     @AccessibilityFocusState var isViewFocused: Bool
     
     var body: some View {
         VStack {
-            FilmSearchCollectionTopBar(viewModel: viewModel, isViewFocused: _isViewFocused)
+            if verticalSizeClass == .compact {
+                Spacer(minLength: 20)
+            }
+            
+            FilmSearchCollectionTopBar(
+                viewModel: viewModel,
+                isViewFocused: _isViewFocused
+            )
+            
             List {
                 ForEach(viewModel.listOfTeasers) { filmTeaser in
                     FilmsSearchCollectionCell(filmTeaser: filmTeaser)

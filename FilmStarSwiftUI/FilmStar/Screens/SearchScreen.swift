@@ -1,9 +1,12 @@
 import SwiftUI
 
 struct SearchScreen: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var viewModel: FSViewModel
+    @FocusState private var isKeyboardFocused: Bool
     
     var body: some View {
+        if verticalSizeClass == .regular {
         ZStack {
             VStack(spacing: 20) {
                 Spacer()
@@ -29,6 +32,37 @@ struct SearchScreen: View {
                     .accessibilitySortPriority(7)
             }
         }
+        } else {
+            ZStack {
+                HStack(spacing: 20) {
+                    FSRecentFilmsCollection(viewModel: viewModel)
+                        .frame(
+                            width: UIScreen.main.bounds.size.width * 0.45)
+                        .cornerRadius(20)
+                        .accessibilitySortPriority(7)
+                    VStack {
+                        FetchingErrorView(viewModel: viewModel)
+                        
+                        Image(decorative: "LogoSearchScreen")
+                            .resizable()
+                            .frame(
+                                minWidth: 40, idealWidth: 150,
+                                maxWidth: 150, minHeight: 40,
+                                idealHeight: 150, maxHeight: 150
+                            )
+                            .cornerRadius(20)
+                        
+                        
+                        
+                        SearchFilmTextField(searchText: $viewModel.searchFilmScreenText)
+                        
+                        SearchButtonsPanel(viewModel: viewModel)
+                            .disabled(viewModel.isSearchTextFieldEmpty)
+   
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -36,6 +70,7 @@ struct SearchScreen_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SearchScreen(viewModel: FSViewModel())
+.previewInterfaceOrientation(.landscapeRight)
             SearchScreen(viewModel: FSViewModel())
                 .preferredColorScheme(.dark)
         }
@@ -75,7 +110,7 @@ fileprivate struct SearchFilmTextField: View {
             Color.secondary
                 .opacity(0.2)
                 .cornerRadius(12)
-                .padding(.horizontal, 35)
+                .frame(width: 360, height: 44)
             
             TextField("Search for film..", text: $searchText)
                 .frame(width: 300, height: 44)

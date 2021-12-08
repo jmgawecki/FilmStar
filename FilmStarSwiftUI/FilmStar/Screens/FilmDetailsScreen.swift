@@ -1,36 +1,71 @@
 import SwiftUI
 
 struct FilmDetailsScreen: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var viewModel: FSViewModel
     @AccessibilityFocusState var isScreenFocused: Bool
     
     var body: some View {
-        if let film = viewModel.film {
-            ScrollView(.vertical) {
-                ZStack {
-                    VStack() {
-                        ButtonsPanel(viewModel: viewModel)
-                            .accessibilitySortPriority(6)
-                        
-                        Poster(viewModel: viewModel)
-                        
-                        HeaderView(film: film)
-                            .padding(.horizontal, 10)
-                            .accessibilitySortPriority(10)
-                            .accessibilityFocused($isScreenFocused)
-                        
-                        FirstDetailView(film: film)
-                            .padding(.horizontal, 10)
-                            .accessibilitySortPriority(9)
-                        
-                        SecondDetailView(film: film)
-                            .padding(.horizontal)
-                            .accessibilitySortPriority(8)
-                        
-                        RatingsVGrid(film: film)
-                            .padding(.horizontal, 10)
-                            .accessibilitySortPriority(7)
-                        Spacer()
+        if let film = FilmDummy.mockOptional {
+            if verticalSizeClass == .regular {
+                ScrollView(.vertical) {
+                    ZStack {
+                        VStack() {
+                            ButtonsPanel(viewModel: viewModel)
+                                .accessibilitySortPriority(6)
+                            
+                            Poster(viewModel: viewModel)
+                            
+                            HeaderView(film: film)
+                                .padding(.horizontal, 10)
+                                .accessibilitySortPriority(10)
+                                .accessibilityFocused($isScreenFocused)
+                            
+                            FirstDetailView(film: film)
+                                .padding(.horizontal, 10)
+                                .accessibilitySortPriority(9)
+                            
+                            SecondDetailView(film: film)
+                                .padding(.horizontal)
+                                .accessibilitySortPriority(8)
+                            
+                            RatingsVGrid(film: film)
+                                .padding(.horizontal, 10)
+                                .accessibilitySortPriority(7)
+                            Spacer()
+                        }
+                    }
+                }
+            } else {
+                ScrollView(.vertical) {
+                    ZStack {
+                        HStack {
+                            Poster(viewModel: viewModel)
+                            VStack {
+                                ButtonsPanel(viewModel: viewModel)
+                                    .accessibilitySortPriority(6)
+                                
+                                
+                                
+                                HeaderView(film: film)
+                                    .padding(.horizontal, 10)
+                                    .accessibilitySortPriority(10)
+                                    .accessibilityFocused($isScreenFocused)
+                                
+                                FirstDetailView(film: film)
+                                    .padding(.horizontal, 10)
+                                    .accessibilitySortPriority(9)
+                                
+                                SecondDetailView(film: film)
+                                    .padding(.horizontal)
+                                    .accessibilitySortPriority(8)
+                                
+                                RatingsVGrid(film: film)
+                                    .padding(.horizontal, 10)
+                                    .accessibilitySortPriority(7)
+                                Spacer()
+                            }
+                        }
                     }
                 }
             }
@@ -44,6 +79,7 @@ struct FilmDetailsScreen_Previews: PreviewProvider {
         Group {
             FilmDetailsScreen(viewModel: FSViewModel())
                 .preferredColorScheme(.dark)
+                .previewInterfaceOrientation(.portrait)
             FilmDetailsScreen(viewModel: FSViewModel())
                 .preferredColorScheme(.light)
         }
