@@ -6,7 +6,7 @@ struct SearchFiltersScreen: View {
         NavigationView {
             VStack {
                 Form {
-                    Section(header: Text(FSDescription.searchFilters)) {
+                    Section(header: Text(Description.searchFilters)) {
                         Picker("Type", selection: $viewModel.typeIndex) {
                             ForEach(0..<viewModel.searchTypes.count) {
                                 Text(viewModel.searchTypes[$0])
@@ -22,23 +22,23 @@ struct SearchFiltersScreen: View {
                 }
                 HStack {
                     FSBorederedButton(
-                        title: FSDescription.resetSettings,
+                        title: Description.resetSettings,
                         systemImage: SFSymbol.restart,
                         colour: .red,
                         size: .large,
                         isAnimated: true,
-                        accessibilityLabel: FSDescription.resetSettings,
+                        accessibilityLabel: Description.resetSettings,
                         accessibilityHint: VoiceOver.doubleTapToRemoveFilters) {
                             viewModel.year = 0
                             viewModel.typeIndex = 0
                         }
                     
                     FSBorederedButton(
-                        title: FSDescription.done,
+                        title: Description.done,
                         systemImage: SFSymbol.checkmark,
                         colour: .green,
                         size: .large,
-                        accessibilityLabel: FSDescription.done,
+                        accessibilityLabel: Description.done,
                         accessibilityHint: VoiceOver.doubleTapToConfirmSettings) {
                             viewModel.isChangingFilters = false
                         }

@@ -59,10 +59,10 @@ fileprivate struct FSRecentFilmCell: View {
                         .padding()
                 }
                 VStack(alignment: .leading) {
-                    Text(film.title ?? FSDescription.titleUnknown)
+                    Text(film.title ?? Description.titleUnknown)
                         .font(.title3)
                         .accessibilityAddTraits(.isHeader)
-                    Text(film.genre ?? FSDescription.genreUnknown)
+                    Text(film.genre ?? Description.genreUnknown)
                         .font(.callout)
                     
                     if let director = film.director, director != "N/A" {

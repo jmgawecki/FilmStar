@@ -3,37 +3,34 @@ import SwiftUI
 struct SearchScreen: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var viewModel: FSViewModel
-    @FocusState private var isKeyboardFocused: Bool
     
     var body: some View {
-        if verticalSizeClass == .regular {
         ZStack {
-            VStack(spacing: 20) {
-                Spacer()
-                
-                Image(decorative: FSImage.logoSearchScreen)
-                    .resizable()
-                    .frame(width: 250, height: 250)
-                    .cornerRadius(20)
-                    .padding(.bottom)
-                
-                FetchingErrorView(viewModel: viewModel)
-                
-                SearchFilmTextField(viewModel: viewModel)
-                
-                SearchButtonsPanel(viewModel: viewModel)
-                    .disabled(viewModel.isSearchTextFieldEmpty)
-                
-                FSRecentFilmsCollection(viewModel: viewModel)
-                    .frame(
-                        width: UIScreen.main.bounds.size.width - 50,
-                        height: UIScreen.main.bounds.size.height * 0.40 )
-                    .cornerRadius(20)
-                    .accessibilitySortPriority(7)
-            }
-        }
-        } else {
-            ZStack {
+            if verticalSizeClass == .regular {
+                VStack(spacing: 20) {
+                    Spacer()
+                    
+                    Image(decorative: FSImage.logoSearchScreen)
+                        .resizable()
+                        .frame(width: 250, height: 250)
+                        .cornerRadius(20)
+                        .padding(.bottom)
+                    
+                    FetchingErrorView(viewModel: viewModel)
+                    
+                    SearchFilmTextField(viewModel: viewModel)
+                    
+                    SearchButtonsPanel(viewModel: viewModel)
+                        .disabled(viewModel.isSearchTextFieldEmpty)
+                    
+                    FSRecentFilmsCollection(viewModel: viewModel)
+                        .frame(
+                            width: UIScreen.main.bounds.size.width - 50,
+                            height: UIScreen.main.bounds.size.height * 0.40 )
+                        .cornerRadius(20)
+                        .accessibilitySortPriority(7)
+                }
+            } else {
                 HStack(spacing: 20) {
                     FSRecentFilmsCollection(viewModel: viewModel)
                         .frame(
@@ -52,13 +49,10 @@ struct SearchScreen: View {
                             )
                             .cornerRadius(20)
                         
-                        
-                        
                         SearchFilmTextField(viewModel: viewModel)
                         
                         SearchButtonsPanel(viewModel: viewModel)
                             .disabled(viewModel.isSearchTextFieldEmpty)
-   
                     }
                 }
             }
@@ -70,7 +64,7 @@ struct SearchScreen_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             SearchScreen(viewModel: FSViewModel())
-.previewInterfaceOrientation(.landscapeRight)
+                .previewInterfaceOrientation(.landscapeRight)
             SearchScreen(viewModel: FSViewModel())
                 .preferredColorScheme(.dark)
         }
@@ -106,6 +100,7 @@ fileprivate struct FetchingErrorView: View {
 fileprivate struct SearchFilmTextField: View {
     @ObservedObject var viewModel: FSViewModel
     @State private var animationAngle: Double = 0
+    @AccessibilityFocusState var isScreenFocused: Bool
     var body: some View {
         ZStack(alignment: .trailing) {
             Color.secondary
@@ -120,15 +115,26 @@ fileprivate struct SearchFilmTextField: View {
                 .foregroundColor(Color.purple)
                 .cornerRadius(12)
                 .accessibilitySortPriority(10)
+                .accessibilityFocused($isScreenFocused)
             
             Image(systemName: SFSymbol.settings)
                 .rotationEffect(.degrees(animationAngle))
                 .animation(.easeIn, value: animationAngle)
                 .padding()
+                .accessibilityLabel(VoiceOver.searchFilterSettings)
+                .accessibilityHint(VoiceOver.doubleTapForFilterSettingsHint)
+                .accessibilityRemoveTraits(.isImage)
+                .accessibilityAddTraits(.isButton)
+                .accessibilitySortPriority(9)
                 .onTapGesture {
                     animationAngle += 360
                     viewModel.isChangingFilters = true
                 }
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                isScreenFocused = true
+            }
         }
         .popover(isPresented: $viewModel.isChangingFilters, content: {
             SearchFiltersScreen(viewModel: viewModel)
@@ -142,7 +148,7 @@ fileprivate struct SearchButtonsPanel: View {
     var body: some View {
         HStack {
             FSBorederedButton(
-                title: FSDescription.luckyShot,
+                title: Description.luckyShot,
                 systemImage: SFSymbol.dice,
                 colour: .mint,
                 size: .large,
@@ -153,7 +159,7 @@ fileprivate struct SearchButtonsPanel: View {
                 .accessibilitySortPriority(9)
             
             FSBorederedButton(
-                title: FSDescription.getTheList,
+                title: Description.getTheList,
                 systemImage: SFSymbol.film,
                 colour: .purple,
                 size: .large,

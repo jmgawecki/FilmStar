@@ -34,6 +34,8 @@
 		EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */; };
 		EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684674275B73F20022E51B /* PosterARView+Configuration.swift */; };
 		EF7BE61B2760E31900503368 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61A2760E31900503368 /* Statics.swift */; };
+		EF7BE61E2760FA0400503368 /* RotationAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */; };
+		EF7BE6202760FC7D00503368 /* FavouriteEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */; };
 		EFA058BE275C2A9400AC85C9 /* FilmStarSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */; };
 		EFA058C0275C3E1200AC85C9 /* ColouredVPadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA058BF275C3E1200AC85C9 /* ColouredVPadder.swift */; };
 		EFA2488127609E150015D5B9 /* SearchFiltersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */; };
@@ -99,6 +101,8 @@
 		EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModelTests.swift; sourceTree = "<group>"; };
 		EF684674275B73F20022E51B /* PosterARView+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Configuration.swift"; sourceTree = "<group>"; };
 		EF7BE61A2760E31900503368 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
+		EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationAnimationManager.swift; sourceTree = "<group>"; };
+		EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmptyView.swift; sourceTree = "<group>"; };
 		EFA058BF275C3E1200AC85C9 /* ColouredVPadder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColouredVPadder.swift; sourceTree = "<group>"; };
 		EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersScreen.swift; sourceTree = "<group>"; };
 		EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsSearchCollectionScreen.swift; sourceTree = "<group>"; };
@@ -323,6 +327,15 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		EF7BE61C2760F9F500503368 /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */,
+				EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */,
+			);
+			path = EmptyState;
+			sourceTree = "<group>";
+		};
 		EFA058C1275C3F8100AC85C9 /* Style */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +355,7 @@
 		EFE316F2275AD99200A635A9 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				EF7BE61C2760F9F500503368 /* EmptyState */,
 				EFF958D5275FB4F400DE9C13 /* ImageLoader */,
 				EFA058C1275C3F8100AC85C9 /* Style */,
 				EF339191275BC287009CC023 /* Collection */,
@@ -530,6 +544,7 @@
 				EF5EC8C527596A4100362FC0 /* FSFilmFetchingError.swift in Sources */,
 				EF059349275F5EC300186D9C /* FilmMock.swift in Sources */,
 				EFF26557275CCF3A0019B45D /* AccessibilityCustomContentKey+Extension.swift.swift in Sources */,
+				EF7BE6202760FC7D00503368 /* FavouriteEmptyView.swift in Sources */,
 				EFF958D9275FB57900DE9C13 /* FSImageView.swift in Sources */,
 				EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */,
 				EFDAF2FB275F59E500839C6B /* FilmTeaser.swift in Sources */,
@@ -546,6 +561,7 @@
 				EF059348275F5E1D00186D9C /* FilmRating.swift in Sources */,
 				EF22EDD6275B789300781FAF /* ARPoster.swift in Sources */,
 				EF7BE61B2760E31900503368 /* Statics.swift in Sources */,
+				EF7BE61E2760FA0400503368 /* RotationAnimationManager.swift in Sources */,
 				EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */,
 				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,

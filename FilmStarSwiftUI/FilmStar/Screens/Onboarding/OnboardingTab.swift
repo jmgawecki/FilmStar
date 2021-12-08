@@ -62,7 +62,7 @@ struct OnboardingPageView: View {
                 
                 if showsDismissButton {
                     FSBorederedButton(
-                        title: FSDescription.gotIt,
+                        title: Description.gotIt,
                         systemImage: SFSymbol.checkmark,
                         colour: .purple,
                         size: .large,
