@@ -15,7 +15,7 @@ protocol FilmProtocol: Identifiable, Codable {
     var posterUrl: String { get set }
     var ratings: [FilmRating] { get set }
     var imdbID: String { get set }
-    var boxOffice: String { get set }
+    var boxOffice: String? { get set }
     var id: String { get }
 }
 
@@ -47,7 +47,7 @@ struct Film: Filmable {
     var posterUrl: String
     var ratings: [FilmRating]
     var imdbID: String
-    var boxOffice: String
+    var boxOffice: String?
     
     // MARK: - Displayable
     var posterImage: UIImage?
