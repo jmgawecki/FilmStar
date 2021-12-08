@@ -3,7 +3,20 @@ import RealityKit
 import Combine
 
 class FSViewModel: ObservableObject {
+    // MARK: - Search Parameters
+    @Published var isChangingFilters: Bool = false
     
+    var searchTypes = ["Any", "Movie", "Series", "Episode"]
+    var searchYears: [String] = {
+        var searchYears = Array<Int>(1888...2021).reversed().map({ String($0) })
+        searchYears.insert("Any", at: 0)
+        return searchYears
+    }()
+    
+    @Published var year = 0
+    @Published var typeIndex = 0
+    
+    // MARK: - Observed
     /// Observed `Film` that is being populated with the succesfull asynchronous fetching with `FSViewModel`'s `fetchFilm` method.
     @Published var film: Film? {
         didSet {
@@ -78,7 +91,7 @@ class FSViewModel: ObservableObject {
             guard let self = self else { return }
             do {
                 let (fetchType, filmIdOrTitle) = prepareForFilmFetching(with: filmIdOrTitle)
-                let film = try await NetworkManager.shared.fetchFilm(fetchBy: fetchType, with: filmIdOrTitle)
+                let film = try await NetworkManager.shared.fetchFilm(fetchBy: fetchType, with: filmIdOrTitle, type: searchTypes[typeIndex], year: searchYears[year])
                 if let film = film {
                     DispatchQueue.main.async {
                         self.film = film
@@ -100,7 +113,7 @@ class FSViewModel: ObservableObject {
             guard let self = self else { return }
             do {
                 let titlePrepared = filmTitle.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: " ", with: "+")
-                let films = try await NetworkManager.shared.fetchListOfFilms(with: titlePrepared)
+                let films = try await NetworkManager.shared.fetchListOfFilms(with: titlePrepared, type: searchTypes[typeIndex], year: searchYears[year])
                 if !films.isEmpty {
                     DispatchQueue.main.async {
                         self.listOfTeasers = films

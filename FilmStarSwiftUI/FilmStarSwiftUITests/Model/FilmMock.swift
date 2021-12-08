@@ -22,7 +22,7 @@ struct FilmMock: FilmProtocol, PosterDisplayable, Codable {
     var imdbVotes: String
     var imdbID: String
     var type: String
-    var boxOffice: String
+    var boxOffice: String?
     
     enum CodingKeys: String, CodingKey {
         case title = "Title"

@@ -6,15 +6,44 @@ struct FilmDetailsScreen: View {
     @AccessibilityFocusState var isScreenFocused: Bool
     
     var body: some View {
-        if let film = FilmDummy.mockOptional {
-            if verticalSizeClass == .regular {
-                ScrollView(.vertical) {
-                    ZStack {
-                        VStack() {
+        if let film = viewModel.film {
+            ScrollView(.vertical, showsIndicators: false) {
+                if verticalSizeClass == .regular {
+                    VStack() {
+                        ButtonsPanel(viewModel: viewModel)
+                            .accessibilitySortPriority(6)
+                        
+                        Poster(viewModel: viewModel)
+                        
+                        HeaderView(film: film)
+                            .padding(.horizontal, 10)
+                            .accessibilitySortPriority(10)
+                            .accessibilityFocused($isScreenFocused)
+                        
+                        if !film.ratings.isEmpty {
+                            RatingsVGrid(film: film)
+                                .padding(.horizontal, 10)
+                                .accessibilitySortPriority(9)
+                        }
+                        
+                        FirstDetailView(film: film)
+                            .padding(.horizontal, 10)
+                            .accessibilitySortPriority(8)
+                        
+                        if film.awards.uppercased() != FSString.notApplicable &&
+                            film.boxOffice?.uppercased() != FSString.notApplicable {
+                            SecondDetailView(film: film)
+                                .padding(.horizontal, 10)
+                                .accessibilitySortPriority(7)
+                        }
+                        Spacer()
+                    }
+                } else {
+                    HStack {
+                        Poster(viewModel: viewModel)
+                        VStack {
                             ButtonsPanel(viewModel: viewModel)
                                 .accessibilitySortPriority(6)
-                            
-                            Poster(viewModel: viewModel)
                             
                             HeaderView(film: film)
                                 .padding(.horizontal, 10)
@@ -25,46 +54,19 @@ struct FilmDetailsScreen: View {
                                 .padding(.horizontal, 10)
                                 .accessibilitySortPriority(9)
                             
-                            SecondDetailView(film: film)
-                                .padding(.horizontal)
-                                .accessibilitySortPriority(8)
-                            
-                            RatingsVGrid(film: film)
-                                .padding(.horizontal, 10)
-                                .accessibilitySortPriority(7)
-                            Spacer()
-                        }
-                    }
-                }
-            } else {
-                ScrollView(.vertical) {
-                    ZStack {
-                        HStack {
-                            Poster(viewModel: viewModel)
-                            VStack {
-                                ButtonsPanel(viewModel: viewModel)
-                                    .accessibilitySortPriority(6)
-                                
-                                
-                                
-                                HeaderView(film: film)
-                                    .padding(.horizontal, 10)
-                                    .accessibilitySortPriority(10)
-                                    .accessibilityFocused($isScreenFocused)
-                                
-                                FirstDetailView(film: film)
-                                    .padding(.horizontal, 10)
-                                    .accessibilitySortPriority(9)
-                                
+                            if film.awards.uppercased() != "N/A" &&
+                                film.boxOffice?.uppercased() != "N/A" {
                                 SecondDetailView(film: film)
-                                    .padding(.horizontal)
+                                    .padding(.horizontal, 10)
                                     .accessibilitySortPriority(8)
-                                
+                            }
+                            
+                            if !film.ratings.isEmpty {
                                 RatingsVGrid(film: film)
                                     .padding(.horizontal, 10)
                                     .accessibilitySortPriority(7)
-                                Spacer()
                             }
+                            Spacer()
                         }
                     }
                 }
@@ -89,6 +91,7 @@ struct FilmDetailsScreen_Previews: PreviewProvider {
 // MARK: - Fileprivate Views
 fileprivate struct ButtonsPanel: View {
     @ObservedObject var viewModel: FSViewModel
+    @State var animationAngle: Double = 0
     @State var isShowingError: Bool = false {
         didSet {
             if isShowingError == true {
@@ -157,7 +160,9 @@ fileprivate struct ButtonsPanel: View {
                     colour: .yellow,
                     size: .large,
                     accessibilityLabel: "Go back") {
-                        viewModel.film = nil
+                        withAnimation {
+                            viewModel.film = nil
+                        }
                     }
             }
         }
@@ -273,19 +278,26 @@ fileprivate struct FirstDetailView: View {
             backgroundColour: .purple,
             cornerRadius: 12,
             alignment: .leading) {
-                Text(film.genre)
-                    .font(.callout)
-                    .accessibilitySortPriority(10)
-                Text("Directed by \(film.director)")
-                    .font(.callout)
-                    .accessibilitySortPriority(9)
-                Text("Written by \(film.writer)")
-                    .font(.caption)
-                    .accessibilitySortPriority(8)
-                Text("Actors: \(film.actors)")
-                    .font(.caption)
-                    .accessibilitySortPriority(7)
-                
+                if film.genre != FSString.notApplicable {
+                    Text(film.genre)
+                        .font(.callout)
+                        .accessibilitySortPriority(10)
+                }
+                if film.director != FSString.notApplicable {
+                    Text("Directed by \(film.director)")
+                        .font(.callout)
+                        .accessibilitySortPriority(9)
+                }
+                if film.writer != FSString.notApplicable {
+                    Text("Written by \(film.writer)")
+                        .font(.caption)
+                        .accessibilitySortPriority(8)
+                }
+                if film.actors != FSString.notApplicable {
+                    Text("Actors: \(film.actors)")
+                        .font(.caption)
+                        .accessibilitySortPriority(7)
+                }
             }
             .accessibilityHidden(true)
             .accessibilityElement(children: .combine)
@@ -304,10 +316,12 @@ fileprivate struct SecondDetailView: View {
             backgroundColour: .purple,
             cornerRadius: 12,
             alignment: .leading) {
-                Text(film.awards)
+                Text("Awards: \(film.awards)")
                     .font(.subheadline)
-                Text("Box office: \(film.boxOffice)")
-                    .font(.subheadline)
+                if let boxOffice = film.boxOffice {
+                    Text("Box office: \(boxOffice)")
+                        .font(.subheadline)
+                }
             }
             .accessibilityElement(children: .combine)
     }

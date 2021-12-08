@@ -64,8 +64,11 @@ fileprivate struct FSRecentFilmCell: View {
                         .accessibilityAddTraits(.isHeader)
                     Text(film.genre ?? "Genre unknown")
                         .font(.callout)
-                    Text("Directed by \(film.director ?? "")")
-                        .font(.caption)
+                    
+                    if let director = film.director, director != "N/A" {
+                        Text("Directed by \(film.director ?? "")")
+                            .font(.caption)
+                    }
                 }
                 .foregroundColor(.purple)
                 .accessibilityHidden(true)
@@ -74,7 +77,7 @@ fileprivate struct FSRecentFilmCell: View {
                 Spacer()
             }
         }
-        .frame(width: 350, height: 130, alignment: .center)
+        .frame(minWidth: 250, idealWidth: 350, idealHeight: 130)
         .cornerRadius(15)
         .accessibilityElement(children: .combine)
         .accessibilityCustomContent(.title, film.title ?? "unknown", importance: .high)

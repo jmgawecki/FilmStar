@@ -145,39 +145,21 @@ class NetworkManagerTests: XCTestCase {
         }
     }
     
-    // MARK: - NetworkManager Real
-    
-    func testFetchingtt3896198WithfetchFilmMethodSucceeds() async throws {
-        do {
-            let film = try await NetworkManager.shared.fetchFilm(fetchBy: .id, with: "tt3896198")
-            if let film = film {
-                XCTAssertEqual(film.imdbID, "tt3896198")
-            } else {
-                XCTFail()
-            }
-        } catch let error as FSFilmFetchingError {
-            XCTFail(error.rawValue)
-        }
-    }
-    
-    func testFetchingGuardiansWithTitleWithfetchFilmMethodSucceeds() async throws {
-        do {
-            let film = try await NetworkManager.shared.fetchFilm(fetchBy: .title, with: "Guardians+of+the+Galaxy+Vol.+2")
-            if let film = film {
-                XCTAssertEqual(film.imdbID, "tt3896198")
-            } else {
-                XCTFail()
-            }
-        } catch let error as FSFilmFetchingError {
-            XCTFail(error.rawValue)
-        }
-    }
-    
-    func testSearchForListGuardiansShouldNotThrowErrors() async throws {
-        do {
-            let _ = try await NetworkManager.shared.fetchListOfFilms(with: "Guardians+of+the+Galaxy+Vol.+2")
-        } catch let error as FSFilmFetchingError {
-            XCTFail(error.rawValue)
+    func testSearchByTitleAndYearReturnsCorrectUrl() {
+        // Arrange
+        let fetchType = FilmFetchType.title
+        let urlByID = URL.init(string: "https://www.omdbapi.com/?t=Guardians+of+the+Galaxy+Vol.+2&apikey=653d2e0a")
+        let apiKey = "&apikey=653d2e0a"
+        let movieTitle = "Guardians of the Galaxy Vol. 2"
+        let baseURL = "https://www.omdbapi.com/?"
+        // Act
+        if fetchType == FilmFetchType.title {
+            let formattedTitle = movieTitle.replacingOccurrences(of: " ", with: "+")
+            let url = URL.init(string: baseURL + fetchType.rawValue + formattedTitle + apiKey)
+            // Assert
+            XCTAssertEqual(url, urlByID)
+        } else {
+            XCTFail("Wrong fetch type")
         }
     }
     

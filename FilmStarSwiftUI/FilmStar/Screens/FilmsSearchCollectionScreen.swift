@@ -1,10 +1,3 @@
-//
-//  FilmsListScreen.swift
-//  FilmStar
-//
-//  Created by Jakub Gawecki on 07/12/2021.
-//
-
 import SwiftUI
 
 struct FilmsSearchCollectionScreen: View {
@@ -61,6 +54,7 @@ fileprivate struct FilmSearchCollectionTopBar: View {
                 .fontWeight(.bold)
                 .foregroundColor(.purple)
                 .padding(.leading)
+                .minimumScaleFactor(0.5)
                 .accessibilityLabel("Results")
                 .accessibilityAddTraits(.isHeader)
                 .accessibilityHint("Swipe right to go back or to see results")
@@ -75,7 +69,9 @@ fileprivate struct FilmSearchCollectionTopBar: View {
                 size: .large,
                 accessibilityLabel: "Back button",
                 accessibilityHint: "Double tap to go back to the Search Screen or swipe right to see results") {
-                    viewModel.listOfTeasers.removeAll()
+                    withAnimation {
+                        viewModel.listOfTeasers.removeAll()
+                    }
                 }
                 .padding(.horizontal)
         }
@@ -95,7 +91,9 @@ fileprivate struct FilmsSearchCollectionCell: View {
                 
                 VStack(alignment: .leading) {
                     Text("\(filmTeaser.title) (\(filmTeaser.year))")
-                        .font(.headline)
+                        .font(.subheadline)
+//                        .scaledToFit()
+//                        .minimumScaleFactor(0.5)
                 }
                 Spacer()
             }

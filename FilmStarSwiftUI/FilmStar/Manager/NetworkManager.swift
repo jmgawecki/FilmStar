@@ -21,8 +21,10 @@ class NetworkManager {
     ///   - fetchBy: `FilmFetchType` decides wether the fetch should be performed for a title or IMDb ID.
     ///   - filmNameOrID: provided film's title or film's IMDbID
     /// - Returns: `Film`'s instance
-    func fetchFilm(fetchBy: FilmFetchType, with filmTitleOrID: String) async throws -> Film? {
-        let endpoint = baseURL + fetchBy.rawValue + filmTitleOrID + apiKey
+    func fetchFilm(fetchBy: FilmFetchType, with filmTitleOrID: String, type: String, year: String) async throws -> Film? {
+        let typeFilter = type == "Any" ? "" : "&type=\(type)"
+        let yearFilter = year == "Any" ? "" : "&y=\(year)"
+        let endpoint = baseURL + fetchBy.rawValue + filmTitleOrID + typeFilter + yearFilter + apiKey
         
         guard let url = URL(string: endpoint)
         else { throw FSFilmFetchingError.wrongFormat }
@@ -45,8 +47,10 @@ class NetworkManager {
     /// Fetches a list of films and returns it as an array of `FilmTeaser` struct. Results that are fetched may differ.
     /// - Parameter filmName: Film's approximate or precised title
     /// - Returns: Array of `FilmTeaser`s
-    func fetchListOfFilms(with filmName: String) async throws -> [FilmTeaser] {
-        let endpoint = baseURL + "s=" + filmName + apiKey
+    func fetchListOfFilms(with filmName: String, type: String, year: String) async throws -> [FilmTeaser] {
+        let typeFilter = type == "Any" ? "" : "&type=\(type)"
+        let yearFilter = year == "Any" ? "" : "&y=\(year)"
+        let endpoint = baseURL + "s=" + filmName + typeFilter + yearFilter + apiKey
         
         guard let url = URL(string: endpoint)
         else { throw FSFilmFetchingError.wrongFormat }

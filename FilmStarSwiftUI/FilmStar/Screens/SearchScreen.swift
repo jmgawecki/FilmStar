@@ -19,7 +19,7 @@ struct SearchScreen: View {
                 
                 FetchingErrorView(viewModel: viewModel)
                 
-                SearchFilmTextField(searchText: $viewModel.searchFilmScreenText)
+                SearchFilmTextField(viewModel: viewModel)
                 
                 SearchButtonsPanel(viewModel: viewModel)
                     .disabled(viewModel.isSearchTextFieldEmpty)
@@ -54,7 +54,7 @@ struct SearchScreen: View {
                         
                         
                         
-                        SearchFilmTextField(searchText: $viewModel.searchFilmScreenText)
+                        SearchFilmTextField(viewModel: viewModel)
                         
                         SearchButtonsPanel(viewModel: viewModel)
                             .disabled(viewModel.isSearchTextFieldEmpty)
@@ -104,21 +104,35 @@ fileprivate struct FetchingErrorView: View {
 }
 
 fileprivate struct SearchFilmTextField: View {
-    @Binding var searchText: String
+    @ObservedObject var viewModel: FSViewModel
+    @State private var animationAngle: Double = 0
     var body: some View {
-        ZStack {
+        ZStack(alignment: .trailing) {
             Color.secondary
                 .opacity(0.2)
                 .cornerRadius(12)
                 .frame(width: 360, height: 44)
             
-            TextField("Search for film..", text: $searchText)
+            TextField("Search for film..", text: $viewModel.searchFilmScreenText)
                 .frame(width: 300, height: 44)
                 .padding(.horizontal)
+                .padding(.leading)
                 .foregroundColor(Color.purple)
                 .cornerRadius(12)
                 .accessibilitySortPriority(10)
+            
+            Image(systemName: "gearshape.fill")
+                .rotationEffect(.degrees(animationAngle))
+                .animation(.easeIn, value: animationAngle)
+                .padding()
+                .onTapGesture {
+                    animationAngle += 360
+                    viewModel.isChangingFilters = true
+                }
         }
+        .popover(isPresented: $viewModel.isChangingFilters, content: {
+            SearchParametersScreen(viewModel: viewModel)
+        })
     }
 }
 
