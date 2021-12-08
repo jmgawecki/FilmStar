@@ -3,6 +3,10 @@ import RealityKit
 import Combine
 
 class FSViewModel: ObservableObject {
+    
+    /// Observed boolean that display a `ProgressView` on the `SearchScreen` when the data is being fetched
+    @Published var isFetchingFilms: Bool = false
+    
     // MARK: - Search Parameters
     @Published var isChangingFilters: Bool = false
     
@@ -95,6 +99,9 @@ class FSViewModel: ObservableObject {
                 if let film = film {
                     DispatchQueue.main.async {
                         self.film = film
+                        withAnimation {
+                            self.isFetchingFilms = false
+                        }
                     }
                     fetchPosterData(for: film)
                 }
@@ -102,6 +109,9 @@ class FSViewModel: ObservableObject {
                 if let error = error as? FSFilmFetchingError {
                     DispatchQueue.main.async {
                         self.searchingError = error.rawValue
+                        withAnimation {
+                            self.isFetchingFilms = false
+                        }
                     }
                 }
             }
@@ -117,12 +127,18 @@ class FSViewModel: ObservableObject {
                 if !films.isEmpty {
                     DispatchQueue.main.async {
                         self.listOfTeasers = films
+                        withAnimation {
+                            self.isFetchingFilms = false
+                        }
                     }
                 }
             } catch let error {
                 if let error = error as? FSFilmFetchingError {
                     DispatchQueue.main.async {
                         self.searchingError = error.rawValue
+                        withAnimation {
+                            self.isFetchingFilms = false
+                        }
                     }
                 }
             }
