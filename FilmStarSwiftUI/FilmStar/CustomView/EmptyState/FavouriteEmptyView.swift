@@ -14,17 +14,18 @@ struct FavouriteEmptyView: View {
             Image(systemName: SFSymbol.notFavourite)
                 .resizable()
                 .scaledToFit()
+                .foregroundColor(.purple)
                 .frame(width: 250, height: 250)
                 .rotationEffect(.degrees(animationManager.rotationAngle))
                 .animation(.easeInOut(duration: 2.5), value: animationManager.rotationAngle)
                 .accessibilityHidden(true)
-            VStack {
+            VStack(alignment: .leading) {
                 Text(Description.yourFavouritesAreEmpty)
-                    .font(.title2)
+                    .font(Font.system(size: 50, weight: .bold, design: .rounded))
                     .padding(.top)
                 
                 Text(Description.addSomeFavourites)
-                    .font(.callout)
+                    .font(Font.system(size: 25, weight: .semibold, design: .rounded))
             }
             .contentShape(Rectangle())
             .accessibilityElement(children: .ignore)
@@ -39,10 +40,6 @@ struct FavouriteEmptyView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 isScreenFocused = true
             }
-            animationManager.load()
-        }
-        .onDisappear {
-            animationManager.cancel()
         }
     }
 }

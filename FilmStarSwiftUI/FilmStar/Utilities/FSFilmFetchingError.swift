@@ -1,6 +1,5 @@
 import Foundation
 
-
 /// `FSFilmFetchingError` provides user-friendly information for an unsuccessful data fetch.
 enum FSFilmFetchingError: String, Error {
     case wrongFormat = "Sorry but it seems that you typed the wrong format. Try to pass the film's name or its valid IMDb ID."

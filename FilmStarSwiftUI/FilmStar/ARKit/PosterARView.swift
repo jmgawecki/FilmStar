@@ -2,13 +2,17 @@ import RealityKit
 import ARKit
 import SwiftUI
 
-/// PosterARView is a subclass of `ARView` to project an experience of "hanging" the `ARPoster` onto the vertical plane of any type
-///
-/// Upon the tapping the button, ARView performs RayCast to check if any plane has been detected and can be used as an Anchor.
-///
-/// Upon the successfull RayCast, a poster is being placed on the vertical plane
-///
-/// Session infroms the user if it has enough information about the scene. If it does not, it asks user to perform some action that may improve the experience.
+/**
+ PosterARView is a subclass of `ARView` to project an experience of "hanging" the `ARPoster` onto the vertical plane of any type
+
+Upon the tapping the button, ARView performs RayCast to check if any plane has been detected and can be used as an Anchor.
+
+Upon the successfull RayCast, a poster is being placed on the vertical plane
+
+Session infroms the user if it has enough information about the scene. If it does not, it asks user to perform some action that may improve the experience.
+
+Please note that the experience is possible only for devices with LiDAR Scanner.
+*/
 class PosterARView: ARView {
     // MARK: - UI
     lazy var resetSessionButton: UIButton = {
@@ -20,21 +24,22 @@ class PosterARView: ARView {
         configuration.baseForegroundColor = .black
         configuration.image = UIImage(systemName: "paintpalette")
         configuration.buttonSize = .large
-        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = configuration
-        
         button.addTarget(self, action: #selector(performHanging), for: .touchUpInside)
-        
         return button
     }()
+    
+    var arPoster: ARPoster?
+    let focusSquare: FocusSquare?
+    var posterAnchor: AnchorEntity?
+    var focusSquareAnchor: AnchorEntity?
     
     // MARK: - Properties
     var viewModel: FSViewModel
     let coachingOverlay = ARCoachingOverlayView()
-    var arPoster: ARPoster?
+    var isFocusSquareAnchored: Bool = false
     var arResource: TextureResource
-    var posterAnchor: AnchorEntity?
     
     static let isARExperienceAvailable: Bool = ARWorldTrackingConfiguration.supportsFrameSemantics([.personSegmentationWithDepth, .sceneDepth]) && ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)
     
@@ -43,6 +48,7 @@ class PosterARView: ARView {
     required init(viewModel: FSViewModel) {
         /// No nil possible since the View would be never initialised otherwise
         self.arResource = viewModel.film!.arPosterTexture!
+        focusSquare = FocusSquare(textureResource: arResource)
         arPoster = ARPoster(with: arResource)
         self.viewModel = viewModel
         super.init(frame: .zero)

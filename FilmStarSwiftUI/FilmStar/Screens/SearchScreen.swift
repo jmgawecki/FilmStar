@@ -3,12 +3,13 @@ import SwiftUI
 struct SearchScreen: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @ObservedObject var viewModel: FSViewModel
+    @AccessibilityFocusState var isTextFieldFocused: Bool
     
     var body: some View {
         ZStack {
             if verticalSizeClass == .regular {
                 VStack(spacing: 20) {
-                    Spacer()
+                    Spacer(minLength: 75)
                     
                     Image(decorative: FSImage.logoSearchScreen)
                         .resizable()
@@ -19,6 +20,7 @@ struct SearchScreen: View {
                     FetchingErrorView(viewModel: viewModel)
                     
                     SearchFilmTextField(viewModel: viewModel)
+                        .accessibilityFocused($isTextFieldFocused)
                     
                     SearchButtonsPanel(viewModel: viewModel)
                         .disabled(viewModel.isSearchTextFieldEmpty)
@@ -57,6 +59,9 @@ struct SearchScreen: View {
                 }
             }
         }
+        .onDisappear(perform: {
+            self.isTextFieldFocused = false 
+        })
         .overlay {
             if viewModel.isFetchingFilms {
                 ProgressView()
@@ -159,7 +164,7 @@ fileprivate struct SearchButtonsPanel: View {
             FSBorederedButton(
                 title: Description.searchForOne,
                 systemImage: SFSymbol.film,
-                colour: .mint,
+                colour: .fsSecondary,
                 size: .large,
                 accessibilityHint: VoiceOver.doubleTapForOneFilmSearch) {
                     viewModel.searchingError = nil

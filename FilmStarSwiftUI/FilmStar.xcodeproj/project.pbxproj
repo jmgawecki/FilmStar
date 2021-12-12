@@ -15,6 +15,7 @@
 		EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */; };
 		EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */; };
 		EF0FC00B275A8DF80028D117 /* FSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC00A275A8DF80028D117 /* FSViewModel.swift */; };
+		EF13EDCD2764C78E00DBD079 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF13EDCC2764C78E00DBD079 /* FocusSquare.swift */; };
 		EF22EDD6275B789300781FAF /* ARPoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF22EDD5275B789300781FAF /* ARPoster.swift */; };
 		EF22EDDA275B894F00781FAF /* ARPosterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF22EDD9275B894F00781FAF /* ARPosterTests.swift */; };
 		EF339190275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */; };
@@ -36,6 +37,8 @@
 		EF7BE61B2760E31900503368 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61A2760E31900503368 /* Statics.swift */; };
 		EF7BE61E2760FA0400503368 /* RotationAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */; };
 		EF7BE6202760FC7D00503368 /* FavouriteEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */; };
+		EF92D87D2766374200CCDF33 /* opacityGreenShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EF92D87C2766374200CCDF33 /* opacityGreenShader.metal */; };
+		EF9AFE6C2764B005004CC81D /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9AFE6B2764B005004CC81D /* Color+Extension.swift */; };
 		EFA058BE275C2A9400AC85C9 /* FilmStarSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8A6275954CE00362FC0 /* FilmStarSwiftUIUITestsLaunchTests.swift */; };
 		EFA058C0275C3E1200AC85C9 /* ColouredVPadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA058BF275C3E1200AC85C9 /* ColouredVPadder.swift */; };
 		EFA2488127609E150015D5B9 /* SearchFiltersScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */; };
@@ -43,6 +46,7 @@
 		EFC7DCAD2761483C00B989CD /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7DCAC2761483C00B989CD /* OnboardingPageView.swift */; };
 		EFCB91EB275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */; };
 		EFD3ED92275EA5330066B050 /* OnboardingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD3ED91275EA5330066B050 /* OnboardingTab.swift */; };
+		EFD90291276257B4002BFBF1 /* FloatingTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD90290276257B4002BFBF1 /* FloatingTabBar.swift */; };
 		EFDAF2FB275F59E500839C6B /* FilmTeaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */; };
 		EFDAF2FC275F5C3600839C6B /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
 		EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */; };
@@ -78,6 +82,7 @@
 		EF0FC005275A770A0028D117 /* FilmMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmMock.swift; sourceTree = "<group>"; };
 		EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailsScreen.swift; sourceTree = "<group>"; };
 		EF0FC00A275A8DF80028D117 /* FSViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSViewModel.swift; sourceTree = "<group>"; };
+		EF13EDCC2764C78E00DBD079 /* FocusSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
 		EF22EDD5275B789300781FAF /* ARPoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPoster.swift; sourceTree = "<group>"; };
 		EF22EDD9275B894F00781FAF /* ARPosterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPosterTests.swift; sourceTree = "<group>"; };
 		EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+ARSessionDelegates.swift"; sourceTree = "<group>"; };
@@ -105,12 +110,15 @@
 		EF7BE61A2760E31900503368 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationAnimationManager.swift; sourceTree = "<group>"; };
 		EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmptyView.swift; sourceTree = "<group>"; };
+		EF92D87C2766374200CCDF33 /* opacityGreenShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = opacityGreenShader.metal; sourceTree = "<group>"; };
+		EF9AFE6B2764B005004CC81D /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		EFA058BF275C3E1200AC85C9 /* ColouredVPadder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColouredVPadder.swift; sourceTree = "<group>"; };
 		EFA2488027609E150015D5B9 /* SearchFiltersScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersScreen.swift; sourceTree = "<group>"; };
 		EFC7DCAA276147DB00B989CD /* AROnboardingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AROnboardingTab.swift; sourceTree = "<group>"; };
 		EFC7DCAC2761483C00B989CD /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsSearchCollectionScreen.swift; sourceTree = "<group>"; };
 		EFD3ED91275EA5330066B050 /* OnboardingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTab.swift; sourceTree = "<group>"; };
+		EFD90290276257B4002BFBF1 /* FloatingTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBar.swift; sourceTree = "<group>"; };
 		EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTeaser.swift; sourceTree = "<group>"; };
 		EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSBorderedButton.swift; sourceTree = "<group>"; };
 		EFE316F6275AE87A00A635A9 /* PosterARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterARView.swift; sourceTree = "<group>"; };
@@ -177,6 +185,15 @@
 				EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		EF13EDCB2764C78100DBD079 /* FocusSquare */ = {
+			isa = PBXGroup;
+			children = (
+				EF13EDCC2764C78E00DBD079 /* FocusSquare.swift */,
+				EF92D87C2766374200CCDF33 /* opacityGreenShader.metal */,
+			);
+			path = FocusSquare;
 			sourceTree = "<group>";
 		};
 		EF22EDD4275B784300781FAF /* Entity */ = {
@@ -359,9 +376,18 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
+		EFD9028F2762579F002BFBF1 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				EFD90290276257B4002BFBF1 /* FloatingTabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
 		EFE316F2275AD99200A635A9 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				EFD9028F2762579F002BFBF1 /* TabBar */,
 				EF7BE61C2760F9F500503368 /* EmptyState */,
 				EFF958D5275FB4F400DE9C13 /* ImageLoader */,
 				EFA058C1275C3F8100AC85C9 /* Style */,
@@ -382,6 +408,7 @@
 		EFE316F8275AE88900A635A9 /* ARKit */ = {
 			isa = PBXGroup;
 			children = (
+				EF13EDCB2764C78100DBD079 /* FocusSquare */,
 				EF22EDD4275B784300781FAF /* Entity */,
 				EFE316F6275AE87A00A635A9 /* PosterARView.swift */,
 				EFE316F9275AE8EA00A635A9 /* PosterARView+Coaching.swift */,
@@ -395,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF26556275CCF3A0019B45D /* AccessibilityCustomContentKey+Extension.swift.swift */,
+				EF9AFE6B2764B005004CC81D /* Color+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -540,12 +568,15 @@
 			files = (
 				EFE316FC275AE97900A635A9 /* PosterARScreen.swift in Sources */,
 				EFA2488127609E150015D5B9 /* SearchFiltersScreen.swift in Sources */,
+				EF92D87D2766374200CCDF33 /* opacityGreenShader.metal in Sources */,
 				EF5EC88E275954CE00362FC0 /* PersistenceController.swift in Sources */,
 				EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */,
 				EF339190275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift in Sources */,
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EFC7DCAD2761483C00B989CD /* OnboardingPageView.swift in Sources */,
 				EF5EC8B5275957C400362FC0 /* FSTabView.swift in Sources */,
+				EFD90291276257B4002BFBF1 /* FloatingTabBar.swift in Sources */,
+				EF9AFE6C2764B005004CC81D /* Color+Extension.swift in Sources */,
 				EFF958D7275FB50100DE9C13 /* FSImageLoader.swift in Sources */,
 				EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */,
 				EF5EC8C527596A4100362FC0 /* FSFilmFetchingError.swift in Sources */,
@@ -570,6 +601,7 @@
 				EF7BE61B2760E31900503368 /* Statics.swift in Sources */,
 				EF7BE61E2760FA0400503368 /* RotationAnimationManager.swift in Sources */,
 				EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */,
+				EF13EDCD2764C78E00DBD079 /* FocusSquare.swift in Sources */,
 				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
 				EFC7DCAB276147DB00B989CD /* AROnboardingTab.swift in Sources */,
@@ -670,6 +702,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -724,6 +757,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -756,6 +790,7 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fss.FilmStarSwiftUI;
 				PRODUCT_NAME = FilmStar;
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -787,6 +822,7 @@
 				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = fss.FilmStarSwiftUI;
 				PRODUCT_NAME = FilmStar;
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

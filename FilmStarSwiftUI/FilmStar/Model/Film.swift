@@ -3,6 +3,7 @@ import UIKit
 import RealityKit
 
 protocol FilmProtocol: Identifiable, Codable {
+    associatedtype Rating = FilmRatingProtocol
     var title: String { get set }
     var year: String { get set }
     var released: String { get set }
@@ -13,7 +14,7 @@ protocol FilmProtocol: Identifiable, Codable {
     var plot: String { get set }
     var awards: String { get set }
     var posterUrl: String { get set }
-    var ratings: [FilmRating] { get set }
+    var ratings: [Rating] { get set }
     var imdbID: String { get set }
     var boxOffice: String? { get set }
     var id: String { get }

@@ -72,6 +72,11 @@ struct FilmDetailsScreen: View {
                     }
                 }
             }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.isScreenFocused = true
+                }
+            }
         }
     }
 }
@@ -92,7 +97,6 @@ struct FilmDetailsScreen_Previews: PreviewProvider {
 // MARK: - Fileprivate Views
 fileprivate struct ButtonsPanel: View {
     @ObservedObject var viewModel: FSViewModel
-    @State var animationAngle: Double = 0
     @State var isShowingError: Bool = false {
         didSet {
             if isShowingError == true {

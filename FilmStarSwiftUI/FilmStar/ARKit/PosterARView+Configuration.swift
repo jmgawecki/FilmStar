@@ -11,7 +11,7 @@ extension PosterARView {
             PosterARView.isARExperienceAvailable
         else { return }
         configuration.frameSemantics = [.personSegmentationWithDepth, .sceneDepth]
-        configuration.planeDetection = [.vertical]
+        configuration.planeDetection = [.vertical, .horizontal]
         configuration.sceneReconstruction = .meshWithClassification
         configuration.environmentTexturing = .automatic
         session.run(configuration, options: [.removeExistingAnchors, .resetTracking])

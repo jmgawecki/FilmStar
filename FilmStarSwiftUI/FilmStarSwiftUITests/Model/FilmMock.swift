@@ -1,7 +1,7 @@
 import UIKit
 import RealityKit
 
-struct FilmMock: FilmProtocol, PosterDisplayable, Codable {
+struct FilmMock: Filmable {
     var title: String
     var year: String
     var rated: String

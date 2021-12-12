@@ -15,6 +15,11 @@ struct FilmsSearchCollectionScreen: View {
                 viewModel: viewModel,
                 isViewFocused: _isViewFocused
             )
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        isViewFocused.toggle()
+                    }
+                }
             
             List {
                 ForEach(viewModel.listOfTeasers) { filmTeaser in
@@ -28,12 +33,9 @@ struct FilmsSearchCollectionScreen: View {
                 FilmDetailsScreen(viewModel: viewModel)
             })
         }
-        .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                isViewFocused.toggle()
-            }
+        .onDisappear {
+            isViewFocused.toggle()
         }
-        
     }
 }
 
