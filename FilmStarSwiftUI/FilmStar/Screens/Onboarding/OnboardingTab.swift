@@ -7,9 +7,7 @@ struct OnboardingTab: View {
             OnboardingPageView(
                 title: Onboarding.pageOneTitle,
                 subtitle: Onboarding.pageOneSubtitle,
-                imageName: Onboarding.pageOneImage,
-                showsDismissButton: false,
-                shouldPresentOnboarding: $shouldPresentOnboarding
+                imageName: Onboarding.pageOneImage
             )
                 .accessibilityElement(children: .ignore)
                 .clipShape(Rectangle())
@@ -19,9 +17,7 @@ struct OnboardingTab: View {
                 OnboardingPageView(
                     title: Onboarding.pageTwoTitle,
                     subtitle: Onboarding.pageTwoSubtitle,
-                    imageName: Onboarding.pageTwoImage,
-                    showsDismissButton: false,
-                    shouldPresentOnboarding: $shouldPresentOnboarding
+                    imageName: Onboarding.pageTwoImage
                 )
                     .accessibilityElement(children: .ignore)
                     .clipShape(Rectangle())
@@ -73,13 +69,16 @@ fileprivate struct OnboardingPageLastView: View {
                         .scaledToFit()
                         .frame(width: 200, height: 200)
                     
-                    Text(title)
-                        .font(.title2)
-                        .padding(.vertical)
-                    
-                    Text(subtitle)
-                        .foregroundColor(.purple)
-                        .padding(.bottom)
+                    VStack(alignment: .leading) {
+                        Text(title)
+                            .font(Font.system(size: 30, weight: .bold, design: .rounded))
+                            .padding(.vertical)
+                        
+                        Text(subtitle)
+                            .font(Font.system(size: 15, weight: .bold, design: .rounded))
+                            .foregroundColor(.purple)
+                            .padding(.bottom)
+                    }
                 }
                 .accessibilityElement(children: .ignore)
                 .clipShape(Rectangle())

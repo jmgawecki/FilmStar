@@ -2,7 +2,6 @@
 #include <RealityKit/RealityKit.h>
 using namespace metal;
 
-
 [[visible]]
 void opacityGreenShader(realitykit::surface_parameters params)
 {
@@ -10,6 +9,3 @@ void opacityGreenShader(realitykit::surface_parameters params)
     params.surface().set_opacity(0.3);
     params.surface().set_roughness(0.9);
 }
-
-
-

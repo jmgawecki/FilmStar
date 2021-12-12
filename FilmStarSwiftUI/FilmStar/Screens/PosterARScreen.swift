@@ -7,23 +7,25 @@ struct PosterARScreen: View {
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
-            ARViewContainer(viewModel: viewModel)
-                .edgesIgnoringSafeArea(.all)
-        
-                FSProminentButton(
-                    title: FSString.back,
-                    systemImage: SFSymbol.close,
-                    colour: .purple,
-                    size: .large,
-                    accessibilityLabel: FSAccessibilityString.goBack) {
-                        viewModel.isPresentingARExperience.toggle()
-                    }
-                    .opacity(0.85)
-                    .padding()
+            if shouldPresentAROnboarding {
+                AROnboardingTab(shouldPresentAROnboarding: $shouldPresentAROnboarding)
+            } else {
+                ARViewContainer(viewModel: viewModel)
+                    .edgesIgnoringSafeArea(.all)
+            
+                    FSProminentButton(
+                        title: FSString.back,
+                        systemImage: SFSymbol.close,
+                        colour: .purple,
+                        size: .large,
+                        accessibilityLabel: FSAccessibilityString.goBack) {
+                            viewModel.isPresentingARExperience.toggle()
+                        }
+                        .opacity(0.85)
+                        .padding()
+            }
+
         }
-        .fullScreenCover(isPresented: $shouldPresentAROnboarding, content: {
-            AROnboardingTab(shouldPresentAROnboarding: $shouldPresentAROnboarding)
-        })
     }
 }
 

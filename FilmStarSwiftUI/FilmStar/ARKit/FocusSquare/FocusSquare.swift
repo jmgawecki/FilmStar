@@ -1,12 +1,15 @@
 import RealityKit
 import MetalKit
 
+/// Entity that takes the shape of the green opaque bounding box. `FocusSquare` lets the user know where will the `ARPoster` render and appear.
+///
+/// `FocusSquare` uses custom `opacityGreenShader` Metal base shader. Size of the `FocusSquare` will be that of the Poster that the experience is about to render.
 class FocusSquare: Entity, HasModel {
     var textureResource: TextureResource?
     
     required init(textureResource: TextureResource?) {
         if let textureResource = textureResource {
-        self.textureResource = textureResource
+            self.textureResource = textureResource
         }
         super.init()
         model = ModelComponent(
@@ -14,8 +17,8 @@ class FocusSquare: Entity, HasModel {
                 width: Float(0.5),
                 depth: Float(0.5 * Float(textureResource!.height) / Float(textureResource!.width))
             ),
-            materials: [])
-        
+            materials: []
+        )
         
         if let surfaceShader = createSurfaceShader() {
             do {
@@ -38,6 +41,8 @@ class FocusSquare: Entity, HasModel {
     
     required init() { fatalError("init() has not been implemented") }
     
+    
+    /// Builds a metal library and returns the `SurfaceShader` that is later applied to the `FocusSquare`'s custom material to create a green opaque rectangle suggesting where the `ARPoster` is going to be placed.
     fileprivate func createSurfaceShader() -> CustomMaterial.SurfaceShader? {
         guard
             let device = MTLCreateSystemDefaultDevice(),

@@ -98,7 +98,7 @@ enum FSOnboardingString {
 typealias Onboarding = FSOnboardingString
 
 enum FSAROnboarding {
-    static let pageOneTitle = "Go to the well enlighted room"
+    static let pageOneTitle = "Go to the well lit room"
     static let pageOneSubtitle = "Find some distinctive vertical surface"
     static let pageOneImage = "arkit"
     
@@ -112,7 +112,7 @@ enum FSAROnboarding {
     
     static let pageFourthTitle = "Try to rotate it!"
     static let pageFourthSubtitle = "By swiping with your two fingers"
-    static let pageFourthImage = "rotate.3d"
+    static let pageFourthImage = "crop.rotate"
     
     static let pageFifthTitle = "Landscape mode is currently not supported"
     static let pageFifthSubtitle = "We are working on it."

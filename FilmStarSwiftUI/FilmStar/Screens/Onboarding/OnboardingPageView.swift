@@ -4,8 +4,6 @@ struct OnboardingPageView: View {
     var title: String
     var subtitle: String
     var imageName: String
-    var showsDismissButton: Bool
-    @Binding var shouldPresentOnboarding: Bool
     var body: some View {
         ZStack {
             VStack {
@@ -13,24 +11,16 @@ struct OnboardingPageView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 200, height: 200)
-                
-                Text(title)
-                    .font(.title2)
-                    .padding(.vertical)
-                
-                Text(subtitle)
-                    .foregroundColor(.purple)
-                    .padding(.bottom)
-                
-                if showsDismissButton {
-                    FSBorederedButton(
-                        title: Description.gotIt,
-                        systemImage: SFSymbol.checkmark,
-                        colour: .purple,
-                        size: .large,
-                        accessibilityHint: VoiceOver.doubleTapToCloseOnboarding) {
-                            shouldPresentOnboarding.toggle()
-                        }
+                VStack(alignment: .leading) {
+                    Text(title)
+                        .font(Font.system(size: 40, weight: .bold, design: .rounded))
+                        .padding(.vertical)
+                    
+                    Text(subtitle)
+                        .font(Font.system(size: 15, weight: .bold, design: .rounded))
+                        .minimumScaleFactor(0.4)
+                        .foregroundColor(.purple)
+                        .padding(.vertical)
                 }
             }
         }

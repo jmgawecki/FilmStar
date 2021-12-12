@@ -7,33 +7,25 @@ struct AROnboardingTab: View {
             OnboardingPageView(
                 title: AROnboarding.pageOneTitle,
                 subtitle: AROnboarding.pageOneSubtitle,
-                imageName: AROnboarding.pageOneImage,
-                showsDismissButton: false,
-                shouldPresentOnboarding: $shouldPresentAROnboarding
+                imageName: AROnboarding.pageOneImage
             )
             
             OnboardingPageView(
                 title: AROnboarding.pageTwoTitle,
                 subtitle: AROnboarding.pageTwoSubtitle,
-                imageName: AROnboarding.pageTwoImage,
-                showsDismissButton: false,
-                shouldPresentOnboarding: $shouldPresentAROnboarding
+                imageName: AROnboarding.pageTwoImage
             )
             
             OnboardingPageView(
                 title: AROnboarding.pageThreeTitle,
                 subtitle: AROnboarding.pageThreeSubtitle,
-                imageName: AROnboarding.pageThreeImage,
-                showsDismissButton: false,
-                shouldPresentOnboarding: $shouldPresentAROnboarding
+                imageName: AROnboarding.pageThreeImage
             )
             
             OnboardingPageView(
                 title: AROnboarding.pageFourthTitle,
                 subtitle: AROnboarding.pageFourthSubtitle,
-                imageName: AROnboarding.pageFourthImage,
-                showsDismissButton: false,
-                shouldPresentOnboarding: $shouldPresentAROnboarding
+                imageName: AROnboarding.pageFourthImage
             )
             
             ZStack {
@@ -46,16 +38,17 @@ struct AROnboardingTab: View {
                         Image(systemName: AROnboarding.pageFifthImageCross)
                             .resizable()
                             .scaledToFit()
+                            .foregroundColor(.red)
                             .frame(width: 200, height: 200)
                     }
                     Text(AROnboarding.pageFifthTitle)
-                        .font(.title2)
+                        .font(Font.system(size: 30, weight: .bold, design: .rounded))
                         .padding(.vertical)
                     
                     Text(AROnboarding.pageFifthSubtitle)
+                        .font(Font.system(size: 15, weight: .bold, design: .rounded))
                         .foregroundColor(.purple)
                         .padding(.bottom)
-                    
                     
                     FSBorederedButton(
                         title: Description.gotIt,

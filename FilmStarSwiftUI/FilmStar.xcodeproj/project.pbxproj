@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		EF00B0DD275E5C5F007E5323 /* FilmDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF00B0DC275E5C5F007E5323 /* FilmDummy.swift */; };
-		EF059347275F5E1D00186D9C /* FilmRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmRating.swift */; };
-		EF059348275F5E1D00186D9C /* FilmRating.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmRating.swift */; };
+		EF059347275F5E1D00186D9C /* FilmImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmImplementation.swift */; };
+		EF059348275F5E1D00186D9C /* FilmImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C627596CC000362FC0 /* FilmImplementation.swift */; };
 		EF059349275F5EC300186D9C /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
-		EF05934A275F5F3A00186D9C /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C1275968D100362FC0 /* Film.swift */; };
+		EF05934A275F5F3A00186D9C /* FilmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C1275968D100362FC0 /* FilmProtocol.swift */; };
 		EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC003275A73EC0028D117 /* SearchScreenTests.swift */; };
 		EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC007275A7BAC0028D117 /* FilmDetailsScreen.swift */; };
 		EF0FC00B275A8DF80028D117 /* FSViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC00A275A8DF80028D117 /* FSViewModel.swift */; };
@@ -29,7 +29,7 @@
 		EF5EC8B5275957C400362FC0 /* FSTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B4275957C400362FC0 /* FSTabView.swift */; };
 		EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8B927595D9000362FC0 /* SearchScreen.swift */; };
 		EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8BE275967D200362FC0 /* NetworkManager.swift */; };
-		EF5EC8C2275968D100362FC0 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C1275968D100362FC0 /* Film.swift */; };
+		EF5EC8C2275968D100362FC0 /* FilmProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C1275968D100362FC0 /* FilmProtocol.swift */; };
 		EF5EC8C527596A4100362FC0 /* FSFilmFetchingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C427596A4100362FC0 /* FSFilmFetchingError.swift */; };
 		EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */; };
 		EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */; };
@@ -46,8 +46,7 @@
 		EFC7DCAD2761483C00B989CD /* OnboardingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC7DCAC2761483C00B989CD /* OnboardingPageView.swift */; };
 		EFCB91EB275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */; };
 		EFD3ED92275EA5330066B050 /* OnboardingTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD3ED91275EA5330066B050 /* OnboardingTab.swift */; };
-		EFD90291276257B4002BFBF1 /* FloatingTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD90290276257B4002BFBF1 /* FloatingTabBar.swift */; };
-		EFDAF2FB275F59E500839C6B /* FilmTeaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */; };
+		EFD7CA88276695F10016DDA4 /* PosterARView+Hanging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD7CA87276695F10016DDA4 /* PosterARView+Hanging.swift */; };
 		EFDAF2FC275F5C3600839C6B /* FilmMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0FC005275A770A0028D117 /* FilmMock.swift */; };
 		EFE316F5275AD9A500A635A9 /* FSBorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */; };
 		EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE316F6275AE87A00A635A9 /* PosterARView.swift */; };
@@ -101,9 +100,9 @@
 		EF5EC8B4275957C400362FC0 /* FSTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSTabView.swift; sourceTree = "<group>"; };
 		EF5EC8B927595D9000362FC0 /* SearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreen.swift; sourceTree = "<group>"; };
 		EF5EC8BE275967D200362FC0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		EF5EC8C1275968D100362FC0 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		EF5EC8C1275968D100362FC0 /* FilmProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmProtocol.swift; sourceTree = "<group>"; };
 		EF5EC8C427596A4100362FC0 /* FSFilmFetchingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSFilmFetchingError.swift; sourceTree = "<group>"; };
-		EF5EC8C627596CC000362FC0 /* FilmRating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmRating.swift; sourceTree = "<group>"; };
+		EF5EC8C627596CC000362FC0 /* FilmImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmImplementation.swift; sourceTree = "<group>"; };
 		EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModelTests.swift; sourceTree = "<group>"; };
 		EF684674275B73F20022E51B /* PosterARView+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Configuration.swift"; sourceTree = "<group>"; };
@@ -118,8 +117,7 @@
 		EFC7DCAC2761483C00B989CD /* OnboardingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageView.swift; sourceTree = "<group>"; };
 		EFCB91EA275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsSearchCollectionScreen.swift; sourceTree = "<group>"; };
 		EFD3ED91275EA5330066B050 /* OnboardingTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTab.swift; sourceTree = "<group>"; };
-		EFD90290276257B4002BFBF1 /* FloatingTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingTabBar.swift; sourceTree = "<group>"; };
-		EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmTeaser.swift; sourceTree = "<group>"; };
+		EFD7CA87276695F10016DDA4 /* PosterARView+Hanging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Hanging.swift"; sourceTree = "<group>"; };
 		EFE316F4275AD9A500A635A9 /* FSBorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSBorderedButton.swift; sourceTree = "<group>"; };
 		EFE316F6275AE87A00A635A9 /* PosterARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterARView.swift; sourceTree = "<group>"; };
 		EFE316F9275AE8EA00A635A9 /* PosterARView+Coaching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Coaching.swift"; sourceTree = "<group>"; };
@@ -324,10 +322,9 @@
 		EF5EC8C0275968CB00362FC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				EF5EC8C1275968D100362FC0 /* Film.swift */,
-				EF5EC8C627596CC000362FC0 /* FilmRating.swift */,
+				EF5EC8C1275968D100362FC0 /* FilmProtocol.swift */,
+				EF5EC8C627596CC000362FC0 /* FilmImplementation.swift */,
 				EF00B0DC275E5C5F007E5323 /* FilmDummy.swift */,
-				EFDAF2FA275F59E500839C6B /* FilmTeaser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -376,18 +373,9 @@
 			path = Onboarding;
 			sourceTree = "<group>";
 		};
-		EFD9028F2762579F002BFBF1 /* TabBar */ = {
-			isa = PBXGroup;
-			children = (
-				EFD90290276257B4002BFBF1 /* FloatingTabBar.swift */,
-			);
-			path = TabBar;
-			sourceTree = "<group>";
-		};
 		EFE316F2275AD99200A635A9 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				EFD9028F2762579F002BFBF1 /* TabBar */,
 				EF7BE61C2760F9F500503368 /* EmptyState */,
 				EFF958D5275FB4F400DE9C13 /* ImageLoader */,
 				EFA058C1275C3F8100AC85C9 /* Style */,
@@ -411,6 +399,7 @@
 				EF13EDCB2764C78100DBD079 /* FocusSquare */,
 				EF22EDD4275B784300781FAF /* Entity */,
 				EFE316F6275AE87A00A635A9 /* PosterARView.swift */,
+				EFD7CA87276695F10016DDA4 /* PosterARView+Hanging.swift */,
 				EFE316F9275AE8EA00A635A9 /* PosterARView+Coaching.swift */,
 				EF684674275B73F20022E51B /* PosterARView+Configuration.swift */,
 				EF33918F275B9B70009CC023 /* PosterARView+ARSessionDelegates.swift */,
@@ -575,7 +564,7 @@
 				EF5EC891275954CE00362FC0 /* FilmStarSwiftUI.xcdatamodeld in Sources */,
 				EFC7DCAD2761483C00B989CD /* OnboardingPageView.swift in Sources */,
 				EF5EC8B5275957C400362FC0 /* FSTabView.swift in Sources */,
-				EFD90291276257B4002BFBF1 /* FloatingTabBar.swift in Sources */,
+				EFD7CA88276695F10016DDA4 /* PosterARView+Hanging.swift in Sources */,
 				EF9AFE6C2764B005004CC81D /* Color+Extension.swift in Sources */,
 				EFF958D7275FB50100DE9C13 /* FSImageLoader.swift in Sources */,
 				EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */,
@@ -585,7 +574,6 @@
 				EF7BE6202760FC7D00503368 /* FavouriteEmptyView.swift in Sources */,
 				EFF958D9275FB57900DE9C13 /* FSImageView.swift in Sources */,
 				EF0FC008275A7BAC0028D117 /* FilmDetailsScreen.swift in Sources */,
-				EFDAF2FB275F59E500839C6B /* FilmTeaser.swift in Sources */,
 				EFD3ED92275EA5330066B050 /* OnboardingTab.swift in Sources */,
 				EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */,
 				EFE316FA275AE8EA00A635A9 /* PosterARView+Coaching.swift in Sources */,
@@ -596,13 +584,13 @@
 				EFE316FE275AF9E700A635A9 /* FSProminentButton.swift in Sources */,
 				EFA058C0275C3E1200AC85C9 /* ColouredVPadder.swift in Sources */,
 				EF339198275C1BCB009CC023 /* FavouritesFilmsScreen.swift in Sources */,
-				EF059348275F5E1D00186D9C /* FilmRating.swift in Sources */,
+				EF059348275F5E1D00186D9C /* FilmImplementation.swift in Sources */,
 				EF22EDD6275B789300781FAF /* ARPoster.swift in Sources */,
 				EF7BE61B2760E31900503368 /* Statics.swift in Sources */,
 				EF7BE61E2760FA0400503368 /* RotationAnimationManager.swift in Sources */,
 				EFE316F7275AE87A00A635A9 /* PosterARView.swift in Sources */,
 				EF13EDCD2764C78E00DBD079 /* FocusSquare.swift in Sources */,
-				EF5EC8C2275968D100362FC0 /* Film.swift in Sources */,
+				EF5EC8C2275968D100362FC0 /* FilmProtocol.swift in Sources */,
 				EF5EC885275954CD00362FC0 /* FilmStarSwiftUIApp.swift in Sources */,
 				EFC7DCAB276147DB00B989CD /* AROnboardingTab.swift in Sources */,
 				EF0FC00B275A8DF80028D117 /* FSViewModel.swift in Sources */,
@@ -618,8 +606,8 @@
 				EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */,
 				EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */,
 				EF0FC004275A73EC0028D117 /* SearchScreenTests.swift in Sources */,
-				EF059347275F5E1D00186D9C /* FilmRating.swift in Sources */,
-				EF05934A275F5F3A00186D9C /* Film.swift in Sources */,
+				EF059347275F5E1D00186D9C /* FilmImplementation.swift in Sources */,
+				EF05934A275F5F3A00186D9C /* FilmProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

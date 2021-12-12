@@ -19,7 +19,7 @@ class PosterARView: ARView {
         let button = UIButton()
         var configuration = UIButton.Configuration.filled()
         configuration.cornerStyle = UIButton.Configuration.CornerStyle.large
-        configuration.title = "Hang it!"
+        configuration.title = "Scanning.."
         configuration.baseBackgroundColor = .yellow.withAlphaComponent(0.70)
         configuration.baseForegroundColor = .black
         configuration.image = UIImage(systemName: "paintpalette")
@@ -30,8 +30,16 @@ class PosterARView: ARView {
         return button
     }()
     
-    var arPoster: ARPoster?
-    let focusSquare: FocusSquare?
+    var focusSquare: FocusSquare?
+    
+    var arPoster: ARPoster? {
+        didSet {
+            if arPoster != nil, oldValue == nil {
+                resetSessionButton.setTitle("Hang again!", for: .normal)
+            }
+        }
+    }
+   
     var posterAnchor: AnchorEntity?
     var focusSquareAnchor: AnchorEntity?
     
@@ -39,7 +47,15 @@ class PosterARView: ARView {
     var viewModel: FSViewModel
     let coachingOverlay = ARCoachingOverlayView()
     var isFocusSquareAnchored: Bool = false
+    var isPosterHang: Bool = false
     var arResource: TextureResource
+    var focusBoxRendererCounter: Int = 2 {
+        didSet {
+            if focusBoxRendererCounter == 2000 {
+                focusBoxRendererCounter /= 1000
+            }
+        }
+    }
     
     static let isARExperienceAvailable: Bool = ARWorldTrackingConfiguration.supportsFrameSemantics([.personSegmentationWithDepth, .sceneDepth]) && ARWorldTrackingConfiguration.supportsSceneReconstruction(.meshWithClassification)
     
@@ -64,45 +80,6 @@ class PosterARView: ARView {
     
     @MainActor @objc required dynamic init?(coder decoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - RayCast and Hanging
-    /// Performs RayCasting, searches for vertical plane. If such plane has been found, it renders an ARPoster onto it.
-    /// - Parameter recogniser: Tap gesture on the screen.
-    @objc
-    func performHanging() {
-        let result = raycast(
-            from: CGPoint.init(x: UIScreen.main.bounds.size.width * 0.5 , y: UIScreen.main.bounds.size.height * 0.5),
-            allowing: .estimatedPlane,
-            alignment: .vertical
-        )
-        
-        if let firstResult = result.first,
-           let _ = arPoster {
-            let coordinates = simd_make_float3(firstResult.worldTransform.columns.3)
-            placePoster(at: coordinates)
-        }
-    }
-    
-    func placePoster(at location: SIMD3<Float>) {
-        if let posterAnchor = posterAnchor {
-            scene.removeAnchor(posterAnchor)
-        }
-        
-        posterAnchor = nil
-        posterAnchor = AnchorEntity(world: location)
-        
-        arPoster?.removeFromParent()
-        arPoster = nil
-        arPoster = ARPoster(with: arResource)
-        
-        self.installGestures(
-            [.rotation, .scale],
-            for: arPoster! as HasCollision
-        )
-        
-        posterAnchor!.addChild(arPoster!)
-        scene.addAnchor(posterAnchor!)
     }
     
     // MARK: - Layout UI

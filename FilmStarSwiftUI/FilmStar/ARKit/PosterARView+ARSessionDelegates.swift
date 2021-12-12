@@ -11,26 +11,22 @@ extension PosterARView: ARSessionDelegate {
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
-        if let raycastResult = raycastCentreView(),
-           let focusSquare = focusSquare {
-            if !isFocusSquareAnchored {
-                focusSquareAnchor = AnchorEntity(raycastResult: raycastResult)
-                focusSquareAnchor?.addChild(focusSquare)
-                scene.addAnchor(focusSquareAnchor!)
-                isFocusSquareAnchored.toggle()
-            } else {
-                focusSquare.move(to: raycastResult.worldTransform, relativeTo: nil)
+        if focusBoxRendererCounter % 2 == 0 {
+            if let raycastResult = raycastCentreView(),
+               let focusSquare = focusSquare {
+                if !isFocusSquareAnchored {
+                    focusSquareAnchor = AnchorEntity(raycastResult: raycastResult)
+                    focusSquareAnchor?.addChild(focusSquare)
+                    scene.addAnchor(focusSquareAnchor!)
+                    resetSessionButton.setTitle("Hang it!", for: .normal)
+                    resetSessionButton.configuration?.baseBackgroundColor = .green.withAlphaComponent(0.9)
+                    resetSessionButton.configuration?.baseForegroundColor = .black
+                    isFocusSquareAnchored.toggle()
+                } else {
+                    focusSquare.move(to: raycastResult.worldTransform, relativeTo: nil, duration: 0.5)
+                }
             }
         }
-    }
-    
-    func raycastCentreView() -> ARRaycastResult? {
-        raycast(
-            from: CGPoint.init(
-                x: UIScreen.main.bounds.size.width * 0.5 ,
-                y: UIScreen.main.bounds.size.height * 0.5),
-            allowing: .estimatedPlane,
-            alignment: .any
-        ).first
+        focusBoxRendererCounter += 1
     }
 }

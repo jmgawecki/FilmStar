@@ -7,7 +7,7 @@ import Foundation
 
  Class uses `Combine`'s dataTaskPublisher to fetch the image and dispatch it on the main thread.
 
- Class currently supports `FSImageView` but can be used for other views. To do it, declare `@StateObject` of type `ImageLoader` and assign it directly the binding struct itself as such:
+ Class currently supports `FSImageView` but can be used for other views. To do it, declare `@StateObject` of type `ImageLoader` and assign it directly to the binding struct itself as such:
 
  ```Swift
  struct FSImageView: View {
