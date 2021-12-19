@@ -11,7 +11,9 @@ struct OnboardingTab: View {
             )
                 .accessibilityElement(children: .ignore)
                 .clipShape(Rectangle())
-                .accessibilityLabel("Search for your favourite film or films with the title or with the IMDb I D")
+                .accessibilityLabel("Search for your favourite film, or films with the title, or with the IM Db I D")
+                .accessibilityAddTraits(.isStaticText)
+                .accessibilityIdentifier("pageOne")
             
             if PosterARView.isARExperienceAvailable {
                 OnboardingPageView(
@@ -22,6 +24,8 @@ struct OnboardingTab: View {
                     .accessibilityElement(children: .ignore)
                     .clipShape(Rectangle())
                     .accessibilityLabel("Add found films to your favourites list and check those you have recently searched for.")
+                    .accessibilityAddTraits(.isStaticText)
+                    .accessibilityIdentifier("pageTwo")
                 
                 OnboardingPageLastView(
                     title: Onboarding.pageThreeTitle,
@@ -31,6 +35,8 @@ struct OnboardingTab: View {
                     accessibilityHint: VoiceOver.arExperienceNotFriendlyHint,
                     shouldPresentOnboarding: $shouldPresentOnboarding
                 )
+                    .accessibilityAddTraits(.isStaticText)
+                    .accessibilityIdentifier("pageThree")
             } else {
                 OnboardingPageLastView(
                     title: Onboarding.pageTwoTitle,
@@ -39,9 +45,11 @@ struct OnboardingTab: View {
                     accessibilityLabel: "Add found films to your favourites list and check those you have recently searched for.",
                     shouldPresentOnboarding: $shouldPresentOnboarding
                 )
+                    .accessibilityAddTraits(.isStaticText)
+                    .accessibilityIdentifier("pageTwo")
             }
         }
-        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(.page)
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
 }
@@ -85,7 +93,7 @@ fileprivate struct OnboardingPageLastView: View {
                 .accessibilityLabel(accessibilityLabel)
                 .accessibilityHint(accessibilityHint ?? "")
                 
-                FSBorederedButton(
+                FSButton(
                     title: Description.gotIt,
                     systemImage: SFSymbol.checkmark,
                     colour: .purple,
@@ -93,6 +101,7 @@ fileprivate struct OnboardingPageLastView: View {
                     accessibilityHint: VoiceOver.doubleTapToCloseOnboarding) {
                         shouldPresentOnboarding.toggle()
                     }
+                    .buttonStyle(.bordered)
             }
         }
     }

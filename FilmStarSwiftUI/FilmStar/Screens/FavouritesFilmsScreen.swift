@@ -23,6 +23,8 @@ struct FavouritesFilmsScreen: View {
                         .font(.title2)
                         .accessibilityFocused($isScreenFocused)
                         .accessibilityLabel(VoiceOver.favouriteFilmSwipeRightForList)
+                        .accessibilityAddTraits(.isStaticText)
+                        .accessibilityIdentifier("favouritesFilmHeader")
                     List {
                         ForEach(films.filter({ $0.isFavourite == true })) { film in
                             FSFavouriteFilmCell(film: film)
@@ -108,7 +110,4 @@ fileprivate struct FSFavouriteFilmCell: View {
         }
     }
 }
-
-
-
 

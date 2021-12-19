@@ -19,6 +19,7 @@ struct FavouriteEmptyView: View {
                 .rotationEffect(.degrees(animationManager.rotationAngle))
                 .animation(.easeInOut(duration: 2.5), value: animationManager.rotationAngle)
                 .accessibilityHidden(true)
+                .accessibilityIdentifier("animatingFavouritesImage")
             VStack(alignment: .leading) {
                 Text(Description.yourFavouritesAreEmpty)
                     .font(Font.system(size: 50, weight: .bold, design: .rounded))

@@ -1,12 +1,27 @@
 import SwiftUI
+/**
+Modern style button.
 
-/// Modern style button with the matching colour for the title, image and background.
-///
-/// `FSProminentButton` allows image to be animated upon the tap gesture
-///
-/// Accessibility can be easily applied by providing strings within the initialiser respective parameters.
-struct FSProminentButton: View {
-    let title: String
+`FSBorederedButton` allows image to be animated upon the tap gesture
+ 
+To manipulate button's Style, please use `.buttonStyle()` as such:
+ 
+ ```Swift
+ FSButton(
+     title: Description.gotIt,
+     systemImage: SFSymbol.checkmark,
+     colour: .purple,
+     size: .large,
+     accessibilityHint: VoiceOver.doubleTapToCloseOnboarding) {
+         shouldPresentOnboarding.toggle()
+     }
+     .buttonStyle(.bordered)
+ ```
+
+Accessibility can be easily applied by providing strings within the initialiser respective parameters.
+*/
+struct FSButton: View {
+    var title: String? = nil
     let systemImage: String
     let colour: Color
     let size: ControlSize
@@ -27,13 +42,15 @@ struct FSProminentButton: View {
             Image(systemName: systemImage)
                 .rotationEffect(.degrees(animationAngle))
                 .animation(.easeIn, value: animationAngle)
-            Text(title)
+            if let title = title {
+                Text(title)
+            }
         }
-        .buttonStyle(.borderedProminent)
         .tint(colour)
         .controlSize(size)
-        .accessibilityLabel(Text(accessibilityLabel ?? title))
+        .accessibilityLabel(Text(accessibilityLabel ?? title ?? ""))
         .accessibilityAddTraits(.isButton)
         .accessibilityHint(accessibilityHint ?? "")
     }
 }
+

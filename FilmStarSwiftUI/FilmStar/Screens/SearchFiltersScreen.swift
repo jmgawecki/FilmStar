@@ -21,7 +21,7 @@ struct SearchFiltersScreen: View {
                     }
                 }
                 HStack {
-                    FSBorederedButton(
+                    FSButton(
                         title: Description.resetSettings,
                         systemImage: SFSymbol.restart,
                         colour: .red,
@@ -32,8 +32,10 @@ struct SearchFiltersScreen: View {
                             viewModel.year = 0
                             viewModel.typeIndex = 0
                         }
+                        .buttonStyle(.bordered)
+                        .accessibility(identifier: "filterResetButton")
                     
-                    FSBorederedButton(
+                    FSButton(
                         title: Description.done,
                         systemImage: SFSymbol.checkmark,
                         colour: .green,
@@ -42,10 +44,13 @@ struct SearchFiltersScreen: View {
                         accessibilityHint: VoiceOver.doubleTapToConfirmSettings) {
                             viewModel.isChangingFilters = false
                         }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("filterDoneButton")
                 }
                 .padding(.top, 30)
             }
         }
+        
     }
 }
 

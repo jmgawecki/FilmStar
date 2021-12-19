@@ -50,7 +50,7 @@ struct AROnboardingTab: View {
                         .foregroundColor(.purple)
                         .padding(.bottom)
                     
-                    FSBorederedButton(
+                    FSButton(
                         title: Description.gotIt,
                         systemImage: SFSymbol.checkmark,
                         colour: .purple,
@@ -58,10 +58,11 @@ struct AROnboardingTab: View {
                         accessibilityHint: VoiceOver.doubleTapToCloseOnboarding) {
                             shouldPresentAROnboarding.toggle()
                         }
+                        .buttonStyle(.bordered)
                 }
             }
         }
-        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(.page)
         .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
 }

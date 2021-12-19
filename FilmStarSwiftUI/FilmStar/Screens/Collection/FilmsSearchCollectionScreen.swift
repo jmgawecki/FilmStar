@@ -24,11 +24,13 @@ struct FilmsSearchCollectionScreen: View {
             List {
                 ForEach(viewModel.listOfTeasers) { filmTeaser in
                     FilmsSearchCollectionCell(filmTeaser: filmTeaser)
+                        .contentShape(Rectangle())
                         .onTapGesture {
                             viewModel.fetchFilm(with: filmTeaser.imdbID)
                         }
                 }
             }
+            .accessibilityIdentifier("filmsList")
             .fullScreenCover(item: $viewModel.film, content: { _ in
                 FilmDetailsScreen(viewModel: viewModel)
             })
@@ -64,7 +66,7 @@ fileprivate struct FilmSearchCollectionTopBar: View {
             
             Spacer()
             
-            FSBorederedButton(
+            FSButton(
                 systemImage: SFSymbol.close,
                 colour: .yellow,
                 size: .large,
@@ -74,6 +76,8 @@ fileprivate struct FilmSearchCollectionTopBar: View {
                         viewModel.listOfTeasers.removeAll()
                     }
                 }
+                .buttonStyle(.bordered)
+                .accessibilityIdentifier("goBackButton")
                 .padding(.horizontal)
         }
     }
@@ -99,7 +103,7 @@ fileprivate struct FilmsSearchCollectionCell: View {
             .accessibilityHidden(true)
             
         }
-        .frame(width: 350, height: 130, alignment: .center)
+        .frame(idealWidth: 350, idealHeight: 130, alignment: .center)
         .cornerRadius(15)
         .accessibilityElement(children: .combine)
         .accessibilityLabel("\(filmTeaser.title). Released in \(filmTeaser.year)")

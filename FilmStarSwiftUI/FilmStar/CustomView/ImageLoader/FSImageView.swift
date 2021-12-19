@@ -16,8 +16,8 @@ struct FSImageView: View {
     
     var body: some View {
         ZStack {
-            if loader.image != nil {
-                Image(uiImage: loader.image!)
+            if let image = loader.image {
+                Image(uiImage: image)
                     .resizable()
             } else {
                 ProgressView()

@@ -140,6 +140,9 @@ fileprivate struct SearchFilmTextField: View {
                 .accessibilityRemoveTraits(.isImage)
                 .accessibilityAddTraits(.isButton)
                 .accessibilitySortPriority(9)
+                .accessibilityRemoveTraits(.isImage)
+                .accessibilityAddTraits(.isButton)
+                .accessibilityIdentifier("filterButton")
                 .onTapGesture {
                     animationAngle += 360
                     viewModel.isChangingFilters = true
@@ -161,7 +164,7 @@ fileprivate struct SearchButtonsPanel: View {
     
     var body: some View {
         HStack {
-            FSBorederedButton(
+            FSButton(
                 title: Description.searchForOne,
                 systemImage: SFSymbol.film,
                 colour: .fsSecondary,
@@ -173,9 +176,10 @@ fileprivate struct SearchButtonsPanel: View {
                         viewModel.isFetchingFilms = true
                     }
                 }
+                .buttonStyle(.bordered)
                 .accessibilitySortPriority(9)
             
-            FSBorederedButton(
+            FSButton(
                 title: Description.searchForMany,
                 systemImage: SFSymbol.listOfFilms,
                 colour: .purple,
@@ -187,6 +191,7 @@ fileprivate struct SearchButtonsPanel: View {
                         viewModel.isFetchingFilms = true
                     }
                 }
+                .buttonStyle(.bordered)
                 .accessibilitySortPriority(8)
         }
     }

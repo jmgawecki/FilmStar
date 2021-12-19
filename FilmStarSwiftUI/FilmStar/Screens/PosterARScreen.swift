@@ -13,7 +13,7 @@ struct PosterARScreen: View {
                 ARViewContainer(viewModel: viewModel)
                     .edgesIgnoringSafeArea(.all)
             
-                    FSProminentButton(
+                    FSButton(
                         title: FSString.back,
                         systemImage: SFSymbol.close,
                         colour: .purple,
@@ -21,6 +21,7 @@ struct PosterARScreen: View {
                         accessibilityLabel: FSAccessibilityString.goBack) {
                             viewModel.isPresentingARExperience.toggle()
                         }
+                        .buttonStyle(.borderedProminent)
                         .opacity(0.85)
                         .padding()
             }

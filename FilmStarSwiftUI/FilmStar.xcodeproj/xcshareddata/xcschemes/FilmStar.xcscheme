@@ -50,6 +50,9 @@
             ReferencedContainer = "container:FilmStar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <DeviceSensorReplayFileReference
+         identifier = "../../ARDebugSession.mov">
+      </DeviceSensorReplayFileReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

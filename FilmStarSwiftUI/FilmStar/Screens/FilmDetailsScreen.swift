@@ -72,11 +72,12 @@ struct FilmDetailsScreen: View {
                     }
                 }
             }
+            .accessibilityIdentifier("filmDetailsScreenScrollView")
             .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                     self.isScreenFocused = true
                 }
-            }
+            } 
         }
     }
 }
@@ -132,7 +133,7 @@ fileprivate struct ButtonsPanel: View {
                 if let film = viewModel.film,
                    let filmCored = films.filter({ $0.imdbID == film.imdbID }).first,
                    let isFavourite = filmCored.isFavourite {
-                    FSBorederedButton(
+                    FSButton(
                         title: isFavourite ? FSString.saved : FSString.save,
                         systemImage: isFavourite ? SFSymbol.favourite : SFSymbol.notFavourite,
                         colour: .purple,
@@ -142,10 +143,12 @@ fileprivate struct ButtonsPanel: View {
                         accessibilityHint: FSAccessibilityString.saveToFavouritesHint) {
                             changeFavouritesStatus()
                         }
+                        .accessibilityIdentifier(isFavourite ? "savedFilmButton" : "saveFilmButton")
+                        .buttonStyle(.bordered)
                 }
                 if PosterARView.isARExperienceAvailable,
                    viewModel.film?.arPosterTexture != nil {
-                    FSBorederedButton(
+                    FSButton(
                         title: FSString.arPoster,
                         systemImage: SFSymbol.arkit,
                         colour: .purple,
@@ -154,6 +157,8 @@ fileprivate struct ButtonsPanel: View {
                         accessibilityHint: FSAccessibilityString.arExperienceNotFriendlyHint) {
                             viewModel.isPresentingARExperience.toggle()
                         }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("arPosterButton")
                         .fullScreenCover(
                             isPresented: $viewModel.isPresentingARExperience,
                             onDismiss: nil) {
@@ -161,7 +166,7 @@ fileprivate struct ButtonsPanel: View {
                             }
                 }
                 
-                FSBorederedButton(
+                FSButton(
                     systemImage: SFSymbol.close,
                     colour: .yellow,
                     size: .large,
@@ -170,6 +175,8 @@ fileprivate struct ButtonsPanel: View {
                             viewModel.film = nil
                         }
                     }
+                    .buttonStyle(.bordered)
+                    .accessibilityIdentifier("backButton")
             }
         }
         .padding(.top)
@@ -272,6 +279,7 @@ fileprivate struct HeaderView: View {
             .accessibilityCustomContent(.title, "\(film.title). Released in (\(film.year))", importance: .high)
             .accessibilityCustomContent(.plot, film.plot)
             .accessibilityAddTraits(.isHeader)
+            .accessibilityIdentifier("filmDetailsHeaderView")
             .accessibilityHint(FSAccessibilityString.swipeDownForThePlotHint)
     }
     

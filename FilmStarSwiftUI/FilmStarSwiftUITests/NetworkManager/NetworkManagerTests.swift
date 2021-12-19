@@ -2,7 +2,7 @@ import XCTest
 @testable import FilmStar
 
 class NetworkManagerTests: XCTestCase {
-    
+    // MARK: - Logic
     func testSearchWithIDtt3896198ShouldFetchFilm() async throws {
         // Arrange
         let mockFilm = FilmMock.gogv2
@@ -163,7 +163,7 @@ class NetworkManagerTests: XCTestCase {
         }
     }
     
-    // MARK: - PosterData Fetching
+    // MARK: - Methods
     
     func testFetchingGuardiansPosterWillSucceeds() async throws {
         let urlString = "https://m.media-amazon.com/images/M/MV5BNjM0NTc0NzItM2FlYS00YzEwLWE0YmUtNTA2ZWIzODc2OTgxXkEyXkFqcGdeQXVyNTgwNzIyNzg@._V1_SX300.jpg"
@@ -173,6 +173,60 @@ class NetworkManagerTests: XCTestCase {
                 XCTAssert(true)
             } else {
                 XCTAssert(false)
+            }
+        }
+    }
+    
+    func testFetchingGuardiansWithManagersMethodsSucceeds() async throws {
+        let guardiansMock = FilmMock.gogv2
+        do {
+            let guardians = try await NetworkManager.shared.fetchFilm(fetchBy: .title, with: "Guardians+of+the+Galaxy+Vol.+2",
+                                                                      type: "Any", year: "Any")
+            XCTAssertEqual(guardians?.imdbID, guardiansMock.imdbID)
+        } catch let error {
+            if let error = error as? FSFilmFetchingError {
+                XCTFail(error.rawValue)
+            } else {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+    
+    func testFetchingGuardiansWithManagersMethodsWithUnpreparedTitleFails() async throws {
+        do {
+            let guardians = try await NetworkManager.shared.fetchFilm(fetchBy: .title, with: "Guardians of the Galaxy Vol. 2",
+                                                                      type: "Any", year: "Any")
+        } catch let error {
+            if let error = error as? FSFilmFetchingError {
+                XCTAssertEqual(error.rawValue, FSFilmFetchingError.wrongFormat.rawValue)
+            } else {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+    
+    func testFetchingListOfFilmsGuardiansBringsMoreThanOneResult() async throws {
+        do {
+            let guardians = try await NetworkManager.shared.fetchListOfFilms(with: "Guardians", type: "Any", year: "Any")
+            XCTAssert(guardians.count > 1)
+        } catch let error {
+            if let error = error as? FSFilmFetchingError {
+                XCTFail(error.rawValue)
+            } else {
+                XCTFail(error.localizedDescription)
+            }
+        }
+    }
+    
+    func testFetchingListOfFilmsGuardiansWithUnpreparedTitleFails() async throws {
+        do {
+            let _ = try await NetworkManager.shared.fetchFilm(fetchBy: .title, with: "  Guardians   ",
+                                                              type: "Any", year: "Any")
+        } catch let error {
+            if let error = error as? FSFilmFetchingError {
+                XCTAssertEqual(error.rawValue, FSFilmFetchingError.wrongFormat.rawValue)
+            } else {
+                XCTFail(error.localizedDescription)
             }
         }
     }

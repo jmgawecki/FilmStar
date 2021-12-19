@@ -60,7 +60,7 @@ fileprivate struct FSRecentFilmCell: View {
                         .font(.callout)
                     
                     if let director = film.director, director != "N/A" {
-                        Text("Directed by \(film.director ?? "")")
+                        Text("Directed by \(director)")
                             .font(.caption)
                     }
                 }
