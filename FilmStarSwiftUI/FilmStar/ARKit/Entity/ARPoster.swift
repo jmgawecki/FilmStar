@@ -14,8 +14,10 @@ class ARPoster: Entity, HasModel, HasCollision {
     // MARK: - HasModel
     fileprivate func generatePoster(with textureResource: TextureResource) {
         var material = UnlitMaterial()
-        material.baseColor = MaterialColorParameter.texture(textureResource)
-        material.tintColor = .white.withAlphaComponent(0.99)
+//        material.baseColor = MaterialColorParameter.texture(textureResource)
+//        material.tintColor = .white.withAlphaComponent(0.99)
+        material.color.texture = .init(textureResource)
+        material.color.tint = .white.withAlphaComponent(0.99)
         
         model = ModelComponent(
             mesh: .generatePlane(

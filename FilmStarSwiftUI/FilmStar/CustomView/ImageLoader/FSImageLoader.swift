@@ -17,11 +17,14 @@ import Foundation
          _loader = StateObject(wrappedValue: FSImageLoader(urlString: urlString))
      }
  ```
+ 
+ Class introduces NSCache where UIImage is saved. If the Image exists, it won't be fetched again.
  */
 class FSImageLoader: ObservableObject {
     @Published var image: UIImage?
     private var urlString: String
     private var subscription: AnyCancellable?
+    private let cache = NSCache<NSString, UIImage>()
     
     init(urlString: String) {
         self.urlString = urlString
@@ -34,12 +37,24 @@ class FSImageLoader: ObservableObject {
     func load() {
         guard let url = URL(string: urlString)
         else { return }
+        
+        if let image = cache.object(forKey: urlString as NSString) {
+            self.image = image
+            return
+        }
 
         subscription = URLSession.shared.dataTaskPublisher(for: url)
             .map({ UIImage(data: $0.data) })
             .replaceError(with: nil)
             .receive(on: RunLoop.main)
-            .sink(receiveValue: { [weak self] in self?.image = $0 })
+            .sink(receiveValue: { [weak self] image in
+                guard
+                    let self = self,
+                    let image = image
+                else { return }
+                self.cache.setObject(image, forKey: self.urlString as NSString)
+                self.image = image
+            })
     }
     
     func cancel() {
