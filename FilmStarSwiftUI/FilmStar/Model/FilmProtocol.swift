@@ -5,7 +5,7 @@ import RealityKit
 // MARK: - FilmShort
 
 /// Protocol serves as a requirement to both `Film` and `FilmTeaser` structs.
-protocol FilmShortProtocol: Identifiable, Codable {
+protocol FilmShortProtocol: Identifiable, Codable, Equatable {
     var title: String { get set }
     var year: String { get set }
     var type: String { get set }
@@ -18,6 +18,12 @@ protocol FilmShortProtocol: Identifiable, Codable {
 extension FilmShortProtocol {
     var id: String {
         return imdbID
+    }
+}
+
+extension FilmShortProtocol {
+    static func == (lhs: Self, rhs: Self) -> Bool {
+        lhs.imdbID == rhs.imdbID
     }
 }
 

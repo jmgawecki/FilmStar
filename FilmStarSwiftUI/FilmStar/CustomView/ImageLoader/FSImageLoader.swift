@@ -46,7 +46,7 @@ class FSImageLoader: ObservableObject {
         subscription = URLSession.shared.dataTaskPublisher(for: url)
             .map({ UIImage(data: $0.data) })
             .replaceError(with: nil)
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] image in
                 guard
                     let self = self,

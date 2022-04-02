@@ -26,7 +26,6 @@ struct FSTabView: View {
             .fullScreenCover(isPresented: $shouldShowOnboarding, content: {
                 OnboardingTab(shouldPresentOnboarding: $shouldShowOnboarding)
             })
-            .accentColor(Color.purple)
         }
         .fullScreenCover(
             item: $viewModel.film,

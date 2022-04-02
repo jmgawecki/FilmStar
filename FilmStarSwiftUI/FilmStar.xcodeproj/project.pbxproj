@@ -34,6 +34,7 @@
 		EF5EC8C927596E7100362FC0 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */; };
 		EF684673275B679D0022E51B /* SearchScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */; };
 		EF684675275B73F20022E51B /* PosterARView+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF684674275B73F20022E51B /* PosterARView+Configuration.swift */; };
+		EF690F9B27EF729700BB099D /* testGeoShader.metal in Sources */ = {isa = PBXBuildFile; fileRef = EF690F9A27EF729700BB099D /* testGeoShader.metal */; };
 		EF7BE61B2760E31900503368 /* Statics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61A2760E31900503368 /* Statics.swift */; };
 		EF7BE61E2760FA0400503368 /* RotationAnimationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */; };
 		EF7BE6202760FC7D00503368 /* FavouriteEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */; };
@@ -109,6 +110,7 @@
 		EF5EC8C827596E7100362FC0 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		EF684672275B679D0022E51B /* SearchScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenViewModelTests.swift; sourceTree = "<group>"; };
 		EF684674275B73F20022E51B /* PosterARView+Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PosterARView+Configuration.swift"; sourceTree = "<group>"; };
+		EF690F9A27EF729700BB099D /* testGeoShader.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = testGeoShader.metal; sourceTree = "<group>"; };
 		EF7BE61A2760E31900503368 /* Statics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statics.swift; sourceTree = "<group>"; };
 		EF7BE61D2760FA0400503368 /* RotationAnimationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RotationAnimationManager.swift; sourceTree = "<group>"; };
 		EF7BE61F2760FC7D00503368 /* FavouriteEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteEmptyView.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 			children = (
 				EF13EDCC2764C78E00DBD079 /* FocusSquare.swift */,
 				EF92D87C2766374200CCDF33 /* opacityGreenShader.metal */,
+				EF690F9A27EF729700BB099D /* testGeoShader.metal */,
 			);
 			path = FocusSquare;
 			sourceTree = "<group>";
@@ -588,6 +591,7 @@
 				EF5EC8BA27595D9000362FC0 /* SearchScreen.swift in Sources */,
 				EFE316FA275AE8EA00A635A9 /* PosterARView+Coaching.swift in Sources */,
 				EF5EC8BF275967D200362FC0 /* NetworkManager.swift in Sources */,
+				EF690F9B27EF729700BB099D /* testGeoShader.metal in Sources */,
 				EFCB91EB275EDE4500FD9B60 /* FilmsSearchCollectionScreen.swift in Sources */,
 				EF5EC887275954CD00362FC0 /* FSRecentFilmsCollection.swift in Sources */,
 				EF00B0DD275E5C5F007E5323 /* FilmDummy.swift in Sources */,

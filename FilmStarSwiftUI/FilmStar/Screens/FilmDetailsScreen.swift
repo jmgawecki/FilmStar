@@ -146,7 +146,8 @@ fileprivate struct ButtonsPanel: View {
                         .accessibilityIdentifier(isFavourite ? "savedFilmButton" : "saveFilmButton")
                         .buttonStyle(.bordered)
                 }
-                if PosterARView.isARExperienceAvailable,
+                if
+//                    PosterARView.isARExperienceAvailable,
                    viewModel.film?.arPosterTexture != nil {
                     FSButton(
                         title: FSString.arPoster,

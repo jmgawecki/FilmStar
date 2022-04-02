@@ -15,7 +15,11 @@ extension PosterARView: ARSessionDelegate {
             if let raycastResult = raycastCentreView(),
                let focusSquare = focusSquare {
                 if !isFocusSquareAnchored {
+#if targetEnvironment(simulator)
+                    focusSquareAnchor = AnchorEntity()
+#else
                     focusSquareAnchor = AnchorEntity(raycastResult: raycastResult)
+#endif
                     focusSquareAnchor?.addChild(focusSquare)
                     scene.addAnchor(focusSquareAnchor!)
                     resetSessionButton.setTitle("Hang it!", for: .normal)

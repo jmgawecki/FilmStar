@@ -37,6 +37,15 @@ class FocusSquare: Entity, HasModel {
                 )
             ]
         }
+        
+        if let geometryModifier = createGeoShader() {
+            do {
+                let materials = try model?.materials.map { try CustomMaterial(from: $0, geometryModifier: geometryModifier)}
+                if let materials = materials {
+                    model?.materials = materials
+                }
+            } catch {}
+        }
     }
     
     required init() { fatalError("init() has not been implemented") }
@@ -49,5 +58,13 @@ class FocusSquare: Entity, HasModel {
             let library = device.makeDefaultLibrary()
         else { return nil }
         return CustomMaterial.SurfaceShader(named: "opacityGreenShader", in: library)
+    }
+    
+    fileprivate func createGeoShader() -> CustomMaterial.GeometryModifier? {
+        guard
+            let device = MTLCreateSystemDefaultDevice(),
+            let library = device.makeDefaultLibrary()
+        else { return nil }
+        return CustomMaterial.GeometryModifier(named: "testGeoShader", in: library)
     }
 }

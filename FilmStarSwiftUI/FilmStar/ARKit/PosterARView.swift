@@ -61,7 +61,7 @@ class PosterARView: ARView {
     
     
     // MARK: - Init
-    required init(viewModel: FSViewModel) {
+    @MainActor required init(viewModel: FSViewModel) {
         /// No nil possible since the View would be never initialised otherwise
         self.arResource = viewModel.film!.arPosterTexture!
         focusSquare = FocusSquare(textureResource: arResource)
